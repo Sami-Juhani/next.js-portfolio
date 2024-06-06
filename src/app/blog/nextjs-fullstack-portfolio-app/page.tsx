@@ -14,7 +14,7 @@ export default function BlogArticle() {
           <h2>Next.js fullstack portfolio application</h2>
           <div className="column gap-small items-end">
             <p className="margin-btm-large">6/6/2024</p>
-            <LikeIcon className="custom-image-link" style={{fill: "#0072dd"}}/>
+            <LikeIcon className="custom-image-link" style={{ fill: "#0072dd" }} />
             <p className="paragraph-secondary textXs">Likes 2</p>
           </div>
         </div>
@@ -108,7 +108,9 @@ export default function BlogArticle() {
           hardcoded before implementing the backend server and setting up a database. The appearance will also be dull,
           but bear with me—it’s about to rock.
         </p>
-        <p>You can view the app repo here.</p>
+        <p>
+          You can view the app repo <Link href={"/https://github.com/Sami-Juhani/next.js-portfolio"}>here.</Link>
+        </p>
         <p>Thanks for reading this far. Check for updates and enjoy the summertime.</p>
         <p>Cheers,</p>
         <div className="column">
