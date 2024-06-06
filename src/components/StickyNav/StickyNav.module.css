@@ -1,0 +1,123 @@
+.headerContainer {
+  --_animationStartAfter: 150px;
+  --_animationDistance: 200px;
+  --_textColorStart: var(--text-primary);
+  --_textColorEnd: rgb(15, 15, 15, 0.8);
+  --_settingsMargin: 2rem;
+  margin: 0 auto;
+  display: flex;
+  padding: 0.5rem 0.7rem;
+  align-items: center;
+  background-color: #ffffff;
+  color: var(--_textColorStart);
+  font-weight: 500;
+  width: var(--_headerWidth, auto);
+
+  position: sticky;
+  z-index: 9999;
+  top: -5rem;
+
+  @supports (animation-timeline: view()) {
+    animation: stickyNav linear forwards;
+    backdrop-filter: blur(0.15rem);
+    animation-timeline: view();
+    animation-range-start: calc(100vh + var(--_animationStartAfter));
+    animation-range-end: calc(100vh + var(--_animationDistance) + var(--_animationStartAfter));
+  }
+}
+
+@keyframes stickyNav {
+  0%,
+  100% {
+    --_headerWidth: fit-content;
+    --_logoDisplay: none;
+    --_settingsMargin: 0;
+  }
+  100% {
+    top: 1rem;
+    color: var(--_textColorEnd);
+    border-radius: 100vw;
+    background-color: rgb(15, 15, 15, 0.2);
+    box-shadow: 0 0 0.75rem hsl(0 0% 0% / 0.3);
+  }
+}
+
+.headerContainer > img {
+  width: 30px;
+}
+
+.headerContainer > svg {
+  display: var(--_logoDisplay, flex);
+  font-size: var(--icon-size-md);
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.leftContainer {
+  display: none;
+}
+
+@media screen and (min-width: 540px) {
+  .headerContainer {
+    padding-inline: 3rem;
+  }
+
+  .leftContainer {
+    display: var(--_logoDisplay, flex);
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.leftContainer > p {
+  font-size: 2.5rem;
+  margin-right: 2rem;
+  text-wrap: nowrap;
+}
+
+.leftContainer > a > svg {
+  font-size: 2rem;
+  fill: var(--text-primary);
+}
+
+.headerContainer > svg {
+  font-size: 2rem;
+  transition: transform ease-in-out 250ms;
+  fill: var(--text-primary);
+  transition: all forwards 1s;
+}
+
+.headerContainer > svg:hover {
+  animation: spin forwards 1s linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.navigation {
+  margin-right: var(--_settingsMargin);
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  font-size: var(--text-size-sm);
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 0;
+    text-underline-offset: 0.17lh;
+  }
+}

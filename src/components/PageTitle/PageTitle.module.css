@@ -1,0 +1,13 @@
+.pageTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.5rem;
+  background: linear-gradient(to right, var(--background-white) 0%, var(--_bgColor) 5%, var(--_bgColor), var(--background-white) 100%);
+}
+
+.pageTitle > h2 {
+  font-size: var(--title-size-md);
+}
