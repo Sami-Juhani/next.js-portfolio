@@ -18,10 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StickyNav links={[{ name: "blog", href: "/blog" }]} logoDescription={"Sami Paananen"} logo={<CodeIcon />} />
-        <main className="main-container">
-        {children}
-        </main>
+        <StickyNav
+          links={[
+            { name: "home", href: "/" },
+            { name: "blog", href: "/blog" },
+          ]}
+          logoDescription={"Sami Paananen"}
+          logo={<CodeIcon />}
+        />
+        <main className="main-container">{children}</main>
       </body>
     </html>
   )
