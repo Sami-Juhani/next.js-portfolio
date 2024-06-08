@@ -66,6 +66,15 @@ body {
 
 /* TYPOGRAPHY */
 
+.paragraph-primary {
+  font-size: var(--text-size-sm);
+  color: var(--text-primary);
+}
+
+.paragraph-secondary {
+  color: var(--text-primary-light);
+}
+
 .textXs {
   font-size: var(--text-size-xs);
 }
@@ -94,13 +103,8 @@ body {
   font-weight: 600;
 }
 
-.paragraph-primary {
-  font-size: var(--text-size-sm);
-  color: var(--text-primary);
-}
-
-.paragraph-secondary {
-  color: var(--text-primary-light);
+.no-list-styles {
+  list-style-type: none;
 }
 
 /* LAYOUT */
@@ -113,6 +117,10 @@ body {
   display: flex;
   justify-content: center;
   padding-bottom: 2rem;
+}
+
+.width-full {
+  width: 100%;
 }
 
 .row {
