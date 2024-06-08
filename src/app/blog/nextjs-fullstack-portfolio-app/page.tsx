@@ -4,12 +4,13 @@ import { dafoe } from "@/lib/fonts"
 import styles from "../blog.module.css"
 import useIcons from "@/hooks/useIcons"
 
-export default function BlogArticle() {
+export default async function BlogArticle() {
   const { LikeIcon } = useIcons().action
+
   return (
     <article className={styles.articleContainer}>
       <div className={styles.articleHeader}>
-        <Image src={"/images/nextjs.jpeg"} width={250} height={250} alt={"next.js"} />
+        <Image src={"/images/nextjs.jpeg"} width={250} height={250} alt={"next.js"}  />
         <div className="row space-between">
           <h2>Next.js fullstack portfolio application</h2>
           <div className="column gap-small items-end">
@@ -27,10 +28,13 @@ export default function BlogArticle() {
           with plain HTML and CSS, and now it’s time for an upgrade.
         </p>
         <p>
-          I have just finished <Link href={"https://courses.webdevsimplified.com/"}>WebDevSimplified&apos;s</Link> React
-          and Next.js courses, and it’s time to put those newly learned skills into action. These courses are excellent,
-          and Kyle, as a frontend development mentor, has a very clear way of explaining complicated topics. His
-          teaching has really sparked my interest in frontend development.
+          I have just finished{" "}
+          <Link href={"https://courses.webdevsimplified.com/"} passHref={true}>
+            WebDevSimplified&apos;s
+          </Link>{" "}
+          React and Next.js courses, and it’s time to put those newly learned skills into action. These courses are
+          excellent, and Kyle, as a frontend development mentor, has a very clear way of explaining complicated topics.
+          His teaching has really sparked my interest in frontend development.
         </p>
       </section>
       <section className={styles.articleSection}>
@@ -64,8 +68,10 @@ export default function BlogArticle() {
           As I mentioned, I have completed courses on React Beginner, React Advanced, and Next.js. Alongside these
           courses, I started to develop my own reusable, customizable, and documented component library, particularly
           for use in the development process of my new web app. You can check the repo{" "}
-          <Link href={"https://github.com/Sami-Juhani/SJP-Components"}>here</Link>. I have a few components ready for my
-          project:
+          <Link href={"https://github.com/Sami-Juhani/SJP-Components/"} passHref={true}>
+            here
+          </Link>
+          . I have a few components ready for my project:
         </p>
         <ul>
           <li>
@@ -94,7 +100,11 @@ export default function BlogArticle() {
             <Image
               src={"/images/inf_scroller.png"}
               alt="infinite media scroller"
-              layout="responsive"
+              sizes="100vw"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
               width={500}
               height={500}
             />
@@ -109,7 +119,10 @@ export default function BlogArticle() {
           but bear with me—it’s about to rock.
         </p>
         <p>
-          You can view the app repo <Link href={"/https://github.com/Sami-Juhani/next.js-portfolio"}>here.</Link>
+          You can view the app repo{" "}
+          <Link href={"https://github.com/Sami-Juhani/next.js-portfolio/"} passHref={true}>
+            here.
+          </Link>
         </p>
         <p>Thanks for reading this far. Check for updates and enjoy the summertime.</p>
         <p>Cheers,</p>
