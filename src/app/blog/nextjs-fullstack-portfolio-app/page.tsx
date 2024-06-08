@@ -14,7 +14,7 @@ export default async function BlogArticle() {
         <div className="row space-between">
           <h2>Next.js fullstack portfolio application</h2>
           <div className="column gap-small items-end">
-            <p className="margin-btm-large">6/6/2024</p>
+            <p className="margin-btm-large paragraph-secondary">6/6/2024</p>
             <LikeIcon className="custom-image-link" style={{ fill: "#0072dd" }} />
             <p className="paragraph-secondary textXs">Likes 2</p>
           </div>
