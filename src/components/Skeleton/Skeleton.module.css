@@ -1,0 +1,62 @@
+.skeleton {
+  background: hsl(200, 20%, 90%);
+  border-radius: 0.5rem;
+  height: 1em;
+  width: 100%;
+  animation: skeleton 1s infinite alternate ease-in-out;
+}
+
+.skeleton + .skeleton:last-child {
+  width: 75%;
+}
+
+.skeleton + .skeleton {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+div + .skeleton {
+  margin-top: 0.5rem;
+}
+
+.skeletonImage + .skeleton {
+  margin-top: 1rem;
+}
+
+.skeleton + .skeletonImage {
+  margin-top: 0.5rem;
+}
+
+.skeletonList {
+  list-style-type: none;
+}
+
+.skeletonBtn {
+  height: 2em;
+  width: 4em;
+}
+
+.skeletonInput {
+  height: 2.25em;
+  border: 2px solid black;
+}
+
+.skeletonImage {
+  --_skeletonImageWidth: 100px;
+  --_skeletonImageHeight: 100px;
+  --_borderRadius: 5px;
+  background-color: hsl(200, 20%, 90%);
+  width: var(--_skeletonImageWidth);
+  height: var(--_skeletonImageHeight);
+  border-radius: var(--_borderRadius);
+  animation: skeleton 1s infinite alternate ease-in-out;
+}
+
+@keyframes skeleton {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
