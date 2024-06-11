@@ -33,11 +33,13 @@
   --text-primary: #0a0a0a;
   --text-primary-light: #0a0a0abe;
   --text-seconday: #fafafa;
+
+  --link-color: #0072dd;
 }
 
 a {
   width: min-content;
-  color: #0072dd;
+  color: var(--link-color);
   text-decoration: none;
 }
 
@@ -50,7 +52,7 @@ a:hover {
   font-size: 1.5rem;
   margin-left: auto;
   cursor: pointer;
-  color: #0072dd;
+  color: var(--link-color);
   transition: transform ease-in-out 250ms;
 }
 

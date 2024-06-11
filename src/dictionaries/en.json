@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "links": {
+      "home": "home",
+      "blog": "blog"
+    },
+    "linkBar": {
+      "blog": { "mainStr": "Blogs", "subStr": "about dev" }
+    }
+  },
+  "landingPage": {
+    "status": "Under construction... but checkout the <link>blog</link>"
+  },
+  "blogCard": {
+    "more": "More..."
+  }
+}

@@ -121,3 +121,7 @@
     text-underline-offset: 0.17lh;
   }
 }
+
+.link.active {
+  color: var(--link-color);
+}
