@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "links": {
+      "home": "koti",
+      "blog": "blogi"
+    },
+    "linkBar": {
+      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" }
+    }
+  },
+  "landingPage": {
+    "status": "Sivusta on työn alla. Tutustu sillä välin <link>blogiin</link>"
+  },
+  "blogCard": {
+    "more": "Lisää..."
+  }
+}

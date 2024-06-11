@@ -9,9 +9,9 @@ export default function LoadingBlogPage() {
         <div className="row space-between width-full">
           <Skeleton short inline />
           <div className="column gap-small items-end">
-            <p className="margin-btm-large">
+            <div className="margin-btm-large">
               <Skeleton shortest />
-            </p>
+            </div>
             <SkeletonImage width="20px" height="20px" borderRadius="50%" />
             <Skeleton shortest />
           </div>
