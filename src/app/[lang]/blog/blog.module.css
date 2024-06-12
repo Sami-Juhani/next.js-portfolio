@@ -7,17 +7,16 @@
 
 .blogListContainer {
   width: 100%;
-  --_blogCardGap: 2rem;
+  --_blogCardGap: 1rem;
   --_itemsInRow: 1;
   display: flex;
   flex-wrap: wrap;
   gap: var(--_blogCardGap);
   list-style: none;
-  padding: 0.5rem 1rem;
   border-radius: 5px;
 }
 
-@media screen and (min-width: 580px) {
+@media screen and (min-width: 950px) {
   .blogListContainer {
     --_itemsInRow: 2;
   }
@@ -25,15 +24,33 @@
 
 .blogCard {
   width: calc((100% - (var(--_itemsInRow) - 1) * var(--_blogCardGap)) / var(--_itemsInRow));
+  height: fit-content;
   font-size: var(--text-size-md);
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  padding: 0.5rem;
   background-color: #ffffff;
-  padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all ease-in-out 250ms;
+}
+
+.blogCardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 200px;
+  height: 100%;
+  color: var(--text-primary-light);
+}
+
+.blogCardRight {
+  width: calc(100% - 200px - 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  color: var(--text-primary-light);
 }
 
 .blogCard:hover,
@@ -63,7 +80,7 @@
 .blogBodyPreview {
   display: -webkit-box;
   color: var(--text-primary-light);
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

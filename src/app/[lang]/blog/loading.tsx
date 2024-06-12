@@ -4,21 +4,30 @@ import styles from "./blog.module.css"
 export default function BlogListLoadingPage() {
   return (
     <ul className={styles.blogListContainer}>
-      <SkeletonList amount={1}>
-        <li className={styles.blogCard} style={{ gap: 0 }}>
-          <div className={styles.blogCardTop}>
-            <Skeleton short />
-            <div className="column gap-medium paragraph-secondary items-end">
-              <Skeleton shortest />
-              <SkeletonImage width="75px" height="75px" />
-            </div>
-          </div>
-          <SkeletonList amount={2}>
+      <li
+        className={styles.blogCard}
+        style={{
+          backgroundColor: "#ffffff",
+        }}
+      >
+        <div className={styles.blogCardLeft}>
+          <SkeletonImage width="200px" height="200px" />
+          <p>
+            <Skeleton shorter />
+          </p>
+        </div>
+        <div className={styles.blogCardRight}>
+          <p className={styles.blogTitle}>
             <Skeleton />
-          </SkeletonList>
-          <Skeleton shortest />
-        </li>
-      </SkeletonList>
+          </p>
+          <p className={styles.blogBodyPreview}>
+            <SkeletonList amount={4}>
+              <Skeleton />
+            </SkeletonList>
+          </p>
+          <Skeleton shorter />
+        </div>
+      </li>
     </ul>
   )
 }

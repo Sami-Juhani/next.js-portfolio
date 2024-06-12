@@ -16,7 +16,7 @@ export default async function BlogLayout({
   params: { lang: string }
 }>) {
   const dict = await getDictionary(lang)
-
+  
   return (
     <div className={styles.blogLayout}>
       <PageTitle mainStr={dict.navigation.linkBar.blog.mainStr} subStr={dict.navigation.linkBar.blog.subStr} color={"antiquewhite"} />
