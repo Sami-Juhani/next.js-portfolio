@@ -1,15 +1,14 @@
 .headerContainer {
   --_animationStartAfter: 150px;
   --_animationDistance: 200px;
-  --_textColorStart: var(--text-primary);
-  --_textColorEnd: rgb(15, 15, 15, 0.8);
   --_settingsMargin: 2rem;
+  position: relative;
   margin: 0 auto;
   display: flex;
   padding: 0.5rem 0.7rem;
   align-items: center;
   background-color: #ffffff;
-  color: var(--_textColorStart);
+  color: inherit;
   font-weight: 500;
   width: var(--_headerWidth, auto);
 
@@ -24,6 +23,10 @@
     animation-range-start: calc(100vh + var(--_animationStartAfter));
     animation-range-end: calc(100vh + var(--_animationDistance) + var(--_animationStartAfter));
   }
+}
+
+.headerContainer.dark {
+  background-color: #1b1b1b;
 }
 
 @keyframes stickyNav {
@@ -49,8 +52,8 @@
 .headerContainer > svg {
   display: var(--_logoDisplay, flex);
   font-size: var(--icon-size-md);
-  cursor: pointer;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .leftContainer {
@@ -77,18 +80,17 @@
 
 .leftContainer > a > svg {
   font-size: 2rem;
-  fill: var(--text-primary);
+  fill: var(--text-color);
 }
 
 .headerContainer > svg {
   font-size: 2rem;
   transition: transform ease-in-out 250ms;
-  fill: var(--text-primary);
   transition: all forwards 1s;
 }
 
-.headerContainer > svg:hover {
-  animation: spin forwards 1s linear;
+.headerContainer > svg.spinning {
+  animation: spin forwards 1s;
 }
 
 @keyframes spin {
@@ -112,6 +114,7 @@
   color: inherit;
   text-decoration: none;
   font-weight: 500;
+  font-size: 1.2em;
 
   &:hover,
   &:focus {
@@ -124,4 +127,77 @@
 
 .link.active {
   color: var(--link-color);
+}
+
+.settingsMenu {
+  position: absolute;
+  top: 100%;
+  right: -200px;
+  display: var(--_logoDisplay, flex);
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  padding: 2rem 2rem 1rem 1rem;
+  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  opacity: 0;
+  color: var(--text-primary);
+  transition: right ease-in-out 250ms, opacity ease-in-out 1s;
+}
+
+@media screen and (min-width: 540px) {
+  .settingsMenu {
+    top: calc(100% - 10px);
+  }
+}
+
+.settingsMenu > div > svg {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.settingsMenu > div > svg:hover {
+  color: var(--link-color);
+}
+
+.settingsMenu.open {
+  right: 0;
+  opacity: 1;
+}
+
+@media screen and (min-width: 540px) {
+  .settingsMenu.open {
+    right: 20px;
+  }
+}
+
+.menuSelect {
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 0.3rem;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
+}
+
+.menuSelect > label {
+  color: inherit;
+}
+
+.menuSelect > option {
+  font-size: 1rem;
+}
+
+.menuSelect:hover {
+  border-color: #888;
+}
+
+.menuSelect:focus {
+  border-color: #007bff;
+  outline: none;
 }

@@ -45,9 +45,9 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
+    // Only run on the root (/) URL
+    "/",
+    // Ensure that _next/static, _next/image, images, icons, and fonts are ignored
     "/((?!_next/static|_next/image|images|icons|fonts).*)",
-    // Optional: only run on root (/) URL
-    // "/",
   ],
 }

@@ -11,7 +11,7 @@ const dictionaries: Dictionary = {
 
 export const getDictionary = async (locale: string): Promise<any> => {
   if (dictionaries[locale]) {
-    return dictionaries[locale]()
+    return await dictionaries[locale]()
   } else {
     throw new Error(`No dictionary found for locale: ${locale}`)
   }

@@ -10,6 +10,8 @@ import SettingsIcon from "@mui/icons-material/Settings"
 import CodeIcon from "@mui/icons-material/Code"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import LanguageIcon from '@mui/icons-material/Language';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 /**
  * A hook that provides access to specific SVG icons.
@@ -33,7 +35,7 @@ export default function useIcons() {
 
   return {
     arrows: { ArrowLeft, ArrowRight },
-    status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, ConstructionIcon },
+    status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, ConstructionIcon, LightModeIcon, LanguageIcon },
     action: { CloseIcon, SettingsIcon, GoBackIcon, LikeIcon },
     utils: { CodeIcon },
   }

@@ -18,7 +18,7 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
       }}
     >
       <ConstructionIcon style={{ fontSize: "40px", marginRight: "0.5rem" }} />
-      <TextWithLink paragraph={dict.landingPage.status} href={"/blog"} />
+      <TextWithLink paragraph={dict.landingPage.status} href={`${lang}/blog`} />
     </div>
   )
 }

@@ -37,9 +37,9 @@ export default async function BlogPage({ params: { lang, href } }: { params: { h
         <div className="row space-between">
           <h2>{localizedBlog.header.title}</h2>
           <div className="column gap-small items-end">
-            <p className="margin-btm-large paragraph-secondary">{date}</p>
+            <p className="margin-btm-large">{date}</p>
             <LikeIcon className="custom-image-link" style={{ fill: "#0072dd" }} />
-            <p className="paragraph-secondary textXs">Likes {localizedBlog.likes}</p>
+            <p className="textXs">Likes {localizedBlog.likes}</p>
           </div>
         </div>
       </div>

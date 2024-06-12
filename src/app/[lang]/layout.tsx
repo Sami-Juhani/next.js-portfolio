@@ -3,6 +3,7 @@ import "./globals.css"
 import { StickyNav } from "@/components/StickyNav"
 import useIcons from "@/hooks/useIcons"
 import { getDictionary } from "@/dictionaries/dictionaries"
+import { SettingsProvider } from "@/context/Settings"
 
 export const metadata: Metadata = {
   title: "Sami Paananen",
@@ -22,15 +23,16 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <body>
-        <StickyNav
-          links={[
-            { name: dict.navigation.links.home, href: "/" },
-            { name: dict.navigation.links.blog, href: "/blog" },
-          ]}
-          logoDescription={"Sami Paananen"}
-          logo={<CodeIcon />}
-        />
-        <main className="main-container">{children}</main>
+        <SettingsProvider>
+          <StickyNav
+            links={[
+              { name: dict.navigation.links.home, href: `/${lang}` },
+              { name: dict.navigation.links.blog, href: `/${lang}/blog` },
+            ]}
+            lang={lang}
+          />
+          <main className="main-container">{children}</main>
+        </SettingsProvider>
       </body>
     </html>
   )
