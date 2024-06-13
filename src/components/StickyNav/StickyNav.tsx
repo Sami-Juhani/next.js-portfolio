@@ -2,9 +2,8 @@
 
 import Link from "next/link"
 import styles from "./StickyNav.module.css"
-import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { dafoe } from "@/lib/fonts"
-import Image from "next/image"
 import useIcons from "@/hooks/useIcons"
 import { usePathname, useRouter } from "next/navigation"
 import { useSettings } from "@/context/useSettings"

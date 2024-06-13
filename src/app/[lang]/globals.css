@@ -178,10 +178,11 @@ body {
 /* THEMES */
 
 .dark-theme {
-  --background-color: #151515;
+  --background-color: #000000;
   --text-color: var(--text-secondary);
-  background-color: var(--background-color);
+  background: linear-gradient(to bottom, var(--background-color) 0%, #151515 100%);
   color: var(--text-color);
+  overflow-x: clip;
 }
 
 .light-theme {
@@ -189,4 +190,5 @@ body {
   --text-color: var(--text-primary);
   background-color: var(--background-color);
   color: var(--text-color);
+  overflow-x: clip;
 }
