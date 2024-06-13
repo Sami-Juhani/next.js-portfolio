@@ -1,8 +1,7 @@
 .headerContainer {
-  --_animationStartAfter: 150px;
+  --_animationStartAfter: 250px;
   --_animationDistance: 200px;
   --_settingsMargin: 2rem;
-  position: relative;
   margin: 0 auto;
   display: flex;
   padding: 0.5rem 0.7rem;
@@ -26,7 +25,7 @@
 }
 
 .headerContainer.dark {
-  background-color: #1b1b1b;
+  background-color: #000000;
 }
 
 @keyframes stickyNav {
@@ -79,12 +78,12 @@
 }
 
 .leftContainer > a > svg {
-  font-size: 2rem;
+  font-size: 1.5rem;
   fill: var(--text-color);
 }
 
 .headerContainer > svg {
-  font-size: 2rem;
+  font-size: 1.5rem;
   transition: transform ease-in-out 250ms;
   transition: all forwards 1s;
 }
@@ -114,7 +113,6 @@
   color: inherit;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.2em;
 
   &:hover,
   &:focus {
