@@ -20,9 +20,6 @@ export default async function BlogPage({ params: { lang } }: { params: { lang: s
       {filteredBlogs.map((blog) => (
         <BlogCard key={blog.href} blog={blog} readMore={dict.blogCard.more} lang={lang} />
       ))}
-      {filteredBlogs.map((blog) => (
-        <BlogCard key={blog.href} blog={blog} readMore={dict.blogCard.more} lang={lang} />
-      ))}
     </ul>
   )
 }
