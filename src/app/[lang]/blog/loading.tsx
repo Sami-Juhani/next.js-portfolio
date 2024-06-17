@@ -11,20 +11,22 @@ export default function BlogListLoadingPage() {
         }}
       >
         <div className={styles.blogCardLeft}>
-          <SkeletonImage width="200px" height="200px" />
-          <p>
+          <div style={{position: "absolute", top: "-15px"}}>
+          <SkeletonImage width="200px" height="180px" />
+          </div>
+          <div>
             <Skeleton shorter />
-          </p>
+          </div>
         </div>
         <div className={styles.blogCardRight}>
-          <p className={styles.blogTitle}>
-            <Skeleton />
-          </p>
-          <p className={styles.blogBodyPreview}>
-            <SkeletonList amount={4}>
+          <div className={styles.blogTitle}>
+            <Skeleton short />
+          </div>
+          <div className={styles.blogBodyPreview}>
+            <SkeletonList amount={5}>
               <Skeleton />
             </SkeletonList>
-          </p>
+          </div>
           <Skeleton shorter />
         </div>
       </li>

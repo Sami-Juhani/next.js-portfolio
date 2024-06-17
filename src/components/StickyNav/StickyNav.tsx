@@ -56,9 +56,6 @@ export function StickyNav({ lang, links }: StickyNavProps) {
   return (
     <header className={cc(styles.headerContainer, darkMode && styles.dark)}>
       <div className={styles.leftContainer}>
-        <Link href={`/${lang}/`}>
-          <CodeIcon />
-        </Link>
         <p className={dafoe.className}>SjP</p>
       </div>
       <nav className={styles.navigation}>
