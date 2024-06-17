@@ -127,7 +127,7 @@
 }
 
 @media screen and (min-width: 540px) {
-  .settingsContainer  {
+  .settingsContainer {
     margin-right: 0;
   }
 }
@@ -150,24 +150,47 @@
 
 .lightBulp {
   position: absolute;
-  top: 9px;
-  right: 11px;
-  width: 16px;
-  height: 16px;
-  margin-left: 1.5rem;
+  top: 4px;
+  right: 7px;
+  width: 13px;
+  height: 13px;
   z-index: -1;
 }
 
 .lightBulp.lightBulpOn {
   background-color: rgba(255, 255, 0, 0.6);
   border-radius: 50%;
-  box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.6), 0 0 40px 10px rgba(255, 255, 0, 0.4),
-    0 0 60px 35px rgba(255, 255, 0, 0.2);
+  box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.6), 0 0 40px 8px rgba(255, 255, 0, 0.4),
+    0 0 60px 12px rgba(255, 255, 0, 0.2);
+}
+
+@media screen and (min-width: 540px) {
+  .lightBulp {
+    top: 7px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .lightBulp.lightBulpOn {
+    background-color: rgba(255, 255, 0, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.6), 0 0 40px 10px rgba(255, 255, 0, 0.4),
+      0 0 60px 35px rgba(255, 255, 0, 0.2);
+  }
 }
 
 .flagIcon {
   position: absolute;
-  width: 20px;
-  top: 10px;
-  right: 10px;
+  width: 10px;
+  top: 5px;
+  right: 5px;
+}
+
+@media screen and (min-width: 540px) {
+  .flagIcon {
+    width: 20px;
+    top: 10px;
+    width: 20px;
+  }
 }

@@ -25,13 +25,11 @@
 
 .blogCard {
   width: calc((100% - (var(--_itemsInRow) - 1) * var(--_blogCardGap)) / var(--_itemsInRow));
-  height: fit-content;
   font-size: var(--text-size-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 0.5rem;
+  gap: 0.2rem;
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,6 +39,7 @@
 @media screen and (min-width: 540px) {
   .blogCard {
     flex-direction: row;
+    gap: 1rem;
   }
 }
 
@@ -50,7 +49,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  width: 200px;
+  width: 190px;
   height: 100%;
   color: var(--text-primary-light);
 }
@@ -63,9 +62,15 @@
 
 .blogCardImage {
   position: absolute;
-  top: -30px;
-  left: -30px;
+  top: -15px;
   z-index: 1;
+}
+
+@media screen and (min-width: 540px) {
+  .blogCardImage {
+    top: -15px;
+    left: 5px;
+  }
 }
 
 .blogCardBlurImage {
@@ -78,12 +83,14 @@
   flex-direction: column;
   gap: 0.5rem;
   height: 100%;
+  padding: 0.5rem;
   color: var(--text-primary);
+  background-color: rgb(252, 243, 232);
 }
 
 @media screen and (min-width: 540px) {
   .blogCardRight {
-    width: calc(100% - 200px - 1rem);
+    width: calc(100% - 190px - 1rem);
   }
 }
 
