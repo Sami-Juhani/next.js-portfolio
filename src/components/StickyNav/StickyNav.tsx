@@ -2,13 +2,12 @@
 
 import Link from "next/link"
 import styles from "./StickyNav.module.css"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { dafoe } from "@/lib/fonts"
 import useIcons from "@/hooks/useIcons"
 import { usePathname, useRouter } from "next/navigation"
 import { useSettings } from "@/context/useSettings"
-import { SupportedLanguages } from "@/context/Settings"
-import { PrimaryButton } from "../Buttons"
+import { FI, GB } from "country-flag-icons/react/3x2"
 import { cc } from "@/lib/cc"
 
 export type Link = {
@@ -22,11 +21,10 @@ export type StickyNavProps = {
 }
 
 export function StickyNav({ lang, links }: StickyNavProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const { SettingsIcon } = useIcons().action
   const { CodeIcon } = useIcons().utils
-  const { darkMode } = useSettings()
+  const { LanguageIcon, LightBulp } = useIcons().action
+  const { language, setLanguage, darkMode, setDarkMode } = useSettings()
+  const router = useRouter()
   const pathname = usePathname()
 
   const [activeLink, setActiveLink] = useState<string | undefined>(() => {
@@ -47,13 +45,21 @@ export function StickyNav({ lang, links }: StickyNavProps) {
     setActiveLink(currentLink?.name)
   }, [pathname, links])
 
+  function onLanguageChange() {
+    const lang = language === "en" ? "fi" : "en"
+    setLanguage(lang)
+    const newPath = pathname.replace(language as string, lang as string)
+    console.log(newPath)
+    router.replace(newPath)
+  }
+
   return (
     <header className={cc(styles.headerContainer, darkMode && styles.dark)}>
       <div className={styles.leftContainer}>
         <Link href={`/${lang}/`}>
           <CodeIcon />
         </Link>
-        <p className={dafoe.className}>Sami Paananen</p>
+        <p className={dafoe.className}>SjP</p>
       </div>
       <nav className={styles.navigation}>
         <ul className={styles.links}>
@@ -71,72 +77,16 @@ export function StickyNav({ lang, links }: StickyNavProps) {
             ))}
         </ul>
       </nav>
-      <SettingsIcon
-        className={cc(isTransitioning && styles.spinning)}
-        onClick={() => {
-          setIsOpen((isOpen) => !isOpen)
-          setIsTransitioning(true)
-        }}
-      />
-      <SettingsMenu isOpen={isOpen} setIsOpen={setIsOpen} setIsTransitioning={setIsTransitioning} />
+      <div className={styles.settingsContainer}>
+        <LanguageIcon className="pointer" onClick={onLanguageChange} />
+        <LightBulp onClick={() => setDarkMode((darkMode) => !darkMode)} />
+        <div className={`${styles.lightBulp}  ${cc(!darkMode && styles.lightBulpOn)}`}></div>
+      </div>
+      {language === "en" ? (
+        <GB title="English" className={styles.flagIcon} />
+      ) : (
+        <FI title="Finnish" className={styles.flagIcon} />
+      )}
     </header>
-  )
-}
-
-type SettingsMenuProps = {
-  isOpen: boolean
-  setIsOpen: Dispatch<SetStateAction<boolean>>
-  setIsTransitioning: Dispatch<SetStateAction<boolean>>
-}
-
-function SettingsMenu({ isOpen, setIsOpen, setIsTransitioning }: SettingsMenuProps) {
-  const pathname = usePathname()
-  const router = useRouter()
-  const { CloseIcon } = useIcons().action
-  const { LanguageIcon, LightModeIcon } = useIcons().status
-  const { language, setLanguage, darkMode, setDarkMode } = useSettings()
-
-  function handleLanguageChange(lang: SupportedLanguages) {
-    setLanguage(lang)
-    const newPath = pathname.replace(language as string, lang as string)
-    router.replace(newPath)
-  }
-
-  return (
-    <div
-      onTransitionEnd={() => setIsTransitioning(false)}
-      className={`${styles.settingsMenu} ${cc(isOpen && styles.open)}`}
-      style={{ backgroundColor: darkMode ? "#eeeeee" : "#ffffff" }}
-    >
-      <div className="column gap-medium">
-        <CloseIcon
-          onClick={() => {
-            setIsOpen(false)
-            setIsTransitioning(true)
-          }}
-        />
-        <div className="row gap-medium">
-          <LanguageIcon style={{ fill: "#007bff" }} />
-          <label htmlFor="language-options">Language</label>
-        </div>
-        <select
-          value={language as string}
-          name="language-options"
-          id="language-options"
-          className={styles.menuSelect}
-          onChange={(e) => handleLanguageChange(e.target.value as SupportedLanguages)}
-        >
-          <option value="en">English</option>
-          <option value="fi">Finnish</option>
-        </select>
-      </div>
-      <div className="column gap-medium">
-        <div className="row gap-medium">
-          <LightModeIcon style={darkMode ? { fill: "var(--text-primary)" } : { fill: "#d4cd24" }} />
-          <p>Dark Mode</p>
-        </div>
-        <PrimaryButton onClick={() => setDarkMode((darkMode) => !darkMode)}>{darkMode ? "On" : "Off"}</PrimaryButton>
-      </div>
-    </div>
   )
 }

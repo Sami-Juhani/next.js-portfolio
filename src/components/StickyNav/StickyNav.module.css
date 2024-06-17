@@ -88,16 +88,6 @@
   transition: all forwards 1s;
 }
 
-.headerContainer > svg.spinning {
-  animation: spin forwards 1s;
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .navigation {
   margin-right: var(--_settingsMargin);
 }
@@ -127,75 +117,57 @@
   color: var(--link-color);
 }
 
-.settingsMenu {
-  position: absolute;
-  top: 100%;
-  right: -200px;
+.settingsContainer {
+  position: relative;
   display: var(--_logoDisplay, flex);
-  flex-direction: column;
-  gap: 1rem;
-  background-color: white;
-  padding: 2rem 2rem 1rem 1rem;
-  box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  opacity: 0;
-  color: var(--text-primary);
-  transition: right ease-in-out 250ms, opacity ease-in-out 1s;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 1.2rem;
+  align-items: center;
 }
 
 @media screen and (min-width: 540px) {
-  .settingsMenu {
-    top: calc(100% - 10px);
+  .settingsContainer  {
+    margin-right: 0;
   }
 }
 
-.settingsMenu > div > svg {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.languageSettings {
+  display: flex;
+  flex-direction: row;
+}
+
+.settingsContainer > svg {
   font-size: 1.3rem;
   cursor: pointer;
 }
 
-.settingsMenu > div > svg:hover {
-  color: var(--link-color);
-}
-
-.settingsMenu.open {
-  right: 0;
-  opacity: 1;
-}
-
 @media screen and (min-width: 540px) {
-  .settingsMenu.open {
-    right: 20px;
+  .settingsContainer > svg {
+    font-size: 1.8rem;
   }
 }
 
-.menuSelect {
-  appearance: none;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  padding: 0.3rem;
-  color: inherit;
-  cursor: pointer;
-  transition: border-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
+.lightBulp {
+  position: absolute;
+  top: 9px;
+  right: 11px;
+  width: 16px;
+  height: 16px;
+  margin-left: 1.5rem;
+  z-index: -1;
 }
 
-.menuSelect > label {
-  color: inherit;
+.lightBulp.lightBulpOn {
+  background-color: rgba(255, 255, 0, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 0, 0.6), 0 0 40px 10px rgba(255, 255, 0, 0.4),
+    0 0 60px 35px rgba(255, 255, 0, 0.2);
 }
 
-.menuSelect > option {
-  font-size: 1rem;
-}
-
-.menuSelect:hover {
-  border-color: #888;
-}
-
-.menuSelect:focus {
-  border-color: #007bff;
-  outline: none;
+.flagIcon {
+  position: absolute;
+  width: 20px;
+  top: 10px;
+  right: 10px;
 }

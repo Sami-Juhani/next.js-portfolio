@@ -175,6 +175,11 @@ body {
   margin-bottom: 1rem;
 }
 
+/* ACTION */
+.pointer {
+  cursor: pointer;
+}
+
 /* THEMES */
 
 .dark-theme {
