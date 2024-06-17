@@ -22,8 +22,21 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
       }}
     >
       <div className={styles.blogCardLeft}>
-        <Image className={styles.blogCardImage} src={blog.header.image.src} alt={blog.header.image.alt} width={200} height={200} priority />
-        <Image className={styles.blogCardBlurImage} src={blog.header.image.src} alt={blog.header.image.alt} width={200} height={200} />
+        <Image
+          className={styles.blogCardImage}
+          src={blog.header.image.src}
+          alt={blog.header.image.alt}
+          width={200}
+          height={200}
+          priority
+        />
+        <Image
+          className={styles.blogCardBlurImage}
+          src={blog.header.image.src}
+          alt={blog.header.image.alt}
+          width={200}
+          height={200}
+        />
         <p>{date}</p>
       </div>
       <div className={styles.blogCardRight}>
