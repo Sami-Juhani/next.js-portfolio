@@ -5,7 +5,7 @@ export default function LoadingBlogPage() {
   return (
     <article className={styles.articleContainer}>
       <div className={styles.articleHeader}>
-        <SkeletonImage width="250px" height="250px" />
+        <SkeletonImage width="350px" height="250px" />
         <div className="row space-between width-full">
           <Skeleton short inline />
           <div className="column gap-small items-end">
