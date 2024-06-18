@@ -10,17 +10,17 @@ export default function BlogListLoadingPage() {
           backgroundColor: "#ffffff",
         }}
       >
-        <div className={styles.blogCardLeft}>
-          <div style={{position: "absolute", top: "-15px"}}>
-          <SkeletonImage width="200px" height="180px" />
+        <div className={styles.blogCardLeft} style={{minHeight: "200px"}}>
+          <div style={{ position: "absolute", top: "-15px", left: "5px" }}>
+            <SkeletonImage width="200px" height="180px" />
           </div>
-          <div>
+          <div style={{ position: "absolute", top: "88%", left: "5px" }}>
             <Skeleton shorter />
           </div>
         </div>
         <div className={styles.blogCardRight}>
           <div className={styles.blogTitle}>
-            <Skeleton short />
+            <Skeleton shorter />
           </div>
           <div className={styles.blogBodyPreview}>
             <SkeletonList amount={5}>

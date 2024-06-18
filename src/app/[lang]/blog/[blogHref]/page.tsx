@@ -23,7 +23,6 @@ export default async function BlogPage({ params: { lang, href } }: { params: { h
     year: "numeric",
   })
 
-
   return (
     <article className={styles.articleContainer}>
       <div className={styles.articleHeader}>

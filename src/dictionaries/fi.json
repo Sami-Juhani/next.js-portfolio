@@ -2,10 +2,12 @@
   "navigation": {
     "links": {
       "home": "koti",
-      "blog": "blogi"
+      "blog": "blogi",
+      "projects": "projektit"
     },
     "linkBar": {
-      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" }
+      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
+      "projects": { "mainStr": "Projektit", "subStr": "*" }
     }
   },
   "landingPage": {

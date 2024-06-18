@@ -2,10 +2,12 @@
   "navigation": {
     "links": {
       "home": "home",
-      "blog": "blog"
+      "blog": "blog",
+      "projects": "projects"
     },
     "linkBar": {
-      "blog": { "mainStr": "Blogs", "subStr": "about dev" }
+      "blog": { "mainStr": "Blogs", "subStr": "*" },
+      "projects": { "mainStr": "Projects", "subStr": "*" }
     }
   },
   "landingPage": {

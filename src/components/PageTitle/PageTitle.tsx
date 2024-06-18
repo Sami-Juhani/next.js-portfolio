@@ -12,7 +12,7 @@ export function PageTitle({ mainStr, subStr, color }: { mainStr: string; subStr:
   return (
     <div className={styles.pageTitle} style={{ "--_bgColor": color } as CSSProperties}>
       <h2>
-        / {mainStr} / <span className="textMd font-weight-normal">{subStr}</span>
+        /{mainStr}/{subStr}
       </h2>
       <GoBackIcon className="custom-image-link" onClick={() => router.back()} />
     </div>

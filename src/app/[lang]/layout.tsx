@@ -28,6 +28,7 @@ export default async function RootLayout({
             links={[
               { name: dict.navigation.links.home, href: `/${lang}` },
               { name: dict.navigation.links.blog, href: `/${lang}/blog` },
+              { name: dict.navigation.links.projects, href: `/${lang}/projects` },
             ]}
             lang={lang}
           />
