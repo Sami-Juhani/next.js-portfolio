@@ -1,4 +1,4 @@
-.button {
+.primaryButton {
     width: fit-content;
     padding: 0.3rem 0.6rem; 
     background: #c6e3ff;
@@ -11,12 +11,29 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .button:hover,  .button:focus {
+  .primaryButton:hover,  .primaryButton:focus {
     background: #7dbefc; 
     box-shadow: 0 0 0 3px rgba(214, 234, 255, 0.7); 
   }
   
-  .button:active {
+  .primaryButton:active {
     background: #5aacf9; 
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .goBackButton {
+    width: fit-content;
+    display: flex;
+
+    gap: 0.1rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: var(--link-color);
+    background: none;
+    font-size: var(--text-size-sm);
+    font-weight: 400;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
