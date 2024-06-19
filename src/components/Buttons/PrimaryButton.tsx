@@ -5,7 +5,7 @@ type PrimaryButtonProps = { children: ReactNode; style?: Object; onClick: () => 
 
 export function PrimaryButton({ children, style, onClick }: PrimaryButtonProps) {
   return (
-    <button style={style} className={styles.button} onClick={onClick}>
+    <button style={style} className={styles.primaryButton} onClick={onClick}>
       {children}
     </button>
   )

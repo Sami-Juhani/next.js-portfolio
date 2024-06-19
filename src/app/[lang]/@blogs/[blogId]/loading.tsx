@@ -4,6 +4,7 @@ import styles from "../../@blogs/blog.module.css"
 export default function LoadingBlogPage() {
     return (
       <article className={styles.articleContainer}>
+        <div style={{marginLeft: "auto"}}><Skeleton shorter /></div>
         <div className={styles.articleHeader}>
           <SkeletonImage width="350px" height="250px" />
           <div className="row space-between width-full">

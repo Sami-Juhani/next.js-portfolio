@@ -1,6 +1,6 @@
 "use client"
 
-import { PrimaryButton } from "@/components/Buttons"
+import { GoBackButton } from "@/components/Buttons"
 import { useRouter } from "next/navigation"
 import { ReactNode } from "react"
 
@@ -12,8 +12,8 @@ export function BackToBlogsButton({ lang, children }: { lang: string; children: 
   }
 
   return (
-    <PrimaryButton style={{ marginLeft: "auto" }} onClick={onClick}>
+    <GoBackButton style={{ marginLeft: "auto" }} onClick={onClick}>
       {children}
-    </PrimaryButton>
+    </GoBackButton>
   )
 }
