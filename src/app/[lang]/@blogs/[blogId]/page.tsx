@@ -8,11 +8,13 @@ import { dafoe } from "@/lib/fonts"
 import { notFound } from "next/navigation"
 import styles from "../../@blogs/blog.module.css"
 import { BackToBlogsButton } from "./BackToBlogsButton"
+import { getDictionary } from "@/dictionaries/dictionaries"
 
 export default async function BlogPage({ params: { blogId, lang } }: { params: { blogId: string; lang: string } }) {
   const { LikeIcon } = useIcons().action
+  const dict = await getDictionary(lang)
 
-  if (blogId === undefined) return undefined
+  if (blogId === undefined) return
 
   const blog = await getBlog(blogId)
 
@@ -29,7 +31,7 @@ export default async function BlogPage({ params: { blogId, lang } }: { params: {
 
   return (
     <article className={styles.articleContainer}>
-      <BackToBlogsButton lang={lang} />
+      <BackToBlogsButton lang={lang} >{dict.buttons.backToBlogs}</BackToBlogsButton>
       <div className={styles.articleHeader}>
         <Image
           src={localizedBlog.header.image.src}

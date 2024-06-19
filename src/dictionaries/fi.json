@@ -6,7 +6,7 @@
     },
     "linkBar": {
       "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
-      "landingPage": { "mainStr": "Frontti", "subStr": "bäkki devaaja." }
+      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." }
     }
   },
   "landingPage": {
@@ -15,5 +15,8 @@
   },
   "blogCard": {
     "more": "Lisää..."
+  },
+  "buttons": {
+    "backToBlogs": "Takaisin blogiin"
   }
 }

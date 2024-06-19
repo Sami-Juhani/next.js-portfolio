@@ -1,6 +1,4 @@
-"use client"
-
-import { ReactNode, useRef } from "react"
+import { ReactNode, useRef, useEffect } from "react"
 import styles from "./PageScroller.module.css"
 
 type MediaScrollerProps = {
@@ -11,19 +9,20 @@ type MediaScrollerProps = {
 export function PageScroller({ pages, activePageIndex }: MediaScrollerProps) {
   const scrollerRef = useRef<HTMLDivElement>(null)
 
-  scrollerRef.current?.style.setProperty("--_pageIndex", activePageIndex.toString())
-  scrollerRef.current?.style.setProperty("filter", "blur(0.2rem)")
+  useEffect(() => {
+    const pageWidth = scrollerRef.current?.clientWidth || 0
+    scrollerRef.current?.scrollTo({
+      left: pageWidth * activePageIndex,
+      behavior: "smooth",
+    })
+  }, [activePageIndex])
 
   return (
     <section className={styles.pageContainer}>
-      <div
-        className={styles.pageScroller}
-        ref={scrollerRef}
-        onTransitionEnd={() => scrollerRef.current?.style.setProperty("filter", "unset")}
-      >
+      <div className={styles.pageScroller} ref={scrollerRef}>
         {pages.map((item, index) => (
-          <div style={{ width: "100%" }} key={index}>
-            <div style={{ width: "100%", display: activePageIndex === index ? "block" : "none" }}>{item}</div>
+          <div className={styles.pageElement} key={index}>
+            {item}
           </div>
         ))}
       </div>
