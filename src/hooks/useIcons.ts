@@ -9,10 +9,10 @@ import ConstructionIcon from "@mui/icons-material/Construction"
 import SettingsIcon from "@mui/icons-material/Settings"
 import CodeIcon from "@mui/icons-material/Code"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ThumbUpIcon from "@mui/icons-material/ThumbUp"
 import LanguageIcon from "@mui/icons-material/Language"
-import LightModeIcon from "@mui/icons-material/LightMode"
-import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle"
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 
 /**
  * A hook that provides access to specific SVG icons.
@@ -32,13 +32,14 @@ export default function useIcons() {
 
   /* ACTION */
   const GoBackIcon = ArrowBackIcon
+  const GoNextIcon = ArrowForwardIcon
   const LikeIcon = ThumbUpIcon
-  const LightBulp = LightbulbCircleIcon
+  const LightBulp = EmojiObjectsOutlinedIcon
 
   return {
     arrows: { ArrowLeft, ArrowRight },
     status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, ConstructionIcon },
-    action: { CloseIcon, SettingsIcon, GoBackIcon, LikeIcon, LightBulp, LanguageIcon },
+    action: { CloseIcon, SettingsIcon, GoBackIcon, GoNextIcon, LikeIcon, LightBulp, LanguageIcon },
     utils: { CodeIcon },
   }
 }

@@ -48,6 +48,6 @@ export const config = {
     // Only run on the root (/) URL
     "/",
     // Ensure that _next/static, _next/image, images, icons, and fonts are ignored
-    "/((?!_next/static|_next/image|images|icons|fonts).*)",
+   "/((?!_next/static|_next/image|images|icons|fonts).*)",
   ],
 }

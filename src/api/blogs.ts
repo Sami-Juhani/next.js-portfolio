@@ -1,4 +1,4 @@
-import { BlogElementType } from "@/app/[lang]/blog/[blogHref]/BlogElement"
+import { BlogElementType } from "@/app/[lang]/@blogs/[blogId]/BlogElement"
 import { PrismaClient } from "@prisma/client"
 
 export type Blog = {
@@ -22,10 +22,10 @@ export async function getBlogs() {
   return await prisma.blog.findMany()
 }
 
-export async function getBlog(blogHref: string) {
-  return await prisma.blog.findFirst({
+export async function getBlog(id: string) {
+  return await prisma.blog.findUnique({
     where: {
-      href: blogHref,
+      id: id,
     },
   })
 }

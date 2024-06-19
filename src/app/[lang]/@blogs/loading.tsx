@@ -10,8 +10,8 @@ export default function BlogListLoadingPage() {
           backgroundColor: "#ffffff",
         }}
       >
-        <div className={styles.blogCardLeft} style={{minHeight: "200px"}}>
-          <div style={{ position: "absolute", top: "-15px", left: "5px" }}>
+        <div className={styles.blogCardLeft}>
+          <div style={{ position: "absolute", top: "-15px" }}>
             <SkeletonImage width="200px" height="180px" />
           </div>
           <div style={{ position: "absolute", top: "88%", left: "5px" }}>

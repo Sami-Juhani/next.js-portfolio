@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
-import "./globals.css"
-import { StickyNav } from "@/components/StickyNav"
-import useIcons from "@/hooks/useIcons"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { SettingsProvider } from "@/context/Settings"
+import { ReactNode } from "react"
+import { MainPage } from "./MainPage"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Sami Paananen",
@@ -11,28 +11,20 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({
-  children,
   params: { lang },
+  blogs,
 }: Readonly<{
   children: React.ReactNode
   params: { lang: string }
+  blogs: ReactNode
 }>) {
-  const { CodeIcon } = useIcons().utils
   const dict = await getDictionary(lang)
 
   return (
     <html lang={lang}>
       <body>
         <SettingsProvider>
-          <StickyNav
-            links={[
-              { name: dict.navigation.links.home, href: `/${lang}` },
-              { name: dict.navigation.links.blog, href: `/${lang}/blog` },
-              { name: dict.navigation.links.projects, href: `/${lang}/projects` },
-            ]}
-            lang={lang}
-          />
-          <main className="main-container">{children}</main>
+          <MainPage lang={lang} dict={dict} blogs={blogs} />
         </SettingsProvider>
       </body>
     </html>
