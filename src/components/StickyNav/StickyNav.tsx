@@ -1,56 +1,38 @@
 "use client"
 
 import Link from "next/link"
-import styles from "./StickyNav.module.css"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { dafoe } from "@/lib/fonts"
 import useIcons from "@/hooks/useIcons"
-import { usePathname, useRouter } from "next/navigation"
 import { useSettings } from "@/context/useSettings"
 import { FI, GB } from "country-flag-icons/react/3x2"
 import { cc } from "@/lib/cc"
+import styles from "./StickyNav.module.css"
 
 export type Link = {
   name: string
-  href: string
+  index: number
 }
 
 export type StickyNavProps = {
   lang: string
   links: Link[]
+  activePageIndex: number
+  setActivePageIndex: Dispatch<SetStateAction<number>>
 }
 
-export function StickyNav({ lang, links }: StickyNavProps) {
-  const { CodeIcon } = useIcons().utils
+export function StickyNav({ links, activePageIndex, setActivePageIndex }: StickyNavProps) {
   const { LanguageIcon, LightBulp } = useIcons().action
   const { language, setLanguage, darkMode, setDarkMode } = useSettings()
   const router = useRouter()
   const pathname = usePathname()
 
-  const [activeLink, setActiveLink] = useState<string | undefined>(() => {
-    const currentPath =
-      pathname.split("/").length > 2
-        ? "/" + pathname.split("/")[1] + "/" + pathname.split("/")[2]
-        : "/" + pathname.split("/")[1]
-    const currentLink = links.find((link) => link.href === currentPath)
-    return currentLink?.name
-  })
-
-  useEffect(() => {
-    const currentPath =
-      pathname.split("/").length > 2
-        ? "/" + pathname.split("/")[1] + "/" + pathname.split("/")[2]
-        : "/" + pathname.split("/")[1]
-    const currentLink = links.find((link) => link.href === currentPath)
-    setActiveLink(currentLink?.name)
-  }, [pathname, links])
-
   function onLanguageChange() {
     const lang = language === "en" ? "fi" : "en"
     setLanguage(lang)
     const newPath = pathname.replace(language as string, lang as string)
-    console.log(newPath)
-    router.replace(newPath)
+    router.push(newPath)
   }
 
   return (
@@ -62,14 +44,13 @@ export function StickyNav({ lang, links }: StickyNavProps) {
         <ul className={styles.links}>
           {links.length > 0 &&
             links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  className={`${styles.link} ${cc(activeLink === link.name && styles.active)}`}
-                  href={link.href}
-                  onClick={() => setActiveLink(link.name)}
+              <li key={link.index}>
+                <button
+                  className={`${styles.link} ${cc(activePageIndex === link.index && styles.active)}`}
+                  onClick={() => setActivePageIndex(link.index)}
                 >
                   {link.name}
-                </Link>
+                </button>
               </li>
             ))}
         </ul>

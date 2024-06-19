@@ -1,0 +1,17 @@
+.pageContainer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pageScroller {
+  display: flex;
+  height: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.pageElement {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}

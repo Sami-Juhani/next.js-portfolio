@@ -5,13 +5,18 @@
       "blog": "blogi"
     },
     "linkBar": {
-      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" }
+      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
+      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." }
     }
   },
   "landingPage": {
-    "status": "Sivusta on työn alla. Tutustu sillä välin <link>blogiin</link>"
+    "status": "Sivusta on työn alla. Tutustu sillä välin ",
+    "statusBlog": "blogiin"
   },
   "blogCard": {
     "more": "Lisää..."
+  },
+  "buttons": {
+    "backToBlogs": "Takaisin blogiin"
   }
 }
