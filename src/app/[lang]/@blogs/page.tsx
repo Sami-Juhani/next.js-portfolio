@@ -1,8 +1,8 @@
 import { getBlogs } from "@/api/blogs"
-import styles from "./blog.module.css"
-import { BlogCard } from "./BlogCard"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { notFound } from "next/navigation"
+import { BlogCard } from "./BlogCard"
+import styles from "./blog.module.css"
 
 export default async function BlogPage({ params: { lang } }: { params: { lang: string } }) {
   const dict = await getDictionary(lang)

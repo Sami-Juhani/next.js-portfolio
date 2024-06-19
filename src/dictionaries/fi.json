@@ -5,11 +5,13 @@
       "blog": "blogi"
     },
     "linkBar": {
-      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" }
+      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
+      "landingPage": { "mainStr": "Frontti", "subStr": "bäkki devaaja." }
     }
   },
   "landingPage": {
-    "status": "Sivusta on työn alla. Tutustu sillä välin <link>blogiin</link>"
+    "status": "Sivusta on työn alla. Tutustu sillä välin ",
+    "statusBlog": "blogiin"
   },
   "blogCard": {
     "more": "Lisää..."

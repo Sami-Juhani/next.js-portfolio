@@ -5,11 +5,13 @@
       "blog": "blog"
     },
     "linkBar": {
-      "blog": { "mainStr": "Blogs", "subStr": "about dev" }
+      "blog": { "mainStr": "Blogs", "subStr": "about dev" },
+      "landingPage": { "mainStr": "Welcome", "subStr": "this is me" }
     }
   },
   "landingPage": {
-    "status": "Under construction... but checkout the <link>blog</link>"
+    "status": "Under construction... but checkout the ",
+    "statusBlog": "blog"
   },
   "blogCard": {
     "more": "More..."

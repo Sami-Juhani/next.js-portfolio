@@ -37,20 +37,26 @@
   --link-color: #0072dd;
 }
 
-a {
+a,
+button.link {
   width: min-content;
   color: var(--link-color);
   text-decoration: none;
+  border: none;
+  border-style: none;
+  background: none;
+  cursor: pointer;
+  font-size: var(--text-size-sm);
 }
 
-a:hover {
+a:hover,
+button.link:hover {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .custom-image-link {
   font-size: 1.5rem;
-  margin-left: auto;
   cursor: pointer;
   color: var(--link-color);
   transition: transform ease-in-out 250ms;

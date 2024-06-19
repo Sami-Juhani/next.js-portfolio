@@ -6,11 +6,15 @@ import { formatDate } from "@/lib/formatDate"
 import { BlogElement, BlogElementType } from "./BlogElement"
 import { dafoe } from "@/lib/fonts"
 import { notFound } from "next/navigation"
-import styles from "../blog.module.css"
+import styles from "../../@blogs/blog.module.css"
+import { BackToBlogsButton } from "./BackToBlogsButton"
 
-export default async function BlogPage({ params: { lang, href } }: { params: { href: string; lang: string } }) {
+export default async function BlogPage({ params: { blogId, lang } }: { params: { blogId: string; lang: string } }) {
   const { LikeIcon } = useIcons().action
-  const blog = await getBlog(href)
+
+  if (blogId === undefined) return undefined
+
+  const blog = await getBlog(blogId)
 
   if (blog === null) return notFound()
 
@@ -23,9 +27,9 @@ export default async function BlogPage({ params: { lang, href } }: { params: { h
     year: "numeric",
   })
 
-
   return (
     <article className={styles.articleContainer}>
+      <BackToBlogsButton lang={lang} />
       <div className={styles.articleHeader}>
         <Image
           src={localizedBlog.header.image.src}

@@ -37,12 +37,12 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
           width={200}
           height={200}
         />
-        <p>{date}</p>
+        <p style={{marginLeft: "3px", marginBottom: "3px"}}>{date}</p>
       </div>
       <div className={styles.blogCardRight}>
         <p className={styles.blogTitle}>{blog.header.title}</p>
         <p className={styles.blogBodyPreview}>{blog.sections[0].elements[0].value as string}</p>
-        <Link href={`blog/${blog.href}`}>{readMore}</Link>
+        <Link href={`/${lang}/${blog._id}`}>{readMore}</Link>
       </div>
     </li>
   )
