@@ -56,15 +56,19 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex }: Sticky
         </ul>
       </nav>
       <div className={styles.settingsContainer}>
-        <LanguageIcon className="pointer" onClick={onLanguageChange} />
-        <LightBulp onClick={() => setDarkMode((darkMode) => !darkMode)} />
-        <div className={`${styles.lightBulp}  ${cc(!darkMode && styles.lightBulpOn)}`}></div>
+        <div className={styles.darkModeSettings}>
+          <div className={`${styles.lightBulpLight}  ${cc(!darkMode && styles.On)}`}></div>
+          <LightBulp onClick={() => setDarkMode((darkMode) => !darkMode)} />
+        </div>
+        <div className={styles.flagSettings}>
+          <LanguageIcon className="pointer" onClick={onLanguageChange} />
+          {language === "en" ? (
+            <GB title="English" className={styles.flagIcon} />
+          ) : (
+            <FI title="Finnish" className={styles.flagIcon} />
+          )}
+        </div>
       </div>
-      {language === "en" ? (
-        <GB title="English" className={styles.flagIcon} />
-      ) : (
-        <FI title="Finnish" className={styles.flagIcon} />
-      )}
     </header>
   )
 }

@@ -1,7 +1,6 @@
 .pageContainer {
   width: 100%;
   position: relative;
-  overflow: hidden;
 }
 
 .pageScroller {
@@ -10,6 +9,10 @@
   height: 100%;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+}
+
+.pageScroller::-webkit-scrollbar {
+  display: none;
 }
 
 .pageElement {

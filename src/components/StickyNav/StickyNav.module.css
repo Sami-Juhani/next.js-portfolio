@@ -136,57 +136,61 @@
   }
 }
 
+.darkModeSettings {
+  position: relative;
+}
+
 .languageSettings {
   display: flex;
   flex-direction: row;
 }
 
-.settingsContainer > svg {
+.darkModeSettings > svg {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.flagSettings > svg {
   font-size: 1.3rem;
   cursor: pointer;
 }
 
 @media screen and (min-width: 540px) {
-  .settingsContainer > svg {
-    font-size: 1.8rem;
+  .darkModeSettings > svg {
+    font-size: 1.9rem;
+  }
+  .flagSettings > svg {
+    font-size: 1.7rem;
   }
 }
 
-.lightBulp {
+.lightBulpLight {
   position: absolute;
   top: 3px;
   right: 5px;
-  width: 10px;
+  width: 11px;
   height: 10px;
   z-index: -1;
 }
 
-.lightBulp.lightBulpOn {
-  background-color: rgba(255, 255, 0, 0.6);
+@media screen and (min-width: 540px) {
+  .lightBulpLight {
+    top: 5px;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.lightBulpLight.On {
+  background-color: rgba(255, 255, 0, 0.3);
   border-radius: 50%;
   box-shadow: 0 -4px 10px -1px rgba(255, 255, 0, 1);
 }
 
-@media screen and (min-width: 540px) {
-  .lightBulp {
-    top: 5px;
-    right: 7px;
-    width: 14px;
-    height: 14px;
-  }
-}
-
 .flagIcon {
   position: absolute;
-  width: 10px;
-  top: 5px;
-  right: 5px;
-}
-
-@media screen and (min-width: 540px) {
-  .flagIcon {
-    width: 20px;
-    top: 10px;
-    width: 20px;
-  }
+  width: 20px;
+  top: -3px;
+  right: -20px;
 }

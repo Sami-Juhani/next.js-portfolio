@@ -17,6 +17,9 @@ export function PageScroller({ pages, activePageIndex, setActivePageIndex }: Med
       left: pageWidth * activePageIndex,
       behavior: "smooth",
     })
+    window.scrollTo({
+      top: 0,
+    })
   }, [activePageIndex])
 
   const handleScroll = () => {
