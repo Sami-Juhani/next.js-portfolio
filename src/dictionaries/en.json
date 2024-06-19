@@ -2,7 +2,8 @@
   "navigation": {
     "links": {
       "home": "home",
-      "blog": "blog"
+      "blog": "blog",
+      "projects": "projects"
     },
     "linkBar": {
       "blog": { "mainStr": "Blogs", "subStr": "about dev" },
