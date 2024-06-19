@@ -1,4 +1,4 @@
-import { BlogElementType } from "@/app/[lang]/[blogId]/BlogElement"
+import { BlogElementType } from "@/app/[lang]/@blogs/[blogId]/BlogElement"
 import { PrismaClient } from "@prisma/client"
 
 export type Blog = {
