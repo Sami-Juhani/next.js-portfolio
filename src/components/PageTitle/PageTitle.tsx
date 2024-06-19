@@ -7,7 +7,7 @@ export function PageTitle({ mainStr, subStr, color }: { mainStr: string; subStr:
   return (
     <div className={styles.pageTitle} style={{ "--_bgColor": color } as CSSProperties}>
       <h2>
-        /{mainStr}/{subStr}
+      / {mainStr} / <span className="textMd font-weight-normal">{subStr}</span>
       </h2>
     </div>
   )
