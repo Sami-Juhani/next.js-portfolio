@@ -1,6 +1,6 @@
 "use client"
 
-import { useLocalStorage } from "usehooks-ts"
+import { useLocalStorage } from "@/hooks/useLocalStorage"
 import { cc } from "@/lib/cc"
 import { usePathname } from "next/navigation"
 import { Dispatch, ReactNode, SetStateAction, createContext, useEffect } from "react"
@@ -18,8 +18,8 @@ export const Context = createContext<SettingsContext | null>(null)
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const [language, setLanguage] = useLocalStorage<SupportedLanguages>("language", "en", { initializeWithValue: false })
-  const [darkMode, setDarkMode] = useLocalStorage<boolean>("darkMode", false, { initializeWithValue: false })
+  const [language, setLanguage] = useLocalStorage<SupportedLanguages>("language", "en")
+  const [darkMode, setDarkMode] = useLocalStorage<boolean>("darkMode", false)
 
   useEffect(() => {
     setLanguage(pathname.split("/")[1] as SupportedLanguages)
