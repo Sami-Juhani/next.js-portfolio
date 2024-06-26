@@ -66,7 +66,7 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
     <>
       <article
         className={styles.article}
-        style={darkMode ? { backgroundColor: "#26243a" } : { backgroundColor: "#ddd5ff" }}
+        style={darkMode ? { backgroundColor: "#26243a" } : { backgroundColor: "#dde1fb" }}
       >
         <div className={styles.__projectTitle}>
           <h3>{project.title}</h3>
