@@ -1,47 +1,29 @@
-import { ReactNode, useRef, useEffect, useState, Dispatch, SetStateAction } from "react"
+"use client"
+
+import { ReactNode, useRef } from "react"
 import styles from "./PageScroller.module.css"
 
 type MediaScrollerProps = {
   pages: ReactNode[]
   activePageIndex: number
-  setActivePageIndex: Dispatch<SetStateAction<number>>
 }
 
-export function PageScroller({ pages, activePageIndex, setActivePageIndex }: MediaScrollerProps) {
+export function PageScroller({ pages, activePageIndex }: MediaScrollerProps) {
   const scrollerRef = useRef<HTMLDivElement>(null)
-  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null)
 
-  useEffect(() => {
-    const pageWidth = scrollerRef.current?.clientWidth || 0
-    scrollerRef.current?.scrollTo({
-      left: pageWidth * activePageIndex,
-      behavior: "smooth",
-    })
-    window.scrollTo({
-      top: 0,
-    })
-  }, [activePageIndex])
-
-  const handleScroll = () => {
-    if (scrollTimeout) clearTimeout(scrollTimeout)
-
-    setScrollTimeout(
-      setTimeout(() => {
-        const pageWidth = scrollerRef.current?.clientWidth || 0
-        const scrollPosition = scrollerRef.current?.scrollLeft || 0
-        const newActivePageIndex = Math.round(scrollPosition / pageWidth)
-
-        setActivePageIndex(newActivePageIndex)
-      }, 50)
-    )
-  }
+  scrollerRef.current?.style.setProperty("--_pageIndex", activePageIndex.toString())
+  scrollerRef.current?.style.setProperty("filter", "blur(0.2rem)")
 
   return (
-    <section className={styles.__pagesLayout}>
-      <div className={styles.scroller} ref={scrollerRef} onScroll={handleScroll}>
-        {pages.map((page, index) => (
-          <div className={styles.page} key={index}>
-            {page}
+    <section className={styles.pageContainer}>
+      <div
+        className={styles.pageScroller}
+        ref={scrollerRef}
+        onTransitionEnd={() => scrollerRef.current?.style.setProperty("filter", "unset")}
+      >
+        {pages.map((item, index) => (
+          <div style={{ width: "100%" }} key={index}>
+            <div style={{ width: "100%", display: activePageIndex === index ? "block" : "none" }}>{item}</div>
           </div>
         ))}
       </div>
