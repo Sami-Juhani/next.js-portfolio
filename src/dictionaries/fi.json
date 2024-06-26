@@ -7,7 +7,8 @@
     },
     "linkBar": {
       "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
-      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." }
+      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." },
+      "projects": { "mainStr": "Projektit", "subStr": "..." }
     }
   },
   "landingPage": {
@@ -16,6 +17,12 @@
   },
   "blogCard": {
     "more": "Lisää..."
+  },
+  "projectPage": {
+    "tech": "Teknologia",
+    "intro": "Johdanto",
+    "myLearnings": "Oma kehitys",
+    "features": "Toiminnot"
   },
   "buttons": {
     "backToBlogs": "Takaisin blogiin"
