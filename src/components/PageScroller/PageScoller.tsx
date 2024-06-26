@@ -37,11 +37,11 @@ export function PageScroller({ pages, activePageIndex, setActivePageIndex }: Med
   }
 
   return (
-    <section className={styles.pageContainer}>
-      <div className={styles.pageScroller} ref={scrollerRef} onScroll={handleScroll}>
-        {pages.map((item, index) => (
-          <div className={styles.pageElement} key={index}>
-            {item}
+    <section className={styles.__pagesLayout}>
+      <div className={styles.scroller} ref={scrollerRef} onScroll={handleScroll}>
+        {pages.map((page, index) => (
+          <div className={styles.page} key={index}>
+            {page}
           </div>
         ))}
       </div>

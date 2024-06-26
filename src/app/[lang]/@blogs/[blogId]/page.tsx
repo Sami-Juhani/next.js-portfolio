@@ -1,6 +1,7 @@
+import Favicon from "/public/images/favicon.ico"
 import Image from "next/image"
-import type { Blog } from "@/api/blogs"
-import { getBlog } from "@/api/blogs"
+import type { Blog } from "@/db/blogs"
+import { getBlog } from "@/db/blogs"
 import useIcons from "@/hooks/useIcons"
 import { formatDate } from "@/lib/formatDate"
 import { BlogElement, BlogElementType } from "./BlogElement"
@@ -9,6 +10,13 @@ import { notFound } from "next/navigation"
 import styles from "../../@blogs/blog.module.css"
 import { BackToBlogsButton } from "./BackToBlogsButton"
 import { getDictionary } from "@/dictionaries/dictionaries"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Sami Paananen - blog",
+  description: "Blog page",
+  icons: [{ rel: "icon", url: Favicon.src }],
+}
 
 export default async function BlogPage({ params: { blogId, lang } }: { params: { blogId: string; lang: string } }) {
   const { LikeIcon } = useIcons().action
@@ -30,8 +38,8 @@ export default async function BlogPage({ params: { blogId, lang } }: { params: {
   })
 
   return (
-    <article className={styles.articleContainer}>
-      <BackToBlogsButton lang={lang} >{dict.buttons.backToBlogs}</BackToBlogsButton>
+    <article className={styles.__articleLayout}>
+      <BackToBlogsButton lang={lang}>{dict.buttons.backToBlogs}</BackToBlogsButton>
       <div className={styles.articleHeader}>
         <Image
           src={localizedBlog.header.image.src}

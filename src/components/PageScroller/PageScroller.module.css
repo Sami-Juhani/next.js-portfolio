@@ -1,9 +1,9 @@
-.pageContainer {
+.__pagesLayout {
   width: 100%;
   position: relative;
 }
 
-.pageScroller {
+.scroller {
   display: flex;
   gap: 1rem;
   height: 100%;
@@ -11,11 +11,13 @@
   scroll-snap-type: x mandatory;
 }
 
-.pageScroller::-webkit-scrollbar {
+.scoller::-webkit-scrollbar {
   display: none;
 }
 
-.pageElement {
+.page {
+  width: 100%;
   flex: 0 0 100%;
   scroll-snap-align: start;
+  overflow: hidden;
 }

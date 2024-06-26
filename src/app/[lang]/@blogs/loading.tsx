@@ -3,14 +3,14 @@ import styles from "./blog.module.css"
 
 export default function BlogListLoadingPage() {
   return (
-    <ul className={styles.blogListContainer}>
+    <ul className={styles.__listLayout}>
       <li
-        className={styles.blogCard}
+        className={styles.card}
         style={{
           backgroundColor: "#ffffff",
         }}
       >
-        <div className={styles.blogCardLeft}>
+        <div className={styles.cardLeft}>
           <div style={{ position: "absolute", top: "-15px" }}>
             <SkeletonImage width="200px" height="180px" />
           </div>
@@ -18,11 +18,11 @@ export default function BlogListLoadingPage() {
             <Skeleton shorter />
           </div>
         </div>
-        <div className={styles.blogCardRight}>
-          <div className={styles.blogTitle}>
+        <div className={styles.cardRight}>
+          <div className={styles.cardTitle}>
             <Skeleton shorter />
           </div>
-          <div className={styles.blogBodyPreview}>
+          <div className={styles.cardPreview}>
             <SkeletonList amount={5}>
               <Skeleton />
             </SkeletonList>

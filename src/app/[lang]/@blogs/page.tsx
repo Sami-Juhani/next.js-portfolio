@@ -1,4 +1,4 @@
-import { getBlogs } from "@/api/blogs"
+import { getBlogs } from "@/db/blogs"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { notFound } from "next/navigation"
 import { BlogCard } from "./BlogCard"
@@ -16,7 +16,7 @@ export default async function BlogPage({ params: { lang } }: { params: { lang: s
   })
 
   return (
-    <ul className={styles.blogListContainer}>
+    <ul className={styles.__listLayout}>
       {filteredBlogs.map((blog) => (
         <BlogCard key={blog.href} blog={blog} readMore={dict.blogCard.more} lang={lang} />
       ))}

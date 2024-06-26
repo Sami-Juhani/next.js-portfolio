@@ -20,7 +20,7 @@ export default async function BlogLayout({
   const dict = await getDictionary(lang)
 
   return (
-    <div className={styles.blogLayout}>
+    <div className={styles.__layout}>
       <PageTitle
         mainStr={dict.navigation.linkBar.blog.mainStr}
         subStr={dict.navigation.linkBar.blog.subStr}

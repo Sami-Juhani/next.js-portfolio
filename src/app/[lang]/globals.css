@@ -68,7 +68,7 @@ button.link:hover {
 
 body {
   background-color: var(--background-white);
-  font-size: var(--text-size-sm);
+  font-size: var(--text-size-md);
   color: var(--text-primary);
   overflow-x: hidden;
 }
@@ -128,6 +128,22 @@ body {
   padding-bottom: 2rem;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  animation: 250ms forwards fade-in;
+  z-index: 9999;
+}
+
+.overlay.closing {
+  animation: fade-in 250ms forwards reverse;
+}
+
 .width-full {
   width: 100%;
 }
@@ -177,6 +193,10 @@ body {
   gap: 1rem;
 }
 
+.margin-btm-small {
+  margin-bottom: 0.3rem;
+}
+
 .margin-btm-large {
   margin-bottom: 1rem;
 }
@@ -202,4 +222,12 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   overflow-x: clip;
+}
+
+/* ANIMATIONS */
+
+@keyframes fade-in {
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }

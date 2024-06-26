@@ -16,14 +16,14 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
 
   return (
     <li
-      className={styles.blogCard}
+      className={styles.card}
       style={{
         backgroundColor: darkMode ? "#eeeeee" : "#ffffff",
       }}
     >
-      <div className={styles.blogCardLeft}>
+      <div className={styles.cardLeft}>
         <Image
-          className={styles.blogCardImage}
+          className={styles.cardImage}
           src={blog.header.image.src}
           alt={blog.header.image.alt}
           width={200}
@@ -31,7 +31,7 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
           priority
         />
         <Image
-          className={styles.blogCardBlurImage}
+          className={styles.cardBlurredImage}
           src={blog.header.image.src}
           alt={blog.header.image.alt}
           width={200}
@@ -39,9 +39,9 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
         />
         <p style={{marginLeft: "3px", marginBottom: "3px"}}>{date}</p>
       </div>
-      <div className={styles.blogCardRight}>
-        <p className={styles.blogTitle}>{blog.header.title}</p>
-        <p className={styles.blogBodyPreview}>{blog.sections[0].elements[0].value as string}</p>
+      <div className={styles.cardRight}>
+        <p className={styles.cardTitle}>{blog.header.title}</p>
+        <p className={styles.cardPreview}>{blog.sections[0].elements[0].value as string}</p>
         <Link href={`/${lang}/${blog._id}`}>{readMore}</Link>
       </div>
     </li>
