@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+/prisma/*.js
 
 # debug
 npm-debug.log*
