@@ -22,3 +22,11 @@ model Blog {
   en        Json
   fi        Json
 }
+
+model Project {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  video     String
+  gitHub    String
+  en        Json
+  fi        Json
+}
