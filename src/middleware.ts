@@ -29,25 +29,25 @@ function getLocale(request: NextRequest): string {
 }
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-
   // Check if there is any supported locale in the pathname
+  const { pathname } = request.nextUrl
   const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)
 
-  if (pathnameHasLocale) return NextResponse.next()
+  if (pathnameHasLocale) return
 
-  // Get preferred locale
+  // Redirect if there is no locale
   const locale = getLocale(request)
   request.nextUrl.pathname = `/${locale}${pathname}`
-
+  // e.g. incoming request is /products
+  // The new URL is now /en-US/products
   return NextResponse.redirect(request.nextUrl)
 }
 
 export const config = {
   matcher: [
-    // Only run on the root (/) URL
+    // Skip all internal paths (_next)
+    "/((?!_next).*)",
+    // Optional: only run on root (/) URL
     "/",
-    // Ensure that _next/static, _next/image, images, icons, and fonts are ignored
-   "/((?!_next/static|_next/image|images|icons|fonts).*)",
   ],
 }
