@@ -15,6 +15,9 @@
     "status": "Under construction... but checkout the ",
     "statusBlog": "blog"
   },
+  "blogPage": {
+    "likes": "likes"
+  },
   "blogCard": {
     "more": "More..."
   },

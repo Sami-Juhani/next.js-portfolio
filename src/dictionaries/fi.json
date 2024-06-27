@@ -15,6 +15,9 @@
     "status": "Sivusta on työn alla. Tutustu sillä välin ",
     "statusBlog": "blogiin"
   },
+  "blogPage": {
+    "likes": "tykkäykset"
+  },
   "blogCard": {
     "more": "Lisää..."
   },
