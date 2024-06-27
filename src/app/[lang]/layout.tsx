@@ -1,4 +1,4 @@
-import Favicon from "/public/images/favicon.ico"
+import Favicon from "/public/favicon.ico"
 import type { Metadata } from "next"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { SettingsProvider } from "@/context/Settings"
@@ -7,7 +7,7 @@ import { MainPage } from "./MainPage"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Sami Paananen",
+  title: "SJP - Fullstack",
   description: "Portfolio",
   icons: [{ rel: "icon", url: Favicon.src }],
 }
@@ -25,7 +25,7 @@ export default async function RootLayout({ params: { lang }, blogs, projects }: 
   return (
     <html lang={lang}>
       <body>
-      <div id="project-modal-target"></div>
+        <div id="project-modal-target"></div>
         <SettingsProvider>
           <MainPage lang={lang} dict={dict} blogs={blogs} projects={projects} />
         </SettingsProvider>

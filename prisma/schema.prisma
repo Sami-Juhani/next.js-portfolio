@@ -16,7 +16,6 @@ generator client {
 
 model Blog {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  href      String
   date      DateTime
   likes     Int
   en        Json

@@ -1,13 +1,5 @@
-import Favicon from "/public/images/favicon.ico"
-import type { Metadata } from "next"
 import { PageTitle } from "@/components/PageTitle"
 import { getDictionary } from "@/dictionaries/dictionaries"
-
-export const metadata: Metadata = {
-  title: "Sami Paananen - projects",
-  description: "Project page",
-  icons: [{ rel: "icon", url: Favicon.src }],
-}
 
 export default async function ProjectsLayout({
   children,

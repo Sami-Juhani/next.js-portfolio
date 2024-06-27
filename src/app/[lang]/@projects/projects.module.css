@@ -51,8 +51,8 @@
     "video"
     "features";
   gap: 0.75rem;
-  padding: 1rem;
-  border-radius: 0.25rem;
+  padding-inline: 1rem;
+  border-left: 10px solid #9989f9;
 }
 
 @media screen and (min-width: 700px) {
@@ -66,7 +66,7 @@
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1250px) {
   .article {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -77,13 +77,33 @@
 }
 
 .__projectTitle {
+  position: relative;
   max-width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  grid-area: title;
 }
 
 .__projectTitle > h3 {
+  font-size: 1.7rem;
+}
+
+@media screen and (min-width: 700px) {
+  .__projectTitle > h3 {
+    font-size: 2rem;
+  }
+}
+
+.__gitHubLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.__gitHubLayout > svg {
   font-size: 2rem;
-  grid-area: title;
 }
 
 @media screen and (min-width: 700px) {
@@ -92,7 +112,7 @@
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1250px) {
   .__projectTitle > h3 {
     font-size: 3rem;
   }

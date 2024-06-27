@@ -8,6 +8,8 @@ import { cc } from "@/lib/cc"
 import { Project } from "@/db/projects"
 import Image from "next/image"
 import styles from "./projects.module.css"
+import useIcons from "@/hooks/useIcons"
+import Link from "next/link"
 
 type ProjectArticleProps = {
   dict: any
@@ -19,6 +21,7 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selector, setSelector] = useState<HTMLDivElement>()
   const [activeComponent, setActiveComponent] = useState<ReactNode | null>(null)
+  const { GitHubIcon } = useIcons().utils
 
   useEffect(() => {
     const portalTarget = document.getElementById("project-modal-target") as HTMLDivElement
@@ -64,12 +67,13 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
 
   return (
     <>
-      <article
-        className={styles.article}
-        style={darkMode ? { backgroundColor: "#26243a" } : { backgroundColor: "#dde1fb" }}
-      >
+      <article className={styles.article}>
         <div className={styles.__projectTitle}>
           <h3>{project.title}</h3>
+          <div className={styles.__gitHubLayout}>
+            <GitHubIcon />
+            <Link href={project.gitHub}>Code</Link>
+          </div>
         </div>
         <div
           className={styles.info}
@@ -129,7 +133,7 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
   )
 }
 
-function ArticleIntro({ mainSection, modalOpen, dict }: { mainSection: any; modalOpen?: boolean, dict: any }) {
+function ArticleIntro({ mainSection, modalOpen, dict }: { mainSection: any; modalOpen?: boolean; dict: any }) {
   return (
     <div className={cc(modalOpen && styles.__modalInfo)}>
       <div>

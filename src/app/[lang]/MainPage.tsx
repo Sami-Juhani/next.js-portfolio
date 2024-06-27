@@ -22,7 +22,6 @@ export function MainPage({ dict, lang, blogs, projects }: MainPageProps) {
       <main className="main-container">
         <PageScroller
           activePageIndex={activePageIndex}
-          setActivePageIndex={setActivePageIndex}
           pages={[
             <WelcomePage dict={dict} setActivePageIndex={setActivePageIndex} key={"welcomePage"} />,
             blogs,
