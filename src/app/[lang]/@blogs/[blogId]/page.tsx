@@ -1,14 +1,14 @@
 import Image from "next/image"
-import type { Blog } from "@/api/blogs"
-import { getBlog } from "@/api/blogs"
+import type { Blog } from "@/db/blogs"
+import { getBlog } from "@/db/blogs"
 import useIcons from "@/hooks/useIcons"
 import { formatDate } from "@/lib/formatDate"
 import { BlogElement, BlogElementType } from "./BlogElement"
 import { dafoe } from "@/lib/fonts"
 import { notFound } from "next/navigation"
-import styles from "../../@blogs/blog.module.css"
 import { BackToBlogsButton } from "./BackToBlogsButton"
 import { getDictionary } from "@/dictionaries/dictionaries"
+import styles from "../../@blogs/blog.module.css"
 
 export default async function BlogPage({ params: { blogId, lang } }: { params: { blogId: string; lang: string } }) {
   const { LikeIcon } = useIcons().action
@@ -20,7 +20,7 @@ export default async function BlogPage({ params: { blogId, lang } }: { params: {
 
   if (blog === null) return notFound()
 
-  const blogBase = { _id: blog.id, href: blog.href, date: blog.date, likes: blog.likes }
+  const blogBase = { _id: blog.id, date: blog.date, likes: blog.likes }
   const localizedBlog = lang === "en" ? { ...blogBase, ...(blog.en as Blog) } : { ...blogBase, ...(blog.fi as Blog) }
 
   const date = formatDate(blog.date, lang === "fi" ? "fi-FI" : "en-US", {
@@ -30,8 +30,8 @@ export default async function BlogPage({ params: { blogId, lang } }: { params: {
   })
 
   return (
-    <article className={styles.articleContainer}>
-      <BackToBlogsButton lang={lang} >{dict.buttons.backToBlogs}</BackToBlogsButton>
+    <article className={styles.__articleLayout}>
+      <BackToBlogsButton lang={lang}>{dict.buttons.backToBlogs}</BackToBlogsButton>
       <div className={styles.articleHeader}>
         <Image
           src={localizedBlog.header.image.src}
@@ -40,12 +40,12 @@ export default async function BlogPage({ params: { blogId, lang } }: { params: {
           alt={localizedBlog.header.image.alt}
           priority={localizedBlog.header.image.priority}
         />
-        <div className="row space-between">
+        <div className={styles.headerInfo}>
           <h2>{localizedBlog.header.title}</h2>
-          <div className="column gap-small items-end">
-            <p className="margin-btm-large">{date}</p>
+          <div className={styles.__metaData}>
+            <p className="margin-btm-large textSm">{date}</p>
             <LikeIcon className="custom-image-link" style={{ fill: "#0072dd" }} />
-            <p className="textXs">Likes {localizedBlog.likes}</p>
+            <p className="textXs">{dict.blogPage.likes} {localizedBlog.likes}</p>
           </div>
         </div>
       </div>

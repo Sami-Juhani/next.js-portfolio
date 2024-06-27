@@ -5,14 +5,15 @@ import { PageScroller } from "@/components/PageScroller"
 import { PageTitle } from "@/components/PageTitle"
 import { StickyNav } from "@/components/StickyNav"
 import useIcons from "@/hooks/useIcons"
-import { useRouter } from "next/navigation"
 
-export function MainPage({ dict, lang, blogs }: { dict: any; lang: string; blogs: ReactNode }) {
+type MainPageProps = { dict: any; lang: string; blogs: ReactNode; projects: ReactNode }
+
+export function MainPage({ dict, lang, blogs, projects }: MainPageProps) {
   const [activePageIndex, setActivePageIndex] = useState(0)
-
   const links = [
     { name: dict.navigation.links.home, index: 0 },
     { name: dict.navigation.links.blog, index: 1 },
+    { name: dict.navigation.links.projects, index: 2 },
   ]
 
   return (
@@ -21,8 +22,11 @@ export function MainPage({ dict, lang, blogs }: { dict: any; lang: string; blogs
       <main className="main-container">
         <PageScroller
           activePageIndex={activePageIndex}
-          setActivePageIndex={setActivePageIndex}
-          pages={[<WelcomePage dict={dict} setActivePageIndex={setActivePageIndex} key={"welcomePage"} />, blogs]}
+          pages={[
+            <WelcomePage dict={dict} setActivePageIndex={setActivePageIndex} key={"welcomePage"} />,
+            blogs,
+            projects,
+          ]}
         />
       </main>
     </>

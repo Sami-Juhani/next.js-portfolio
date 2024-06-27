@@ -5,7 +5,7 @@ import { CSSProperties } from "react"
 
 export function PageTitle({ mainStr, subStr, color }: { mainStr: string; subStr: string; color: string }) {
   return (
-    <div className={styles.pageTitle} style={{ "--_bgColor": color } as CSSProperties}>
+    <div className={styles.title} style={{ "--_bgColor": color } as CSSProperties}>
       <h2>
       / {mainStr} / <span className="textMd font-weight-normal">{subStr}</span>
       </h2>

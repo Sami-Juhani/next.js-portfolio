@@ -16,9 +16,16 @@ generator client {
 
 model Blog {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
-  href      String
   date      DateTime
   likes     Int
+  en        Json
+  fi        Json
+}
+
+model Project {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  video     String
+  gitHub    String
   en        Json
   fi        Json
 }

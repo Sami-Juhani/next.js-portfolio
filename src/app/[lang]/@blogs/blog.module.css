@@ -1,11 +1,11 @@
-.blogLayout {
+.__layout {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.blogListContainer {
+.__listLayout {
   width: 100%;
   --_blogCardGap: 2.5rem;
   --_itemsInRow: 1;
@@ -18,12 +18,12 @@
 }
 
 @media screen and (min-width: 950px) {
-  .blogListContainer {
+  .__listLayout {
     --_itemsInRow: 2;
   }
 }
 
-.blogCard {
+.card {
   width: calc((100% - (var(--_itemsInRow) - 1) * var(--_blogCardGap)) / var(--_itemsInRow));
   font-size: var(--text-size-sm);
   display: flex;
@@ -36,14 +36,19 @@
   transition: all ease-in-out 250ms;
 }
 
+.card:hover,
+.card:focus {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
 @media screen and (min-width: 540px) {
-  .blogCard {
+  .card {
     flex-direction: row;
     gap: 1rem;
   }
 }
 
-.blogCardLeft {
+.cardLeft {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -55,29 +60,29 @@
 }
 
 @media screen and (min-width: 540px) {
-  .blogCardLeft {
+  .cardLeft {
     align-items: unset;
   }
 }
 
-.blogCardImage {
+.cardImage {
   position: absolute;
   top: -15px;
   z-index: 1;
 }
 
 @media screen and (min-width: 540px) {
-  .blogCardImage {
+  .cardImage {
     top: -15px;
     left: 5px;
   }
 }
 
-.blogCardBlurImage {
+.cardBlurredImage {
   filter: blur(1rem);
 }
 
-.blogCardRight {
+.cardRight {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -89,36 +94,18 @@
 }
 
 @media screen and (min-width: 540px) {
-  .blogCardRight {
+  .cardRight {
     width: calc(100% - 190px - 1rem);
   }
 }
 
-.blogCard:hover,
-.blogCard:focus {
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-}
-
-.blogCardTop {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-@media screen and (min-width: 640px) {
-  .blogCardTop {
-    flex-wrap: nowrap;
-  }
-}
-
-.blogTitle {
+.cardTitle {
   font-size: var(--title-size-sm);
   font-weight: 500;
   color: #000000;
 }
 
-.blogBodyPreview {
+.cardPreview {
   display: -webkit-box;
   color: var(--text-primary-light);
   -webkit-line-clamp: 4;
@@ -126,7 +113,7 @@
   overflow: hidden;
 }
 
-.articleContainer {
+.__articleLayout {
   max-width: 800px;
   width: 100%;
   padding-inline: 1rem;
@@ -144,11 +131,25 @@
   justify-content: center;
 }
 
+.headerInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 800px) {
   .articleHeader {
     flex-wrap: nowrap;
     justify-content: unset;
   }
+}
+
+.__metaData {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: flex-end;
 }
 
 .articleHeader > div > h2 {

@@ -1,4 +1,4 @@
-.headerContainer {
+.__navLayout {
   --_animationStartAfter: 250px;
   --_animationDistance: 200px;
   --_settingsMargin: 2rem;
@@ -12,7 +12,7 @@
   width: var(--_headerWidth, auto);
 
   position: sticky;
-  z-index: 9999;
+  z-index: 999;
   top: -5rem;
 
   @supports (animation-timeline: view()) {
@@ -24,7 +24,7 @@
   }
 }
 
-.headerContainer.dark {
+.__navLayout.dark {
   background-color: #000000;
 }
 
@@ -44,45 +44,45 @@
   }
 }
 
-.headerContainer > img {
+.__navLayout > img {
   width: 30px;
 }
 
-.headerContainer > svg {
+.__navLayout > svg {
   display: var(--_logoDisplay, flex);
   font-size: var(--icon-size-md);
   margin-left: auto;
   cursor: pointer;
 }
 
-.leftContainer {
+.__leftLayout {
   display: none;
 }
 
 @media screen and (min-width: 540px) {
-  .headerContainer {
+  .__navLayout {
     padding-inline: 3rem;
   }
 
-  .leftContainer {
+  .__leftLayout {
     display: var(--_logoDisplay, flex);
     align-items: center;
     gap: 1rem;
   }
 }
 
-.leftContainer > p {
+.__leftLayout > p {
   font-size: 2.5rem;
   margin-right: 2rem;
   text-wrap: nowrap;
 }
 
-.leftContainer > a > svg {
+.__leftLayout > a > svg {
   font-size: 1.5rem;
   fill: var(--text-color);
 }
 
-.headerContainer > svg {
+.__navLayout > svg {
   font-size: 1.5rem;
   transition: transform ease-in-out 250ms;
   transition: all forwards 1s;
@@ -92,7 +92,7 @@
   margin-right: var(--_settingsMargin);
 }
 
-.links {
+.__linksLayout {
   display: flex;
   gap: 1.5rem;
   list-style: none;
@@ -121,7 +121,7 @@
   color: var(--link-color);
 }
 
-.settingsContainer {
+.__settingsLayout {
   position: relative;
   display: var(--_logoDisplay, flex);
   gap: 0.5rem;
@@ -131,9 +131,13 @@
 }
 
 @media screen and (min-width: 540px) {
-  .settingsContainer {
+  .__settingsLayout {
     margin-right: 0;
   }
+}
+
+.darkModeSettings {
+  position: relative;
 }
 
 .languageSettings {
@@ -141,52 +145,52 @@
   flex-direction: row;
 }
 
-.settingsContainer > svg {
+.darkModeSettings > svg {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.flagSettings > svg {
   font-size: 1.3rem;
   cursor: pointer;
 }
 
 @media screen and (min-width: 540px) {
-  .settingsContainer > svg {
-    font-size: 1.8rem;
+  .darkModeSettings > svg {
+    font-size: 1.9rem;
+  }
+  .flagSettings > svg {
+    font-size: 1.7rem;
   }
 }
 
-.lightBulp {
+.lightBulpLight {
   position: absolute;
-  top: 3px;
+  top: 8px;
   right: 5px;
-  width: 10px;
+  width: 14px;
   height: 10px;
   z-index: -1;
 }
 
-.lightBulp.lightBulpOn {
-  background-color: rgba(255, 255, 0, 0.6);
+@media screen and (min-width: 540px) {
+  .lightBulpLight {
+    top: 9px;
+    right: 11px;
+    width: 16px;
+    height: 15px;
+  }
+}
+
+.lightBulpLight.On {
+  background-color: rgba(255, 255, 0, 0.3);
   border-radius: 50%;
   box-shadow: 0 -4px 10px -1px rgba(255, 255, 0, 1);
 }
 
-@media screen and (min-width: 540px) {
-  .lightBulp {
-    top: 5px;
-    right: 7px;
-    width: 14px;
-    height: 14px;
-  }
-}
-
 .flagIcon {
   position: absolute;
-  width: 10px;
-  top: 5px;
-  right: 5px;
-}
-
-@media screen and (min-width: 540px) {
-  .flagIcon {
-    width: 20px;
-    top: 10px;
-    width: 20px;
-  }
+  width: 20px;
+  top: -3px;
+  right: -20px;
 }

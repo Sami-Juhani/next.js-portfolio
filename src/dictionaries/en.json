@@ -7,15 +7,25 @@
     },
     "linkBar": {
       "blog": { "mainStr": "Blogs", "subStr": "about dev" },
-      "landingPage": { "mainStr": "Welcome", "subStr": "this is me" }
+      "landingPage": { "mainStr": "Welcome", "subStr": "this is me" },
+      "projects": { "mainStr": "Projects", "subStr": "hall of fame" }
     }
   },
   "landingPage": {
     "status": "Under construction... but checkout the ",
     "statusBlog": "blog"
   },
+  "blogPage": {
+    "likes": "likes"
+  },
   "blogCard": {
     "more": "More..."
+  },
+  "projectPage": {
+    "tech": "Tech",
+    "intro": "Introduction",
+    "myLearnings": "My Learnings",
+    "features": "Features"
   },
   "buttons": {
     "backToBlogs": "Back to blogs"

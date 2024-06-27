@@ -7,15 +7,25 @@
     },
     "linkBar": {
       "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
-      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." }
+      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." },
+      "projects": { "mainStr": "Projektit", "subStr": "..." }
     }
   },
   "landingPage": {
     "status": "Sivusta on työn alla. Tutustu sillä välin ",
     "statusBlog": "blogiin"
   },
+  "blogPage": {
+    "likes": "tykkäykset"
+  },
   "blogCard": {
     "more": "Lisää..."
+  },
+  "projectPage": {
+    "tech": "Teknologia",
+    "intro": "Johdanto",
+    "myLearnings": "Oma kehitys",
+    "features": "Toiminnot"
   },
   "buttons": {
     "backToBlogs": "Takaisin blogiin"
