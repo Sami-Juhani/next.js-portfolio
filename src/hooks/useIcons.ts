@@ -13,6 +13,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ThumbUpIcon from "@mui/icons-material/ThumbUp"
 import LanguageIcon from "@mui/icons-material/Language"
 import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 /**
  * A hook that provides access to specific SVG icons.
@@ -40,6 +41,6 @@ export default function useIcons() {
     arrows: { ArrowLeft, ArrowRight },
     status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, ConstructionIcon },
     action: { CloseIcon, SettingsIcon, GoBackIcon, GoNextIcon, LikeIcon, LightBulp, LanguageIcon },
-    utils: { CodeIcon },
+    utils: { CodeIcon, GitHubIcon },
   }
 }
