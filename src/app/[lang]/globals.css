@@ -46,7 +46,7 @@ button.link {
   border-style: none;
   background: none;
   cursor: pointer;
-  font-size: var(--text-size-sm);
+  font-size: var(--text-size-md);
 }
 
 a:hover,
