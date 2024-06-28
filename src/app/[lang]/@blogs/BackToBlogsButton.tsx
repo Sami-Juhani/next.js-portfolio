@@ -8,7 +8,7 @@ export function BackToBlogsButton({ lang, children }: { lang: string; children: 
   const router = useRouter()
 
   function onClick() {
-    router.push(`/${lang}`)
+    router.back()
   }
 
   return (
