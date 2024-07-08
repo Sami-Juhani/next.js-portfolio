@@ -1,19 +1,39 @@
 {
   "navigation": {
     "links": {
-      "home": "home",
+      "home": "me",
       "blog": "blog",
       "projects": "projects"
-    },
-    "linkBar": {
-      "blog": { "mainStr": "Blogs", "subStr": "about dev" },
-      "landingPage": { "mainStr": "Welcome", "subStr": "this is me" },
-      "projects": { "mainStr": "Projects", "subStr": "hall of fame" }
     }
   },
-  "landingPage": {
-    "status": "Under construction... but checkout the ",
-    "statusBlog": "blog"
+  "languages": {
+    "english": "English",
+    "finnish": "Finnish"
+  },
+  "mainPage": {
+    "me": {
+      "generalInfo": "I'm a third-year information technology student at Metropolia. I'm passionate about coding, and when I set myself a goal, I'm determined to achieve it. I'm a quick learner who easily picks up new technologies, ensuring I stay adaptable in the changing field of software development. I've always enjoyed creating things from scratch, which is why I find coding so satisfying. I'm punctual, self-driven, and hardworking, but I also enjoy working as part of a team. In my free time, I like to engage in outdoor activities and exercise."
+    },
+    "typeWriter": {
+      "prefix": "I'm",
+      "paragraphs": ["a third-year IT engineering student", "a front-end developer", "a back-end developer"]
+    },
+    "general": {
+      "title": "Who am I?",
+      "body": [
+        "I am a third-year Information Technology student at Metropolia UAS, currently located in Finland. Equipped with excellent soft skills and problem-solving capabilities, I am well-suited for any IT-related job.",
+        "I have a strong knowledge of frontend development, transforming stylish and responsive web designs into fully interactive user experiences. The first impression you make with your brand is crucial.",
+        "Building servers and APIs with features such as authentication and authorization is another skill I have developed. I enjoy working with backend frameworks to provide long-lasting solutions for server-side needs.",
+        "I am comfortable with both NoSQL and SQL databases, enabling me to provide solutions for storing any information your business requires.",
+        "All my deployments, including this Next.js app, have been done with AWS cloud services. They offer everything I need for easy deployment and maintenance.",
+        "Please get in touch via the contact page, and let’s discuss how I can contribute to your growth."
+      ]
+    },
+    "portfolio": {
+      "downloadButton": "Download CV",
+      "skills": "Skills",
+      "certificates": "Certificates"
+    }
   },
   "blogPage": {
     "likes": "likes"

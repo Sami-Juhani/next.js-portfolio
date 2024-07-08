@@ -72,7 +72,7 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
           <h3>{project.title}</h3>
           <div className={styles.__gitHubLayout}>
             <GitHubIcon />
-            <Link href={project.gitHub}>Code</Link>
+            <Link href={project.gitHub} target="_blank">Code</Link>
           </div>
         </div>
         <div

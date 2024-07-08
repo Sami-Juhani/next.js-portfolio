@@ -1,19 +1,39 @@
 {
   "navigation": {
     "links": {
-      "home": "koti",
+      "home": "minä",
       "blog": "blogi",
       "projects": "projektit"
-    },
-    "linkBar": {
-      "blog": { "mainStr": "Blogeja", "subStr": "devauksesta" },
-      "landingPage": { "mainStr": "Tervetuloa", "subStr": "tietoa minusta..." },
-      "projects": { "mainStr": "Projektit", "subStr": "..." }
     }
   },
-  "landingPage": {
-    "status": "Sivusta on työn alla. Tutustu sillä välin ",
-    "statusBlog": "blogiin"
+  "languages": {
+    "english": "Englanti",
+    "finnish": "Suomi"
+  },
+  "mainPage": {
+    "me": {
+      "generalInfo": "I'm a third-year information technology student at Metropolia. I'm passionate about coding, and when I set myself a goal, I'm determined to achieve it. I'm a quick learner who easily picks up new technologies, ensuring I stay adaptable in the changing field of software development. I've always enjoyed creating things from scratch, which is why I find coding so satisfying. I'm punctual, self-driven, and hardworking, but I also enjoy working as part of a team. In my free time, I like to engage in outdoor activities and exercise."
+    },
+    "typeWriter": {
+      "prefix": "Minä",
+      "paragraphs": ["olen insinööri opiskelija", "olen frontend-kehittäjä", "olen backend-kehittäjä"]
+    },
+    "general": {
+      "title": "Kuka minä?",
+      "body": [
+        "Olen kolmannen vuoden tieto -ja viestintätekniikan insinööri opiskelija Metropoliassa. Yhteistyö- ja ongelmanratkaisu taitoni tekemät minusta erinomaisen valinnan mihin tahansa IT projektiin.",
+        "Minulla on vahva osaaminen frontend-kehityksessä, tyylikkäistä ja responsiivisista verkkosivustoista täysin interaktiivisiin käyttäjäkokemuksiin. Oman brändin ensivaikutelman on nykypäivänä erittäin tärkeä.",
+        "Toinen osa-alueeni on palvelin ja API kehitystyö, jotka sisältävät esimerkiksi toimintoja kuten autentikointi ja valtuutus. Nautin työskentelystä backend ohjelmistokehysten kanssa, tarjoten pitkäaikaisia ratkaisuja palvelinpuolen tarpeisiin.",
+        "Tiedonvarastointiin tarpeisiin vastaan osaamisellani SQL ja noSQL tietokannoista.",
+        "Kaikki käyttöönotot, mukaan lukien tämä Next.js-sovellus, olen tehnyt AWS-pilvipalveluiden avulla. AWS:llä on kattavat palvelut ja he tarjoavat kaiken, mitä voi tarvita helppoon käyttöönottoon ja ylläpitoon.",
+        "Ota yhteyttä yhteydenottosivun kautta, niin keskustellaan, kuinka voisin olla avuksi."
+      ]
+    },
+    "portfolio" : {
+      "downloadButton": "Lataa CV",
+      "skills": "Taidot",
+      "certificates": "Sertifikaatit"
+    }
   },
   "blogPage": {
     "likes": "tykkäykset"
