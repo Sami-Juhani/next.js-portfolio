@@ -27,7 +27,7 @@
   line-height: 1.5em;
   max-width: 260px;
   top: 25px;
-  left: 50px;
+  left: 10%;
 }
 
 .prefix {
@@ -46,7 +46,7 @@
   .typeWriterText {
     font-size: 4rem;
     max-width: 520px;
-    left: 100px;
+    left: 60px;
   }
 }
 
