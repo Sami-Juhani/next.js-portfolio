@@ -23,7 +23,11 @@ export default async function BlogLayoutPage({
   const { blogId } = searchParams
   const dict = await getDictionary(lang)
 
-  return blogId === undefined ? <BlogListPage dict={dict} lang={lang} /> : <BlogPage blogId={blogId} dict={dict} />
+  return (
+    <div className={styles.__layout}>
+      {blogId === undefined ? <BlogListPage dict={dict} lang={lang} /> : <BlogPage blogId={blogId} dict={dict} />}
+    </div>
+  )
 }
 
 async function BlogListPage({ dict, lang }: { dict: any; lang: string }) {

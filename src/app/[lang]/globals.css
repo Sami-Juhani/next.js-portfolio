@@ -34,6 +34,7 @@
   --text-primary-light: #0a0a0abe;
   --text-secondary: #fafafa;
 
+  --brand-color-primary: #60006e;
   --link-color: #0072dd;
 }
 
@@ -68,9 +69,15 @@ button.link:hover {
 
 body {
   background-color: var(--background-white);
-  font-size: var(--text-size-md);
+  font-size: var(--text-size-sm);
   color: var(--text-primary);
   overflow-x: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: var(--text-size-md);
+  }
 }
 
 /* TYPOGRAPHY */
@@ -118,14 +125,14 @@ body {
 
 /* LAYOUT */
 
-.main-container {
+.main__layout {
   max-width: 1280px;
   min-height: 100vh;
   margin: auto;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  padding-bottom: 2rem;
+  padding: 2rem 1rem;
 }
 
 .overlay {
