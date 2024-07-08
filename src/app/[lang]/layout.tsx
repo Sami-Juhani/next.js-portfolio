@@ -3,11 +3,11 @@ import type { Metadata } from "next"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { SettingsProvider } from "@/context/Settings"
 import { ReactNode } from "react"
-import { MainPage } from "./MainPage"
+import { MainLayout } from "./MainLayout"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "SJP - Fullstack",
+  title: "SJP - fullstack software development",
   description: "Portfolio",
   icons: [{ rel: "icon", url: Favicon.src }],
 }
@@ -27,7 +27,7 @@ export default async function RootLayout({ params: { lang }, blogs, projects }: 
       <body>
         <div id="project-modal-target"></div>
         <SettingsProvider>
-          <MainPage lang={lang} dict={dict} blogs={blogs} projects={projects} />
+          <MainLayout lang={lang} dict={dict} blogs={blogs} projects={projects} />
         </SettingsProvider>
       </body>
     </html>
