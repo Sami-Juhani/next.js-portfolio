@@ -16,7 +16,7 @@
     },
     "typeWriter": {
       "prefix": "I'm",
-      "paragraphs": ["a third-year IT engineering student", "a front-end developer", "a back-end developer"]
+      "paragraphs": ["a third-year IT engineering student", "a frontend developer", "a backend developer"]
     },
     "general": {
       "title": "Who am I?",
