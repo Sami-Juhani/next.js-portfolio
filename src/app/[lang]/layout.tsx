@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { SettingsProvider } from "@/context/Settings"
 import { ReactNode } from "react"
-import { MainLayout } from "./MainLayout"
+import { Main } from "./Main"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -17,9 +17,10 @@ type RootLayOutProps = {
   params: { lang: string }
   projects: ReactNode
   blogs: ReactNode
+  portfolio: ReactNode
 }
 
-export default async function RootLayout({ params: { lang }, blogs, projects }: Readonly<RootLayOutProps>) {
+export default async function RootLayout({ params: { lang }, blogs, projects, portfolio }: Readonly<RootLayOutProps>) {
   const dict = await getDictionary(lang)
 
   return (
@@ -27,7 +28,7 @@ export default async function RootLayout({ params: { lang }, blogs, projects }: 
       <body>
         <div id="project-modal-target"></div>
         <SettingsProvider>
-          <MainLayout lang={lang} dict={dict} blogs={blogs} projects={projects} />
+          <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
         </SettingsProvider>
       </body>
     </html>

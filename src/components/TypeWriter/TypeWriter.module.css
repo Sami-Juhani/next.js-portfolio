@@ -21,13 +21,10 @@
 }
 
 .typeWriterText {
-  position: absolute;
   display: inline-block;
   font-size: 2rem;
   line-height: 1.5em;
-  max-width: 260px;
-  top: 25px;
-  left: 10%;
+  min-height: 6em;
 }
 
 .prefix {
@@ -37,25 +34,22 @@
 @media screen and (min-width: 800px) {
   .typeWriterText {
     font-size: 3rem;
-    max-width: 400px;
-    top: 100px;
+    min-height: 3em;
   }
 }
 
 @media screen and (min-width: 1080px) {
   .typeWriterText {
-    font-size: 4rem;
-    max-width: 520px;
-    left: 60px;
+    font-size: 3.5rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .typeWriterText {
     font-size: 4rem;
-    max-width: 620px;
   }
 }
+
 
 .cursor {
   display: inline-block;

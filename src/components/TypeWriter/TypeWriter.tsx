@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { specialElite } from "@/lib/fonts"
-import styles from "./FancyHero.module.css"
+import styles from "./TypeWriter.module.css"
 
 export type TypeWriterOptions = {
   x?: string
@@ -14,10 +14,21 @@ export type TypeWriterOptions = {
 export type TypeWriterProps = {
   prefix: string
   paragraph: string | string[]
-  options: TypeWriterOptions
+  userOptions: TypeWriterOptions
 }
 
-export function TypeWriter({ prefix, paragraph, options }: TypeWriterProps) {
+const DEFAULT_TYPEWRITER_OPTIONS: TypeWriterOptions = {
+  typingDelay: 100,
+  eraseDelay: 50,
+  endDelay: 4000,
+  startDelay: 2000,
+}
+
+export function TypeWriter({ prefix, paragraph, userOptions }: TypeWriterProps) {
+  const options = useMemo(() => {
+    return { ...DEFAULT_TYPEWRITER_OPTIONS, ...userOptions }
+  }, [userOptions])
+  
   const writerRef = useRef<HTMLSpanElement>(null)
   const [charIndex, setCharIndex] = useState(0)
   const [paragraphIndex, setParagraphIndex] = useState(0)
