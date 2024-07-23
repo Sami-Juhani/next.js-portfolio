@@ -127,7 +127,6 @@ body {
 
 .main__layout {
   max-width: 1280px;
-  min-height: 100vh;
   margin: auto;
   overflow: hidden;
   display: flex;
