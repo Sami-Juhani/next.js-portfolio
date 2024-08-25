@@ -26,6 +26,10 @@ import { FaGitAlt } from "react-icons/fa"
 import { FaAws } from "react-icons/fa"
 import { DiScrum } from "react-icons/di"
 import { AiOutlinePython } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
+import { IoMdLogIn } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
+
 
 /**
  * A hook that provides access to specific SVG icons.
@@ -43,6 +47,9 @@ export default function useIcons() {
   const WarningIcon = WarningAmberIcon
   const NotificationIcon = NotificationsNoneIcon
   const Checked = CheckIcon
+  const User = AiOutlineUser
+  const LoginIcon = IoMdLogIn
+  const LogoutIcon = IoMdLogOut
 
   /* ACTION */
   const GoBackIcon = ArrowBackIcon
@@ -67,8 +74,8 @@ export default function useIcons() {
 
   return {
     arrows: { ArrowLeft, ArrowRight },
-    status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, Checked },
-    action: { CloseIcon, SettingsIcon, GoBackIcon, GoNextIcon, LikeIcon, DarkMode, Globe },
+    status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, Checked, User },
+    action: { CloseIcon, SettingsIcon, GoBackIcon, GoNextIcon, LikeIcon, DarkMode, Globe, LoginIcon, LogoutIcon },
     utils: { CodeIcon, GitHubIcon },
     dev: { ReactIcon, NextIcon, JsIcon, TsIcon, JavaIcon, MongoIcon, SqlIcon, NodeJsIcon, GitIcon, AwsIcon, ScrumIcon, PythonIcon },
   }

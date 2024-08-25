@@ -1,0 +1,21 @@
+.__projectModal {
+  width: 100%;
+  max-width: 1280px;
+  height: fit-content;
+  position: fixed;
+  padding: 1rem;
+  top: 50%;
+  left: 50%;
+  border-radius: 0.5rem;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-white);
+  z-index: 9999;
+}
+
+.closeIcon {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}

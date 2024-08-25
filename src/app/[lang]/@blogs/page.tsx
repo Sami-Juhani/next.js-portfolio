@@ -1,17 +1,17 @@
 import Image from "next/image"
+import { Suspense } from "react"
 import { formatDate } from "@/lib/formatDate"
 import { getBlog, getBlogs } from "@/db/blogs"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { notFound } from "next/navigation"
-import type { Blog } from "@/db/blogs"
 import { BlogElement, BlogElementType } from "./BlogElement"
 import { BlogCard } from "./BlogCard"
 import { BackToBlogsButton } from "./BackToBlogsButton"
-import { dafoe } from "@/lib/fonts"
-import useIcons from "@/hooks/useIcons"
-import styles from "./blog.module.css"
-import { Suspense } from "react"
+import { BlogLikes } from "./BlogLikes"
 import { Skeleton, SkeletonImage, SkeletonList } from "@/components/Skeleton/Skeleton"
+import type { Blog } from "@/db/blogs"
+import { dafoe } from "@/lib/fonts"
+import styles from "./blog.module.css"
 
 export default async function BlogLayoutPage({
   params: { lang },
@@ -57,8 +57,6 @@ function BlogPage({ blogId, dict, lang }: any) {
 }
 
 async function Blog({ blogId, lang, dict }: { blogId: string; lang: string; dict: any }) {
-  const { LikeIcon } = useIcons().action
-
   if (blogId === undefined) return notFound()
 
   const blog = await getBlog(blogId)
@@ -89,10 +87,7 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: string; dict
           <h2>{localizedBlog.header.title}</h2>
           <div className={styles.__metaData}>
             <p className="margin-btm-large textSm">{date}</p>
-            <LikeIcon className="custom-image-link" style={{ fill: "#0072dd" }} />
-            <p className="textXs">
-              {dict.blogPage.likes} {localizedBlog.likes}
-            </p>
+            <BlogLikes dict={dict} blogId={localizedBlog._id} blogLikes={blog.likes} />
           </div>
         </div>
       </div>

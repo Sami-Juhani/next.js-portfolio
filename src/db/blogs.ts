@@ -1,5 +1,5 @@
 import { BlogElementType } from "@/app/[lang]/@blogs/BlogElement"
-import { PrismaClient } from "@prisma/client"
+import prisma from "./db"
 
 export type Blog = {
   header: {
@@ -16,8 +16,6 @@ export type Blog = {
   signature: BlogElementType[]
 }
 
-const prisma = new PrismaClient()
-
 export async function getBlogs() {
   return await prisma.blog.findMany()
 }
@@ -28,4 +26,29 @@ export async function getBlog(id: string) {
       id: id,
     },
   })
+}
+
+export async function updateBlogLikes(id: string, increment: boolean) {
+  const blog = await prisma.blog.findUnique({
+    where: {
+      id: id,
+    },
+  })
+  if (blog === null) return null
+
+  let updatedLikes = blog.likes
+
+  if (increment === true) updatedLikes++
+  else updatedLikes = Math.max(0, updatedLikes - 1)
+
+  const updatedBlog = await prisma.blog.update({
+    where: {
+      id: id,
+    },
+    data: {
+      likes: updatedLikes,
+    },
+  })
+
+  return updatedBlog.likes
 }

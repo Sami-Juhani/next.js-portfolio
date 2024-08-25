@@ -2,6 +2,7 @@ import Favicon from "/public/favicon.ico"
 import type { Metadata } from "next"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { SettingsProvider } from "@/context/Settings"
+import NextAuthProvider from "@/context/NextAuth"
 import { ReactNode } from "react"
 import { Main } from "./Main"
 import "./globals.css"
@@ -26,10 +27,12 @@ export default async function RootLayout({ params: { lang }, blogs, projects, po
   return (
     <html lang={lang}>
       <body>
-        <div id="project-modal-target"></div>
-        <SettingsProvider>
-          <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
-        </SettingsProvider>
+        <div id="modal-target"></div>
+        <NextAuthProvider>
+          <SettingsProvider>
+            <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
+          </SettingsProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )

@@ -1,10 +1,11 @@
 "use client"
 
-import { GoBackButton } from "@/components/Buttons"
+import { CustomButton } from "@/components/Buttons"
 import { useRouter } from "next/navigation"
 import { ReactNode } from "react"
+import styles from "./blog.module.css"
 
-export function BackToBlogsButton({ lang, children }: { lang: string; children: ReactNode }) {
+export function BackToBlogsButton({ children }: { lang: string; children: ReactNode }) {
   const router = useRouter()
 
   function onClick() {
@@ -12,8 +13,8 @@ export function BackToBlogsButton({ lang, children }: { lang: string; children: 
   }
 
   return (
-    <GoBackButton style={{ marginLeft: "auto" }} onClick={onClick}>
+    <CustomButton className={styles.backButton} style={{ marginLeft: "auto" }} onClick={onClick}>
       {children}
-    </GoBackButton>
+    </CustomButton>
   )
 }
