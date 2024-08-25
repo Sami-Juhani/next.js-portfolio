@@ -5,6 +5,7 @@ import { SettingsProvider } from "@/context/Settings"
 import { ReactNode } from "react"
 import { MainLayout } from "./MainLayout"
 import "./globals.css"
+import AwsRumInitializer from "@/components/AwsRumInitializer"
 
 export const metadata: Metadata = {
   title: "SJP - fullstack software development",
@@ -29,6 +30,7 @@ export default async function RootLayout({ params: { lang }, blogs, projects }: 
         <SettingsProvider>
           <MainLayout lang={lang} dict={dict} blogs={blogs} projects={projects} />
         </SettingsProvider>
+        <AwsRumInitializer />
       </body>
     </html>
   )
