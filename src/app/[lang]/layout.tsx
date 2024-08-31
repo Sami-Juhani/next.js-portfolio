@@ -6,6 +6,7 @@ import NextAuthProvider from "@/context/NextAuth"
 import { ReactNode } from "react"
 import { Main } from "./Main"
 import "./globals.css"
+import AwsRumInitializer from "@/components/AwsRumInitializer"
 
 export const metadata: Metadata = {
   title: "SJP - fullstack software development",
@@ -33,6 +34,7 @@ export default async function RootLayout({ params: { lang }, blogs, projects, po
             <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
           </SettingsProvider>
         </NextAuthProvider>
+        <AwsRumInitializer />
       </body>
     </html>
   )
