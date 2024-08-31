@@ -83,11 +83,11 @@ model Comment {
   name      String
   body      String
   date      DateTime @default(now()) 
-  author    User      @relation(fields: [authorId], references: [id])
   authorId  String    @db.ObjectId 
-  blog      Blog?     @relation(fields: [blogId], references: [id])
   blogId    String    @db.ObjectId
   replyId   String?   @db.ObjectId
   replies   Comment[] @relation("CommentReplies")
   parent    Comment?  @relation("CommentReplies", fields: [replyId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  blog      Blog?     @relation(fields: [blogId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id])
 }
