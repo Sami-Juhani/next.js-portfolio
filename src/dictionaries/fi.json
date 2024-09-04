@@ -1,4 +1,8 @@
 {
+  "common": {
+    "yes": "Kyllä",
+    "no": "Ei"
+  },
   "navigation": {
     "links": {
       "home": "minä",
@@ -29,14 +33,23 @@
         "Ota yhteyttä yhteydenottosivun kautta, niin keskustellaan, kuinka voisin olla avuksi."
       ]
     },
-    "portfolio" : {
+    "portfolio": {
       "downloadButton": "Lataa CV",
       "skills": "Taidot",
       "certificates": "Sertifikaatit"
     }
   },
   "blogPage": {
-    "likes": "tykkäykset"
+    "likes": "tykkäykset",
+    "comments": "Kommentit",
+    "reply": "Vastaus:",
+    "deleteComment": "Poista kommentti:",
+    "deleteReply": "Poista vastaus kommentille:",
+    "confirmation": "Olet varma?",
+    "author": "Julkaisija:",
+    "newComment": "Uusi Kommentti",
+    "title": "Otsikko",
+    "message": "Viesti"
   },
   "blogCard": {
     "more": "Lisää..."
@@ -47,7 +60,36 @@
     "myLearnings": "Oma kehitys",
     "features": "Toiminnot"
   },
+  "signInAndOutPage": {
+    "signIn": "Kirjaudu sisään",
+    "notice": "Huomatus!",
+    "noticeText": "Lisätäksesi tykkäyksiä ja kommetteja joudumme valtuuttamaan tietosi googlen avulla. Sähköposti osoitteesi tallennetaan tietokantaan turvallisesti, jotta voimme tallenttaan tykkäyksesi ja kommenttisi tässä sovelluksessa. Voit kuitenkin aina poistaa profiilisi, jonka jälkeen kaikki tietosi poistetaan myös tietokannasta.",
+    "noticeTextConfirmation": "Painalla 'Kirjaudu sisään Google:lla' hyväksyt käyttöehtomme ja kuinka käsittelemme tietojasi.",
+    "signInWithGoogle": "Kirjaudu sisään Google:lla",
+    "signOut": "Kirjaudu ulos?"
+  },
   "buttons": {
-    "backToBlogs": "Takaisin blogiin"
+    "backToBlogs": "Takaisin blogiin",
+    "newComment": "Uusi Kommentti",
+    "submit": "Lähetä",
+    "submitting": "Lähetetään...",
+    "send": "Lähetä",
+    "sending": "Lähetetään...",
+    "delete": "Poista",
+    "deleting": "Poistetaan...",
+    "reply": "Vastaa",
+    "replying": "Vastataan...",
+    "cancel": "Peruuta"
+  },
+  "notification": {
+    "unexpectedError": "Tapahtui odottamaton virhe. Yritä myöhemmin uudelleen.",
+    "commentDeleted": "Kommentti poistettu onnistuneesti.",
+    "replyAdded": "Vastaus lisätty onnistuneesti.",
+    "commentAdded": "Kommentti lisätty onnistuneesti. Kiitos tuestasi!",
+    "signInFailed": "Ole hyvä ja kirjaudu sisään lisätäksesi tykkäyksiä...",
+    "blogLikeFailed": "Tykkäyksen lisäyksessä tapahtui virhe, yritä myöhemmin uudelleen!",
+    "googleSignInFailed": "Kirjautuminen epäonnistui. Yritä myöhemmin uudelleen.",
+    "googleSignInOk": "Kirjautuminen onnistui.",
+    "blogLikeOk": "Tykkäys lisätty onnistuneesti!"
   }
 }

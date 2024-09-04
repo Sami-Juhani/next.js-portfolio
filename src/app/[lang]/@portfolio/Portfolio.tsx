@@ -11,6 +11,7 @@ import NextjsCert from "/public/images/me/nextjs_cert.png"
 import DataAnalysisCert from "/public/images/me/data_analysis_cert.png"
 import DataVisualizationCert from "/public/images/me/data_visualization_cert.png"
 import SelfImage from "/public/images/me/me_bnw.png"
+import DevImage from "/public/images/me/sjp_dev.png"
 import { TypeWriter } from "@/components/TypeWriter"
 import styles from "./portfolio.module.css"
 
@@ -53,6 +54,7 @@ export function PortfolioPage({ dict }: { dict: any }) {
   return (
     <section className={styles.__layout}>
       <div className={styles.__image}>
+        <Image className={styles.devImage} src={DevImage} alt="Author" />
         <Image src={SelfImage} alt="Author" priority />
       </div>
       <div className={styles.__personalLayout}>

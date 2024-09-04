@@ -1,15 +1,17 @@
 "use client"
 
+import type { AddCommentResult } from "@/actions/comments"
 import { CustomButton } from "@/components/Buttons"
-import { useEffect, useState } from "react"
-import { useNextAuth } from "@/context/useNextAuth"
-import styles from "./blog.module.css"
 import { FormGroup } from "@/components/FormGroup"
+import { useNextAuth } from "@/context/useNextAuth"
+import { useEffect, useState } from "react"
 import { useFormState } from "react-dom"
 import { SubmitButton } from "../../../components/Buttons/SubmitButton"
-import type { AddCommentResult } from "@/actions/comments"
+import { useNotification } from "@/context/useNotification"
+import styles from "./blog.module.css"
 
 type CommentFormProps = {
+  dict: any
   blogId: string
   addComment: (
     prevState: unknown,
@@ -17,20 +19,24 @@ type CommentFormProps = {
   ) => Promise<AddCommentResult>
 }
 
-export function CommentForm({ blogId, addComment }: CommentFormProps) {
+export function CommentForm({ dict, blogId, addComment }: CommentFormProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const { data: session } = useNextAuth()
   const [data, action] = useFormState(addComment, { completed: false, errors: {} })
+  const { setNotification } = useNotification()
 
   useEffect(() => {
-    if (data?.completed) setIsOpen(false)
-  }, [data])
+    if (data?.completed) {
+      setNotification({ text: dict.notification.commentAdded, type: "success", isOpen: true })
+      setIsOpen(false)
+    }
+  }, [data, setNotification, dict.notification.commentAdded])
 
   return (
     <div className={styles.newComment__layout} style={isOpen ? { position: "unset", width: "100%" } : {}}>
       {session?.user && !isOpen && (
         <CustomButton buttonType="primary" onClick={() => setIsOpen(true)}>
-          New Comment
+          {dict.blogPage.newComment}
         </CustomButton>
       )}
       {isOpen && (
@@ -40,22 +46,22 @@ export function CommentForm({ blogId, addComment }: CommentFormProps) {
             action({ formData: e, blogId: blogId, userId: session?.user?.id! })
           }}
         >
-          <h1>New Comment:</h1>
+          <h1>{dict.blogPage.newComment}:</h1>
           <FormGroup errorMessage={data?.errors?.title}>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">{dict.blogPage.title}</label>
             <input id="title" name="title" type="text" />
           </FormGroup>
           <FormGroup errorMessage={data?.errors?.body}>
-            <label htmlFor="body">Message</label>
+            <label htmlFor="body">{dict.blogPage.message}</label>
             <textarea id="body" name="body" rows={10} />
           </FormGroup>
           <p>
-            Published by: <span className="bold">{session?.user?.name}</span>
+            {dict.blogPage.author} <span className="bold">{session?.user?.name}</span>
           </p>
           <div className="row space-between">
-            <SubmitButton submit={"Submit"} submitting={"Submitting..."} buttonType={"primary"} />
+            <SubmitButton submit={dict.buttons.submit} submitting={dict.buttons.submitting} buttonType={"primary"} />
             <CustomButton type="button" onClick={() => setIsOpen(false)} buttonType="secondary">
-              Cancel
+              {dict.buttons.cancel}
             </CustomButton>
           </div>
         </form>

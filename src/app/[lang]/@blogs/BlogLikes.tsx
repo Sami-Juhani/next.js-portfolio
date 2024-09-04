@@ -7,23 +7,29 @@ import { Modal } from "@/components/Modal"
 import { SignInAndOut } from "@/components/SignInAndOut"
 import { usePortal } from "@/hooks/usePortal"
 import { CustomButton } from "@/components/Buttons"
+import { useNotification } from "@/context/useNotification"
 import useIcons from "@/hooks/useIcons"
 
 export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: string; blogLikes: number }) {
   const { data: session, status, update } = useNextAuth()
   const { LikeIcon } = useIcons().action
   const [loading, setLoading] = useState(false)
+  const { setNotification } = useNotification()
   const [isSignInOpen, setSignInOpen] = useState(false)
   const [nroOfLikes, setNroOfLikes] = useState(blogLikes)
   const modalTarget = usePortal("modal-target")
 
   async function onClick() {
+    setNotification({ text: "", type: "", isOpen: false })
+
     if (status === "unauthenticated") {
       setSignInOpen(true)
+      setNotification({ text: dict.notification.singInFailed, type: "warning", isOpen: true })
+      return
     }
 
     if (!session?.user?.email) {
-      console.error("User email not found")
+      setNotification({ text: dict.notification.singInFailed, type: "warning", isOpen: true })
       return
     }
 
@@ -43,14 +49,15 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
       })
 
       if (!response.ok) {
-        throw new Error("Failed to add blog like")
+        throw new Error(dict.notification.blogLikeFailed)
       }
 
       const { updatedLikes } = await response.json()
 
       setNroOfLikes(updatedLikes)
-    } catch (error) {
-      console.error(error)
+      setNotification({ text: dict.notification.blogLikeOk, type: "success", isOpen: true })
+    } catch (error: any) {
+      setNotification({ text: error.message, type: "alert", isOpen: true })
     } finally {
       update()
       setLoading(false)
@@ -59,7 +66,7 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
 
   return (
     <>
-      <CustomButton className={"custom-image-link"} disabled={loading}>
+      <CustomButton buttonType={"transparent"} className="custom-image-link" disabled={loading}>
         <LikeIcon
           style={session?.user?.blogLikes.includes(blogId) ? { fill: "#0072dd" } : { fill: "grey" }}
           onClick={onClick}
@@ -75,7 +82,7 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
               setIsOpen={setSignInOpen}
               setActiveComponent={() => {}}
               isFullWidth={false}
-              Component={<SignInAndOut isSigningIn={true} />}
+              Component={<SignInAndOut isSigningIn={true} dict={dict} />}
             />
           ),
           modalTarget

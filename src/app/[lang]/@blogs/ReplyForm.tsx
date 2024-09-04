@@ -8,8 +8,10 @@ import { FormGroup } from "@/components/FormGroup"
 import { useFormState } from "react-dom"
 import { SubmitButton } from "../../../components/Buttons/SubmitButton"
 import type { AddCommentResult } from "@/actions/comments"
+import { useNotification } from "@/context/useNotification"
 
 type ReplyFormProps = {
+  dict: any
   blogId: string
   replyId: string
   addReply: (
@@ -20,9 +22,10 @@ type ReplyFormProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export function ReplyForm({ blogId, replyId, addReply, isOpen, setIsOpen }: ReplyFormProps) {
+export function ReplyForm({ dict, blogId, replyId, addReply, isOpen, setIsOpen }: ReplyFormProps) {
   const { data: session } = useNextAuth()
   const [data, action] = useFormState(addReply, { completed: false, errors: {} })
+  const { setNotification } = useNotification()
 
   useEffect(() => {
     if (data?.completed) setIsOpen(false)
@@ -35,6 +38,7 @@ export function ReplyForm({ blogId, replyId, addReply, isOpen, setIsOpen }: Repl
           className={styles.newCommentForm}
           action={(e) => {
             action({ formData: e, blogId: blogId, replyId, userId: session?.user?.id! })
+            setNotification({ text: dict.notification.replyAdded, type: "success", isOpen: true })
           }}
         >
           <h1>Reply:</h1>
@@ -43,12 +47,12 @@ export function ReplyForm({ blogId, replyId, addReply, isOpen, setIsOpen }: Repl
             <textarea id="body" name="body" rows={10} />
           </FormGroup>
           <p>
-            Published by: <span className="bold">{session?.user?.name}</span>
+            {dict.blogPage.author} <span className="bold">{session?.user?.name}</span>
           </p>
           <div className="row space-between">
-            <SubmitButton buttonType={"primary"} submit={"Send"} submitting={"Sending..."} />
+            <SubmitButton buttonType={"primary"} submit={dict.buttons.send} submitting={dict.buttons.sending} />
             <CustomButton type="button" onClick={() => setIsOpen(false)} buttonType="secondary">
-              Cancel
+              {dict.buttons.cancel}
             </CustomButton>
           </div>
         </form>

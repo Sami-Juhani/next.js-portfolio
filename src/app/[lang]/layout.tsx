@@ -7,6 +7,7 @@ import { ReactNode } from "react"
 import { Main } from "./Main"
 import "./globals.css"
 import AwsRumInitializer from "@/components/AwsRumInitializer"
+import { NotificationProvider } from "@/context/Notification"
 
 export const metadata: Metadata = {
   title: "SJP - fullstack software development",
@@ -29,9 +30,12 @@ export default async function RootLayout({ params: { lang }, blogs, projects, po
     <html lang={lang}>
       <body>
         <div id="modal-target"></div>
+        <div id="notification-target"></div>
         <NextAuthProvider>
           <SettingsProvider>
-            <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
+            <NotificationProvider>
+              <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
+            </NotificationProvider>
           </SettingsProvider>
         </NextAuthProvider>
         <AwsRumInitializer />
