@@ -1,17 +1,20 @@
 import { ButtonHTMLAttributes, ReactNode } from "react"
 import styles from "./ButtonStyles.module.css"
+import { cc } from "@/lib/cc"
 
-interface ICustomButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonTypes = "primary" | "secondary" | "warning" | "transparent"
+
+export interface ICustomButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   style?: Object
-  buttonType?: "primary" | "secondary"
+  buttonType?: ButtonTypes
 }
 
 export function CustomButton({ children, className, style, buttonType, ...props }: ICustomButton): ReactNode {
-  const defaultStyles = buttonType === "primary" ? styles.primaryButton : styles.secondaryButton
+  const defaultStyles = cc(buttonType !== undefined && styles[buttonType])
 
   return (
-    <button className={`${defaultStyles} ${className}`} style={style} {...props}>
+    <button className={`${styles.button} ${cc(className !== undefined && className)} ${defaultStyles}`} style={style} {...props}>
       {children}
     </button>
   )

@@ -80,7 +80,7 @@ model Project {
 
 model Comment {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
+  title     String?
   body      String
   date      DateTime @default(now()) 
   authorId  String    @db.ObjectId 

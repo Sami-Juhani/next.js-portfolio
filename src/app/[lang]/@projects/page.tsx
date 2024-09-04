@@ -1,6 +1,6 @@
-import { Project, getProjects } from "@/db/projects"
-import { ProjectArticle } from "./ProjectArticle"
+import { Project, getProjects } from "@/actions/projects"
 import { getDictionary } from "@/dictionaries/dictionaries"
+import { ProjectArticle } from "./ProjectArticle"
 import styles from "./projects.module.css"
 
 export default async function ProjectsPage({ params: { lang } }: { params: { lang: string } }) {

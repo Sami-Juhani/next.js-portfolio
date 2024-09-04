@@ -1,15 +1,15 @@
 "use client"
 
+import { Project } from "@/actions/projects"
+import { Modal } from "@/components/Modal"
 import { useSettings } from "@/context/useSettings"
-import { Project } from "@/db/projects"
 import useIcons from "@/hooks/useIcons"
+import { usePortal } from "@/hooks/usePortal"
 import { cc } from "@/lib/cc"
 import Image from "next/image"
 import Link from "next/link"
 import { ReactNode, useEffect, useState } from "react"
 import { createPortal } from "react-dom"
-import { Modal } from "@/components/Modal"
-import { usePortal } from "@/hooks/usePortal"
 import styles from "./projects.module.css"
 
 type ProjectArticleProps = {
@@ -123,7 +123,12 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
       {modalTarget != undefined &&
         createPortal(
           isOpen && activeComponent != null && (
-            <Modal setIsOpen={setIsOpen} setActiveComponent={setActiveComponent} isFullWidth={true} Component={activeComponent} />
+            <Modal
+              setIsOpen={setIsOpen}
+              setActiveComponent={setActiveComponent}
+              isFullWidth={true}
+              Component={activeComponent}
+            />
           ),
           modalTarget
         )}

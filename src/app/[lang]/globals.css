@@ -34,10 +34,8 @@
   --text-primary: #0a0a0a;
   --text-primary-light: #0a0a0abe;
   --text-secondary: #fafafa;
-  
   --brand-color-primary: #60006e;
   --link-color: #0072dd;
-
   --clr-grey: #2c2c2c;
 }
 
@@ -81,7 +79,6 @@ button.link:hover {
 .custom-image-link {
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--link-color);
   transition: transform ease-in-out 250ms;
 }
 
@@ -234,10 +231,6 @@ button.link:hover {
   cursor: pointer;
 }
 
-/* BUTTONS */
-
-
-
 /* THEMES */
 
 .dark-theme {
@@ -246,7 +239,7 @@ button.link:hover {
   background: linear-gradient(to bottom, var(--background-color) 0%, #151515 100%);
   color: var(--text-color);
   overflow-x: clip;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .light-theme {
