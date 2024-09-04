@@ -8,7 +8,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-button.button:disabled {
+button.button:not(.transparent):disabled {
   background: #5e5e5e;
   border: 1px solid #5e5e5e;
 }
