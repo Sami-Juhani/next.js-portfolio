@@ -1,4 +1,8 @@
 {
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
   "navigation": {
     "links": {
       "home": "me",
@@ -16,7 +20,7 @@
     },
     "typeWriter": {
       "prefix": "I'm",
-      "paragraphs": ["a third-year IT engineering student", "a frontend developer", "a backend developer"]
+      "paragraphs": ["a fullstack developer", "UI/UX designer", "into cloud driven solutions"]
     },
     "general": {
       "title": "Who am I?",
@@ -36,7 +40,16 @@
     }
   },
   "blogPage": {
-    "likes": "likes"
+    "likes": "likes",
+    "comments": "Comments",
+    "reply": "Reply:",
+    "deleteComment": "Delete comment:",
+    "deleteReply": "Delete reply for comment:",
+    "confirmation": "Are you sure?",
+    "author": "Published by:",
+    "newComment": "New Comment",
+    "title": "Title",
+    "message": "Message"
   },
   "blogCard": {
     "more": "More..."
@@ -47,7 +60,36 @@
     "myLearnings": "My Learnings",
     "features": "Features"
   },
+  "signInAndOutPage": {
+    "signIn": "Sign In",
+    "notice": "Notice!",
+    "noticeText": "To add likes and comments in this application, you need to authorize with Google. Your email address will be securely stored in our database to keep track of your interactions, such as likes and comments. You can delete your profile at any time from the sign-in menu above, which will remove your data from our system.",
+    "noticeTextConfirmation": "By pressing 'Sign in with google' you agree to our terms and conditions, including how we handle your data.",
+    "signInWithGoogle": "Sign in with Google",
+    "signOut": "Sign Out?"
+  },
   "buttons": {
-    "backToBlogs": "Back to blogs"
+    "backToBlogs": "Back to blogs",
+    "newComment": "New Comment",
+    "submit": "Submit",
+    "submitting": "Submitting",
+    "send": "Send",
+    "sending": "Sending...",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "reply": "Reply",
+    "replying": "Replying...",
+    "cancel": "Cancel"
+  },
+  "notification": {
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "commentDeleted": "Comment deleted succesfully.",
+    "replyAdded": "Reply added succesfully.",
+    "commentAdded": "Comment added succesfully. Thank you for your support!",
+    "signInFailed": "Please sign in to add blog likes...",
+    "blogLikeFailed": "Failed to add blog like, please try again later!",
+    "googleSignInFailed": "Sign-in failed. Please try again.",
+    "googleSignInOk": "Sign-in successful!",
+    "blogLikeOk": "Blog like updated succesfully!"
   }
 }

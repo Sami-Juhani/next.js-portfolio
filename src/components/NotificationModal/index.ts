@@ -1,0 +1,1 @@
+export { NotificationModal, type NotificationModalOptions } from "./NotificationModal";

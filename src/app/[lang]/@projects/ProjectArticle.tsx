@@ -1,15 +1,16 @@
 "use client"
 
+import { Project } from "@/actions/projects"
+import { Modal } from "@/components/Modal"
 import { useSettings } from "@/context/useSettings"
+import useIcons from "@/hooks/useIcons"
+import { usePortal } from "@/hooks/usePortal"
+import { cc } from "@/lib/cc"
+import Image from "next/image"
+import Link from "next/link"
 import { ReactNode, useEffect, useState } from "react"
 import { createPortal } from "react-dom"
-import { ProjectModal } from "./projectModal"
-import { cc } from "@/lib/cc"
-import { Project } from "@/db/projects"
-import Image from "next/image"
 import styles from "./projects.module.css"
-import useIcons from "@/hooks/useIcons"
-import Link from "next/link"
 
 type ProjectArticleProps = {
   dict: any
@@ -19,14 +20,9 @@ type ProjectArticleProps = {
 export function ProjectArticle({ project, dict }: ProjectArticleProps) {
   const { darkMode } = useSettings()
   const [isOpen, setIsOpen] = useState(false)
-  const [selector, setSelector] = useState<HTMLDivElement>()
   const [activeComponent, setActiveComponent] = useState<ReactNode | null>(null)
   const { GitHubIcon } = useIcons().utils
-
-  useEffect(() => {
-    const portalTarget = document.getElementById("project-modal-target") as HTMLDivElement
-    if (portalTarget != undefined) setSelector(portalTarget)
-  }, [])
+  const modalTarget = usePortal("modal-target")
 
   useEffect(() => {
     function handler(e: KeyboardEvent) {
@@ -72,7 +68,9 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
           <h3>{project.title}</h3>
           <div className={styles.__gitHubLayout}>
             <GitHubIcon />
-            <Link href={project.gitHub} target="_blank">Code</Link>
+            <Link href={project.gitHub} target="_blank">
+              Code
+            </Link>
           </div>
         </div>
         <div
@@ -122,12 +120,16 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
           />
         </div>
       </article>
-      {selector != undefined &&
+      {modalTarget != undefined &&
         createPortal(
           isOpen && activeComponent != null && (
-            <ProjectModal setIsOpen={setIsOpen} setActiveComponent={setActiveComponent} Component={activeComponent} />
+            <Modal
+              setIsOpen={setIsOpen}
+              setActiveComponent={setActiveComponent}
+              Component={activeComponent}
+            />
           ),
-          selector
+          modalTarget
         )}
     </>
   )
@@ -136,12 +138,12 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
 function ArticleIntro({ mainSection, modalOpen, dict }: { mainSection: any; modalOpen?: boolean; dict: any }) {
   return (
     <div className={cc(modalOpen && styles.__modalInfo)}>
-      <div>
+      <div className={styles.feats}>
         <h4 className={styles.articleTitle}>{dict.projectPage.intro}</h4>
         <p className={cc(!modalOpen && styles.maxLinesFour)}>{mainSection.intro}</p>
       </div>
       {modalOpen && (
-        <div>
+        <div className={styles.feats}>
           <h4 className={styles.articleTitle}>{dict.projectPage.myLearnings}</h4>
           <p>{mainSection.learnings}</p>
         </div>

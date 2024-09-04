@@ -1,3 +1,2 @@
-export { PrimaryButton } from "./PrimaryButton"
-export { GoBackButton } from "./GoBackButton"
 export { DownloadButton } from "./DownloadButton"
+export { CustomButton } from "./CustomButton"

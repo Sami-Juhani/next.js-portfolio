@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient()
+import prisma from "../lib/db"
 
 export type Project = {
   title: string
@@ -13,7 +11,6 @@ export type Project = {
   }
   techStack: string[]
   features: string[]
-  
 }
 
 export async function getProjects() {

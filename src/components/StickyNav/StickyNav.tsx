@@ -1,15 +1,20 @@
 "use client"
 
-import Link from "next/link"
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
-import { dafoe } from "@/lib/fonts"
-import useIcons from "@/hooks/useIcons"
-import { useSettings } from "@/context/useSettings"
-import { FI, GB } from "country-flag-icons/react/3x2"
-import { cc } from "@/lib/cc"
-import styles from "./StickyNav.module.css"
 import { SupportedLanguages } from "@/context/Settings"
+import { useNextAuth } from "@/context/useNextAuth"
+import { useSettings } from "@/context/useSettings"
+import useIcons from "@/hooks/useIcons"
+import { cc } from "@/lib/cc"
+import { dafoe } from "@/lib/fonts"
+import CircularProgress from "@mui/material/CircularProgress"
+import { FI, GB } from "country-flag-icons/react/3x2"
 import { usePathname, useRouter } from "next/navigation"
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
+import { Modal } from "../Modal"
+import { SignInAndOut } from "../SignInAndOut"
+import { usePortal } from "@/hooks/usePortal"
+import styles from "./StickyNav.module.css"
 
 export type Link = {
   name: string
@@ -25,9 +30,13 @@ export type StickyNavProps = {
 }
 
 export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: StickyNavProps) {
-  const { Globe, DarkMode } = useIcons().action
-  const { darkMode, setDarkMode } = useSettings()
   const [langSettingsOpen, setLangSettingsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isSigningIn, setIsSigningIn] = useState<boolean>(false)
+  const { darkMode, setDarkMode } = useSettings()
+  const { data: session, status } = useNextAuth()
+  const { Globe, DarkMode, LoginIcon, LogoutIcon } = useIcons().action
+  const modalTarget = usePortal("modal-target")
 
   return (
     <header className={cc(styles.__navLayout, darkMode && styles.dark)}>
@@ -56,7 +65,12 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
           <DarkMode onClick={() => setDarkMode((darkMode) => !darkMode)} />
         </button>
         <div className={styles.__settingsIcon}>
-          <Globe style={{ position: "relative" }} onClick={() => setLangSettingsOpen((prevOpen) => !prevOpen)} />
+          <Globe
+            style={{ position: "relative" }}
+            onMouseDown={() => {
+              setLangSettingsOpen((prevOpen) => !prevOpen)
+            }}
+          />
           {
             <LanguageDropdown
               dict={dict}
@@ -65,7 +79,44 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
             />
           }
         </div>
+        <div className="row items-center gap-small">
+          <div className={styles.__settingsIcon}>
+            {status === "unauthenticated" && (
+              <LoginIcon
+                onClick={() => {
+                  if (status === "unauthenticated") {
+                    setIsSigningIn(true)
+                    setIsOpen(true)
+                  }
+                }}
+              />
+            )}
+            {status === "loading" && <CircularProgress color="inherit" size={30} />}
+            {status === "authenticated" && (
+              <LogoutIcon
+                onClick={() => {
+                  if (status === "authenticated") {
+                    setIsSigningIn(false)
+                    setIsOpen(true)
+                  }
+                }}
+              />
+            )}
+          </div>
+          {session?.user && <p className="textSm">{session?.user?.name?.split(" ")[0]}</p>}
+        </div>
       </div>
+      {modalTarget != undefined &&
+        createPortal(
+          isOpen && (
+            <Modal
+              setIsOpen={setIsOpen}
+              setActiveComponent={() => {}}
+              Component={<SignInAndOut isSigningIn={isSigningIn} setIsOpen={setIsOpen} dict={dict} />}
+            />
+          ),
+          modalTarget
+        )}
     </header>
   )
 }

@@ -1,13 +1,16 @@
 import { ReactNode } from "react"
 import styles from "./ButtonStyles.module.css"
 import Link from "next/link"
+import { CustomButton } from "./CustomButton"
 
 type PrimaryButtonProps = { children: ReactNode; style?: Object; href: string }
 
-export function DownloadButton({ children, style, href }: PrimaryButtonProps) {
+export function DownloadButton({ children, href }: PrimaryButtonProps) {
   return (
-    <Link href={href} style={style} className={styles.primaryButton} target="_blank">
-      {children}
-    </Link>
+    <CustomButton buttonType="primary">
+      <Link href={href} target="_blank">
+        {children}
+      </Link>
+    </CustomButton>
   )
 }

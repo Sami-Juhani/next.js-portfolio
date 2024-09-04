@@ -28,14 +28,34 @@
   --close-button-lg: 1.5rem;
   --close-button-xl: 1.75rem;
 
+  /* COLORS */
   --background-white: #fbfbfb;
   --background-black: #121212;
   --text-primary: #0a0a0a;
   --text-primary-light: #0a0a0abe;
   --text-secondary: #fafafa;
-
   --brand-color-primary: #60006e;
   --link-color: #0072dd;
+  --clr-grey: #2c2c2c;
+}
+
+body {
+  background-color: var(--background-white);
+  font-size: var(--text-size-sm);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button:disabled {
+  pointer-events: none;
+  transform: none;
 }
 
 a,
@@ -59,7 +79,6 @@ button.link:hover {
 .custom-image-link {
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--link-color);
   transition: transform ease-in-out 250ms;
 }
 
@@ -67,11 +86,10 @@ button.link:hover {
   transform: scale(1.2);
 }
 
-body {
-  background-color: var(--background-white);
-  font-size: var(--text-size-sm);
-  color: var(--text-primary);
-  overflow-x: hidden;
+.custom-image-link.disabled,
+.custom-image-link.disabled:hover {
+  pointer-events: none;
+  transform: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -127,7 +145,6 @@ body {
 
 .main__layout {
   max-width: 1280px;
-  min-height: 100vh;
   margin: auto;
   overflow: hidden;
   display: flex;
@@ -157,6 +174,7 @@ body {
 
 .row {
   display: flex;
+  flex-direction: row;
 }
 
 .column {
@@ -221,6 +239,7 @@ body {
   background: linear-gradient(to bottom, var(--background-color) 0%, #151515 100%);
   color: var(--text-color);
   overflow-x: clip;
+  min-height: 100vh;
 }
 
 .light-theme {
@@ -229,6 +248,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   overflow-x: clip;
+  height: 100%;
 }
 
 /* ANIMATIONS */

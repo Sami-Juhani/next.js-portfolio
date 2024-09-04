@@ -1,9 +1,6 @@
 "use client"
 
-import { ReactNode, useEffect, useState } from "react"
-import { PageScroller } from "@/components/PageScroller"
-import { StickyNav } from "@/components/StickyNav"
-import { FancyHero } from "@/components/FancyHero"
+import { useEffect } from "react"
 import { DownloadButton } from "@/components/Buttons"
 import { ArrowRight } from "@mui/icons-material"
 import useIcons from "@/hooks/useIcons"
@@ -13,38 +10,12 @@ import ReactAdvancedCert from "/public/images/me/react_advanced_cert.png"
 import NextjsCert from "/public/images/me/nextjs_cert.png"
 import DataAnalysisCert from "/public/images/me/data_analysis_cert.png"
 import DataVisualizationCert from "/public/images/me/data_visualization_cert.png"
-import styles from "./mainpage.module.css"
+import SelfImage from "/public/images/me/me_bnw.png"
+import DevImage from "/public/images/me/sjp_dev.png"
+import { TypeWriter } from "@/components/TypeWriter"
+import styles from "./portfolio.module.css"
 
-type MainLayoutProps = { dict: any; lang: string; blogs: ReactNode; projects: ReactNode }
-
-export function MainLayout({ dict, lang, blogs, projects }: MainLayoutProps) {
-  const [activePageIndex, setActivePageIndex] = useState(0)
-  const links = [
-    { name: dict.navigation.links.home, index: 0 },
-    { name: dict.navigation.links.blog, index: 1 },
-    { name: dict.navigation.links.projects, index: 2 },
-  ]
-
-  return (
-    <>
-      <StickyNav
-        links={links}
-        lang={lang}
-        dict={dict}
-        activePageIndex={activePageIndex}
-        setActivePageIndex={setActivePageIndex}
-      />
-      <main className="main__layout">
-        <PageScroller
-          activePageIndex={activePageIndex}
-          pages={[<PortfolioPage dict={dict} key={"portfolioPage"} />, blogs, projects]}
-        />
-      </main>
-    </>
-  )
-}
-
-function PortfolioPage({ dict }: { dict: any }) {
+export function PortfolioPage({ dict }: { dict: any }) {
   const {
     ReactIcon,
     AwsIcon,
@@ -82,12 +53,16 @@ function PortfolioPage({ dict }: { dict: any }) {
 
   return (
     <section className={styles.__layout}>
-      <FancyHero
-        prefix={dict.mainPage.typeWriter.prefix}
-        paragraph={dict.mainPage.typeWriter.paragraphs}
-        typeWriterOptions={{ startDelay: 20, typingDelay: 60 }}
-      />
+      <div className={styles.__image}>
+        <Image className={styles.devImage} src={DevImage} alt="Author" />
+        <Image src={SelfImage} alt="Author" priority />
+      </div>
       <div className={styles.__personalLayout}>
+        <TypeWriter
+          paragraph={dict.mainPage.typeWriter.paragraphs}
+          prefix={dict.mainPage.typeWriter.prefix}
+          userOptions={{ startDelay: 20, typingDelay: 60 }}
+        />
         <div className={`${styles.general} ${styles.personalSection}`}>
           <h2>{dict.mainPage.general.title}</h2>
           {dict.mainPage.general.body.map((str: string, i: number) => (

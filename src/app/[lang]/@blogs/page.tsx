@@ -1,23 +1,25 @@
-import Image from "next/image"
-import { formatDate } from "@/lib/formatDate"
-import { getBlog, getBlogs } from "@/db/blogs"
-import { getDictionary } from "@/dictionaries/dictionaries"
-import { notFound } from "next/navigation"
-import type { Blog } from "@/db/blogs"
-import { BlogElement, BlogElementType } from "./BlogElement"
-import { BlogCard } from "./BlogCard"
-import { BackToBlogsButton } from "./BackToBlogsButton"
-import { dafoe } from "@/lib/fonts"
-import useIcons from "@/hooks/useIcons"
-import styles from "./blog.module.css"
-import { Suspense } from "react"
+import type { Blog } from "@/actions/blogs"
+import { getBlog, getBlogs } from "@/actions/blogs"
 import { Skeleton, SkeletonImage, SkeletonList } from "@/components/Skeleton/Skeleton"
+import { SupportedLanguages } from "@/context/Settings"
+import { getDictionary } from "@/dictionaries/dictionaries"
+import { dafoe } from "@/lib/fonts"
+import { formatDate } from "@/lib/formatDate"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+import { Suspense } from "react"
+import { BackToBlogsButton } from "./BackToBlogsButton"
+import styles from "./blog.module.css"
+import { BlogCard } from "./BlogCard"
+import { BlogElement, BlogElementType } from "./BlogElement"
+import { BlogLikes } from "./BlogLikes"
+import { Comments } from "./Comments"
 
 export default async function BlogLayoutPage({
   params: { lang },
   searchParams,
 }: {
-  params: { lang: string }
+  params: { lang: SupportedLanguages }
   searchParams: any
 }) {
   const { blogId } = searchParams
@@ -25,12 +27,16 @@ export default async function BlogLayoutPage({
 
   return (
     <div className={styles.__layout}>
-      {blogId === undefined ? <BlogListPage dict={dict} lang={lang} /> : <BlogPage blogId={blogId} dict={dict} />}
+      {blogId === undefined ? (
+        <BlogListPage dict={dict} lang={lang} />
+      ) : (
+        <BlogPage blogId={blogId} dict={dict} lang={lang} />
+      )}
     </div>
   )
 }
 
-async function BlogListPage({ dict, lang }: { dict: any; lang: string }) {
+async function BlogListPage({ dict, lang }: { dict: any; lang: SupportedLanguages }) {
   const blogs = await getBlogs()
   if (blogs === null) return notFound()
 
@@ -48,7 +54,7 @@ async function BlogListPage({ dict, lang }: { dict: any; lang: string }) {
   )
 }
 
-function BlogPage({ blogId, dict, lang }: any) {
+function BlogPage({ blogId, dict, lang }: { blogId: string; dict: any; lang: SupportedLanguages }) {
   return (
     <Suspense fallback={<LoadingBlogPage />}>
       <Blog blogId={blogId} dict={dict} lang={lang} />
@@ -56,9 +62,7 @@ function BlogPage({ blogId, dict, lang }: any) {
   )
 }
 
-async function Blog({ blogId, lang, dict }: { blogId: string; lang: string; dict: any }) {
-  const { LikeIcon } = useIcons().action
-
+async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLanguages; dict: any }) {
   if (blogId === undefined) return notFound()
 
   const blog = await getBlog(blogId)
@@ -76,7 +80,7 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: string; dict
 
   return (
     <article className={styles.__articleLayout}>
-      <BackToBlogsButton lang={lang}>{dict.buttons.backToBlogs}</BackToBlogsButton>
+      <BackToBlogsButton>{dict.buttons.backToBlogs}</BackToBlogsButton>
       <div className={styles.articleHeader}>
         <Image
           src={localizedBlog.header.image.src}
@@ -89,10 +93,7 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: string; dict
           <h2>{localizedBlog.header.title}</h2>
           <div className={styles.__metaData}>
             <p className="margin-btm-large textSm">{date}</p>
-            <LikeIcon className="custom-image-link" style={{ fill: "#0072dd" }} />
-            <p className="textXs">
-              {dict.blogPage.likes} {localizedBlog.likes}
-            </p>
+            <BlogLikes dict={dict} blogId={localizedBlog._id} blogLikes={blog.likes} />
           </div>
         </div>
       </div>
@@ -111,6 +112,7 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: string; dict
         <p className={`${dafoe.className} textXl`}>Sami Paananen</p>
         <p className="bold"> Junior Fullstack Developer</p>
       </div>
+      <Comments lang={lang} dict={dict} blogId={localizedBlog._id} />
     </article>
   )
 }

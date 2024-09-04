@@ -1,0 +1,40 @@
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formGroup > input,
+.formGroup > textarea {
+  all: unset;
+  border: 0.05em solid ;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  resize: vertical;
+  overflow-wrap: break-word;
+}
+
+.formGroup > label {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.formGroup.error > input,
+.formGroup.error .react-select__control {
+  border-color: hsl(0, 100%, 70%);
+  color: hsl(0, 100%, 70%);
+  background: hsl(0, 100%, 95%);
+}
+
+.formGroup.error > label {
+  color: hsl(0, 100%, 70%);
+}
+
+.input:focus {
+  border-color: hsl(200, 100%, 50%);
+}
+
+.formGroup.error .msg {
+  font-size: 0.8em;
+  color: hsl(0, 100%, 70%);
+}

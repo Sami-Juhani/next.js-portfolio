@@ -5,8 +5,9 @@ import { formatDate } from "@/lib/formatDate"
 import Image from "next/image"
 import styles from "./blog.module.css"
 import Link from "next/link"
+import { SupportedLanguages } from "@/context/Settings"
 
-export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string; lang: string }) {
+export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string; lang: SupportedLanguages }) {
   const date = formatDate(blog.date, lang === "fi" ? "fi-FI" : "en-US", {
     day: "numeric",
     month: "numeric",
