@@ -55,7 +55,9 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
       const { updatedLikes } = await response.json()
 
       setNroOfLikes(updatedLikes)
-      setNotification({ text: dict.notification.blogLikeOk, type: "success", isOpen: true })
+
+      if (method == "POST") setNotification({ text: dict.notification.blogLikeOk, type: "success", isOpen: true })
+      else setNotification({ text: dict.notification.blogLikeDeleted, type: "success", isOpen: true })
     } catch (error: any) {
       setNotification({ text: error.message, type: "alert", isOpen: true })
     } finally {

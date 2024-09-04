@@ -90,6 +90,7 @@
     "blogLikeFailed": "Failed to add blog like, please try again later!",
     "googleSignInFailed": "Sign-in failed. Please try again.",
     "googleSignInOk": "Sign-in successful!",
-    "blogLikeOk": "Blog like updated succesfully!"
+    "blogLikeOk": "Blog like updated succesfully!",
+    "blogLikeDeleted": "Blog like removed."
   }
 }

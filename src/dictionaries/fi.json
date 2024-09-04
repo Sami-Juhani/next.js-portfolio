@@ -90,6 +90,7 @@
     "blogLikeFailed": "Tykkäyksen lisäyksessä tapahtui virhe, yritä myöhemmin uudelleen!",
     "googleSignInFailed": "Kirjautuminen epäonnistui. Yritä myöhemmin uudelleen.",
     "googleSignInOk": "Kirjautuminen onnistui.",
-    "blogLikeOk": "Tykkäys lisätty onnistuneesti!"
+    "blogLikeOk": "Tykkäys lisätty onnistuneesti!",
+    "blogLikeDeleted": "Tykkäys poistettu."
   }
 }
