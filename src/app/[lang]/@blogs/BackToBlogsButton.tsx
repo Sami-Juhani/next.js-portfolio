@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { ReactNode } from "react"
 import styles from "./blog.module.css"
 
-export function BackToBlogsButton({ children }: { lang: string; children: ReactNode }) {
+export function BackToBlogsButton({ children }: { children: ReactNode }) {
   const router = useRouter()
 
   function onClick() {
