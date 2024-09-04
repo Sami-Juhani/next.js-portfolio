@@ -5,6 +5,9 @@ frontend:
             commands:
                 - 'npm ci --cache .npm --prefer-offline'
                 - echo "DATABASE_URL=$DATABASE_URL" >> .env
+                - echo "GOOGLE_ID=$GOOGLE_ID" >> .env
+                - echo "GOOGLE_SECRET=$GOOGLE_SECRET" >> .env
+                - echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env
                 - 'npx prisma generate'
         build:
             commands:
