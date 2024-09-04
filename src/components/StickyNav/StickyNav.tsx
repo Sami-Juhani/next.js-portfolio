@@ -112,7 +112,6 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
             <Modal
               setIsOpen={setIsOpen}
               setActiveComponent={() => {}}
-              isFullWidth={false}
               Component={<SignInAndOut isSigningIn={isSigningIn} setIsOpen={setIsOpen} dict={dict} />}
             />
           ),

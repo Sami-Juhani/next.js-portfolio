@@ -23,13 +23,13 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
     setNotification({ text: "", type: "", isOpen: false })
 
     if (status === "unauthenticated") {
+      setNotification({ text: dict.notification.signInFailed, type: "warning", isOpen: true })
       setSignInOpen(true)
-      setNotification({ text: dict.notification.singInFailed, type: "warning", isOpen: true })
       return
     }
 
     if (!session?.user?.email) {
-      setNotification({ text: dict.notification.singInFailed, type: "warning", isOpen: true })
+      setNotification({ text: dict.notification.signInFailed, type: "warning", isOpen: true })
       return
     }
 
@@ -81,7 +81,6 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
             <Modal
               setIsOpen={setSignInOpen}
               setActiveComponent={() => {}}
-              isFullWidth={false}
               Component={<SignInAndOut isSigningIn={true} dict={dict} />}
             />
           ),

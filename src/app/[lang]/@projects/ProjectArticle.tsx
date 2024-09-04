@@ -126,7 +126,6 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
             <Modal
               setIsOpen={setIsOpen}
               setActiveComponent={setActiveComponent}
-              isFullWidth={true}
               Component={activeComponent}
             />
           ),
