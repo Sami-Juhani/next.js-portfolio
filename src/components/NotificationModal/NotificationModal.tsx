@@ -93,7 +93,7 @@ export function NotificationModal({
         onAnimationEnd={() => setIsClosing(false)}
       >
         <div className={cc(styles.modalBody, styles[type])}>
-          <div className="row gap-small">
+          <div className="row gap-small items-center">
             {type === "success" && (
               <SuccessIcon className={cc(styles.icon, styles[type], options.size && styles[options.size])} />
             )}

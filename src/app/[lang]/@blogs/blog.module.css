@@ -103,6 +103,8 @@
   font-size: var(--title-size-md);
   font-weight: 500;
   color: #000000;
+  margin: auto;
+  text-align: center;
 }
 
 .cardPreview {
