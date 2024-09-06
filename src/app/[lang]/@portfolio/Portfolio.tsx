@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { DownloadButton } from "@/components/Buttons"
-import { ArrowRight } from "@mui/icons-material"
-import useIcons from "@/hooks/useIcons"
-import Image from "next/image"
-import ReactBeginnerCert from "/public/images/me/react_beginner_cert.png"
-import ReactAdvancedCert from "/public/images/me/react_advanced_cert.png"
-import NextjsCert from "/public/images/me/nextjs_cert.png"
-import DataAnalysisCert from "/public/images/me/data_analysis_cert.png"
-import DataVisualizationCert from "/public/images/me/data_visualization_cert.png"
-import SelfImage from "/public/images/me/me_bnw.png"
-import DevImage from "/public/images/me/sjp_dev.png"
-import { TypeWriter } from "@/components/TypeWriter"
-import styles from "./portfolio.module.css"
+import { useEffect } from "react";
+import { DownloadButton } from "@/components/Buttons";
+import { ArrowRight } from "@mui/icons-material";
+import useIcons from "@/hooks/useIcons";
+import Image from "next/image";
+import ReactBeginnerCert from "/public/images/me/react_beginner_cert.png";
+import ReactAdvancedCert from "/public/images/me/react_advanced_cert.png";
+import NextjsCert from "/public/images/me/nextjs_cert.png";
+import DataAnalysisCert from "/public/images/me/data_analysis_cert.png";
+import DataVisualizationCert from "/public/images/me/data_visualization_cert.png";
+import SelfImage from "/public/images/me/me_bnw.png";
+import DevImage from "/public/images/me/sjp_dev.png";
+import { TypeWriter } from "@/components/TypeWriter";
+import styles from "./portfolio.module.css";
 
 export function PortfolioPage({ dict }: { dict: any }) {
   const {
@@ -29,41 +29,50 @@ export function PortfolioPage({ dict }: { dict: any }) {
     SqlIcon,
     TsIcon,
     PythonIcon,
-  } = useIcons().dev
+  } = useIcons().dev;
 
   useEffect(() => {
-    const targets = document.querySelectorAll(`.${styles.personalSection}`)
-    if (targets.length === 0) return
+    const targets = document.querySelectorAll(`.${styles.personalSection}`);
+    if (targets.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible)
+            entry.target.classList.add(styles.visible);
           }
-        })
+        });
       },
-      { threshold: 0.1 }
-    )
+      { threshold: 0.3 }
+    );
 
-    targets.forEach((target) => observer.observe(target))
+    targets.forEach((target) => observer.observe(target));
 
-    return () => targets.forEach((target) => observer.unobserve(target))
-  }, [])
+    return () => targets.forEach((target) => observer.unobserve(target));
+  }, []);
 
   return (
     <section className={styles.__layout}>
+      <TypeWriter
+        paragraph={dict.mainPage.typeWriter.paragraphs}
+        userOptions={{ startDelay: 20, typingDelay: 60 }}
+      />
       <div className={styles.__image}>
-        <Image className={styles.devImage} src={DevImage} alt="Author" />
-        <Image src={SelfImage} alt="Author" priority />
+        <Image
+          className={styles.devImage}
+          src={DevImage}
+          alt="Brand logo with text SJP"
+          priority
+        />
+        <Image
+          className={styles.authorImage}
+          src={SelfImage}
+          alt="Author"
+          priority
+        />
       </div>
       <div className={styles.__personalLayout}>
-        <TypeWriter
-          paragraph={dict.mainPage.typeWriter.paragraphs}
-          prefix={dict.mainPage.typeWriter.prefix}
-          userOptions={{ startDelay: 20, typingDelay: 60 }}
-        />
-        <div className={`${styles.general} ${styles.personalSection}`}>
+        <div className={`${styles.general}`}>
           <h2>{dict.mainPage.general.title}</h2>
           {dict.mainPage.general.body.map((str: string, i: number) => (
             <p key={i}>{str}</p>
@@ -74,7 +83,9 @@ export function PortfolioPage({ dict }: { dict: any }) {
             <h2>Portfolio</h2>
             <ArrowRight />
             <DownloadButton
-              href={"https://samipaan-bucket.s3.eu-north-1.amazonaws.com/nextjs-portfolio/assets/CV_Sami_Paananen.pdf"}
+              href={
+                "https://samipaan-bucket.s3.eu-north-1.amazonaws.com/nextjs-portfolio/assets/CV_Sami_Paananen.pdf"
+              }
             >
               {dict.mainPage.portfolio.downloadButton}
             </DownloadButton>
@@ -136,7 +147,11 @@ export function PortfolioPage({ dict }: { dict: any }) {
         <div className={styles.__certificates}>
           <h3>{dict.mainPage.portfolio.certificates}</h3>
           <div className={`${styles.certificates}`}>
-            <div className={`${`${styles.certItem} ${styles.personalSection}`} ${styles.personalSection}`}>
+            <div
+              className={`${`${styles.certItem} ${styles.personalSection}`} ${
+                styles.personalSection
+              }`}
+            >
               <p>React Beginner - 2 / 2024</p>
               <Image src={ReactBeginnerCert} alt="React beginner certificate" />
             </div>
@@ -154,11 +169,14 @@ export function PortfolioPage({ dict }: { dict: any }) {
             </div>
             <div className={`${styles.certItem} ${styles.personalSection}`}>
               <p>Data Visualization - 6 / 2024</p>
-              <Image src={DataVisualizationCert} alt="Data visualization certificate" />
+              <Image
+                src={DataVisualizationCert}
+                alt="Data visualization certificate"
+              />
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

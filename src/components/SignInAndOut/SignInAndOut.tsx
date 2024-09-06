@@ -24,7 +24,7 @@ export function SignInAndOut({
       if (result?.error) {
         setNotification({ text: dict.notification.googleSignInFailed, type: "warning", isOpen: true })
       } else {
-        setNotification({ text: dict.notification.googleSignInOk, type: "success", isOpen: true })
+        return
       }
     } catch (error) {
       setNotification({ text: dict.notification.unexpectedError, type: "alert", isOpen: true })

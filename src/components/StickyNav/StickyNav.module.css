@@ -151,12 +151,6 @@
   color: var(--text-color);
 }
 
-@media screen and (min-width: 540px) {
-  .__settingsIcon > svg {
-    font-size: 2rem;
-  }
-}
-
 .__settingsIcon::after {
   content: "";
   position: absolute;

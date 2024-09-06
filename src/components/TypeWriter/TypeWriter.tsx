@@ -12,7 +12,6 @@ export type TypeWriterOptions = {
 }
 
 export type TypeWriterProps = {
-  prefix: string
   paragraph: string | string[]
   userOptions: TypeWriterOptions
 }
@@ -24,7 +23,7 @@ const DEFAULT_TYPEWRITER_OPTIONS: TypeWriterOptions = {
   startDelay: 2000,
 }
 
-export function TypeWriter({ prefix, paragraph, userOptions }: TypeWriterProps) {
+export function TypeWriter({ paragraph, userOptions }: TypeWriterProps) {
   const options = useMemo(() => {
     return { ...DEFAULT_TYPEWRITER_OPTIONS, ...userOptions }
   }, [userOptions])
@@ -40,13 +39,13 @@ export function TypeWriter({ prefix, paragraph, userOptions }: TypeWriterProps) 
   useEffect(() => {
     const interval = setInterval(() => {
       if (writerRef.current == null) return
-      writerRef.current.style.display = writerRef.current.style.display === "inline-block" ? "none" : "inline-block"
+      writerRef.current.style.color = writerRef.current.style.color === "rgb(124, 124, 124)" ? "transparent" : "rgb(124, 124, 124)"
     }, 500)
 
     const timeout = setTimeout(
       () => {
         if (writerRef.current == null) return
-        writerRef.current.style.display = "inline-block"
+        writerRef.current.style.color = "rgb(124, 124, 124)"
 
         if (charIndex < chars.length) {
           setDisplayChar((prevChars) => [...prevChars, chars[charIndex]])
@@ -75,7 +74,6 @@ export function TypeWriter({ prefix, paragraph, userOptions }: TypeWriterProps) 
 
   return (
     <p className={`${specialElite.className} ${styles.typeWriterText}`}>
-      <span className={`${specialElite.className} ${styles.prefix}`}>{`${prefix} `}</span>
       {displayChar.join("")}
       <span className={styles.cursor} ref={writerRef}>
         &#9612;
