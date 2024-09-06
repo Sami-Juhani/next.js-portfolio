@@ -19,8 +19,7 @@
       "generalInfo": "I'm a third-year information technology student at Metropolia. I'm passionate about coding, and when I set myself a goal, I'm determined to achieve it. I'm a quick learner who easily picks up new technologies, ensuring I stay adaptable in the changing field of software development. I've always enjoyed creating things from scratch, which is why I find coding so satisfying. I'm punctual, self-driven, and hardworking, but I also enjoy working as part of a team. In my free time, I like to engage in outdoor activities and exercise."
     },
     "typeWriter": {
-      "prefix": "Minä",
-      "paragraphs": ["olen fullstack ohjelmoija", "pilvipalvelu pohjaisten ratkaisujen kannalla.", "kolmannen vuoden IT insinööri opiskelija"]
+      "paragraphs": ["Tervetuloa...", "Minä olen fullstack ohjelmoija", "Minä olen UI/UX suunnitelija"]
     },
     "general": {
       "title": "Kuka?",
@@ -63,7 +62,7 @@
   "signInAndOutPage": {
     "signIn": "Kirjaudu sisään",
     "notice": "Huomatus!",
-    "noticeText": "Lisätäksesi tykkäyksiä ja kommetteja joudumme valtuuttamaan tietosi googlen avulla. Sähköposti osoitteesi tallennetaan tietokantaan turvallisesti, jotta voimme tallenttaan tykkäyksesi ja kommenttisi tässä sovelluksessa. Voit kuitenkin aina poistaa profiilisi, jonka jälkeen kaikki tietosi poistetaan myös tietokannasta.",
+    "noticeText": "Lisätäksesi tykkäyksiä ja kommetteja joudumme valtuuttamaan tietosi googlen avulla. Sähköposti osoitteesi tallennetaan tietokantaan turvallisesti, jotta voimme tallentaa tykkäyksesi ja kommenttisi tässä sovelluksessa. Voit kuitenkin aina poistaa profiilisi, jonka jälkeen kaikki tietosi poistetaan myös tietokannasta.",
     "noticeTextConfirmation": "Painalla 'Kirjaudu sisään Google:lla' hyväksyt käyttöehtomme ja kuinka käsittelemme tietojasi.",
     "signInWithGoogle": "Kirjaudu sisään Google:lla",
     "signOut": "Kirjaudu ulos?"

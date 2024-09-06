@@ -19,8 +19,7 @@
       "generalInfo": "I'm a third-year information technology student at Metropolia. I'm passionate about coding, and when I set myself a goal, I'm determined to achieve it. I'm a quick learner who easily picks up new technologies, ensuring I stay adaptable in the changing field of software development. I've always enjoyed creating things from scratch, which is why I find coding so satisfying. I'm punctual, self-driven, and hardworking, but I also enjoy working as part of a team. In my free time, I like to engage in outdoor activities and exercise."
     },
     "typeWriter": {
-      "prefix": "I'm",
-      "paragraphs": ["a fullstack developer", "UI/UX designer", "into cloud driven solutions"]
+      "paragraphs": ["Welcome..." , "I'm a fullstack developer", "I'm UI/UX designer", "I'm a cloud enthusiast"]
     },
     "general": {
       "title": "Who am I?",
