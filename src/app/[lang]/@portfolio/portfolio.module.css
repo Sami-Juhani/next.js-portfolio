@@ -6,6 +6,9 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: #e8e8e8;
+  border-inline: 20px solid var(--brand-color-secondary-light);
+  border-radius: 100vw;
 }
 
 .__image > img {
@@ -96,7 +99,7 @@
 }
 
 .__skillLayout {
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -138,7 +141,7 @@
 }
 
 .__certificates {
-  margin-top: 5rem;
+  margin-top: 2rem;
   position: relative;
   display: flex;
   flex-direction: column;
