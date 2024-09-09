@@ -27,8 +27,8 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
           className={styles.cardImage}
           src={blog.header.image.src}
           alt={blog.header.image.alt}
-          width={blog.header.image.width}
-          height={blog.header.image.height}
+          width={175}
+          height={175}
           priority
         />
         <Image

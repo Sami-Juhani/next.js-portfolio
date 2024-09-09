@@ -82,7 +82,7 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLan
     <article className={styles.__articleLayout}>
       <div className={styles.articleHeader}>
         <div className="row space-between items-center">
-          <p className="textSm">{date}</p>
+          <p className={styles.date}>{date}</p>
           <BackToBlogsButton>{dict.buttons.backToBlogs}</BackToBlogsButton>
         </div>
         <Image

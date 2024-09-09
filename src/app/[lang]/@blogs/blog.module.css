@@ -28,16 +28,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: .2rem;
   gap: 0.2rem;
   background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px hsl(from var(--text-color) h s l / 0.5);
   transition: all ease-in-out 250ms;
 }
 
 .card:hover,
 .card:focus {
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 30px hsl(from var(--text-color) h s l / 1);
+  background-color: white !important;
+}
+
+.card:hover > .cardLeft > .cardImage {
+  transform: translate(-10px, -25px) scale(1.1);
+}
+
+.card:hover > .cardLeft > .cardBlurredImage {
+  opacity: 1;
+  transform: scale(1);
 }
 
 @media screen and (min-width: 540px) {
@@ -45,6 +56,11 @@
     flex-direction: row;
     gap: 1rem;
   }
+}
+
+.date {
+  font-size: var(--text-size-sm);
+  color: var(--clr-light-grey);
 }
 
 .cardLeft {
@@ -66,19 +82,15 @@
 
 .cardImage {
   position: absolute;
-  top: -15px;
   z-index: 1;
-}
-
-@media screen and (min-width: 540px) {
-  .cardImage {
-    top: -15px;
-    left: 5px;
-  }
+  transition: all ease-in-out .5s;
 }
 
 .cardBlurredImage {
   filter: blur(1rem);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all ease-in-out .5s;
 }
 
 .cardRight {
@@ -163,6 +175,11 @@
   display: flex;
   gap: 1rem;
   flex-direction: column;
+}
+
+.articleSection > h3 {
+  font-size: var(--text-size-lg);
+  color: var(--brand-color-secondary-light);
 }
 
 .articleSection > p {
