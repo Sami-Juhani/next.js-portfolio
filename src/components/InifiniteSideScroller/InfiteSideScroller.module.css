@@ -1,0 +1,77 @@
+.slider__inner {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+.slider__inner:hover {
+    animation-play-state: paused;
+}
+
+.slider__outer {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  height: 360px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.slider__outer::before,
+.slider__outer::after {
+  background: linear-gradient(to right, var(--background-color) 0%, hsl(from var(--background-color) h s l / 0));
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
+}
+
+.slider__outer::before {
+  top: 0;
+  left: 0;
+}
+
+.slider__outer::after {
+  top: 0;
+  right: 0;
+  transform: rotateZ(180deg);
+}
+
+.certItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  perspective: 100px;
+}
+
+.certItem > img {
+  border-radius: 5px;
+  transition: transform 1s;
+}
+
+.certItem > img:hover {
+  transform: translateZ(20px);
+}
+
+.certItem > p {
+  position: absolute;
+  top: -35px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.certItem:hover > p {
+  opacity: 1;
+}

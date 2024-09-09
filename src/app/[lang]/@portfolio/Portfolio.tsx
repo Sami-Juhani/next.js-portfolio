@@ -7,14 +7,10 @@ import { ArrowRight } from "@mui/icons-material"
 import { TypeWriter } from "@/components/TypeWriter"
 import useIcons from "@/hooks/useIcons"
 import Image from "next/image"
-import ReactBeginnerCert from "/public/images/me/react_beginner_cert.png"
-import ReactAdvancedCert from "/public/images/me/react_advanced_cert.png"
-import NextjsCert from "/public/images/me/nextjs_cert.png"
-import DataAnalysisCert from "/public/images/me/data_analysis_cert.png"
-import DataVisualizationCert from "/public/images/me/data_visualization_cert.png"
 import SelfImage from "/public/images/me/me_bnw.png"
 import DevImage from "/public/images/me/sjp_dev.png"
 import styles from "./portfolio.module.css"
+import { InfiniteSideScroller } from "@/components/InifiniteSideScroller/InfiniteSideScroller"
 
 export function PortfolioPage({ dict }: { dict: any }) {
   const { darkMode } = useSettings()
@@ -137,26 +133,9 @@ export function PortfolioPage({ dict }: { dict: any }) {
         <div className={styles.__certificates}>
           <h3>{dict.mainPage.portfolio.certificates}</h3>
           <div className={`${styles.certificates}`}>
-            <div className={`${`${styles.certItem} ${styles.personalSection}`} ${styles.personalSection}`}>
-              <p>React Beginner - 2 / 2024</p>
-              <Image src={ReactBeginnerCert} alt="React beginner certificate" />
-            </div>
-            <div className={`${styles.certItem} ${styles.personalSection}`}>
-              <p>React Advanced - 4 / 2024</p>
-              <Image src={ReactAdvancedCert} alt="React Advanced certificate" />
-            </div>
-            <div className={`${styles.certItem} ${styles.personalSection}`}>
-              <p>Next.js - 6 / 2024</p>
-              <Image src={NextjsCert} alt="Nextjs certificate" />
-            </div>
-            <div className={`${styles.certItem} ${styles.personalSection}`}>
-              <p>Data Analysis with Python - 6 / 2024</p>
-              <Image src={DataAnalysisCert} alt="Data analysis certificate" />
-            </div>
-            <div className={`${styles.certItem} ${styles.personalSection}`}>
-              <p>Data Visualization - 6 / 2024</p>
-              <Image src={DataVisualizationCert} alt="Data visualization certificate" />
-            </div>
+            <InfiniteSideScroller  />
+            
+            
           </div>
         </div>
       </div>

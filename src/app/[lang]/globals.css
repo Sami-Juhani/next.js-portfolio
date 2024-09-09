@@ -10,9 +10,9 @@
 
 :root {
   --text-size-xs: 0.8rem;
-  --text-size-sm: 1rem;
-  --text-size-md: 1.25rem;
-  --text-size-lg: 1.5rem;
+  --text-size-sm: 18px;
+  --text-size-md: 22px;
+  --text-size-lg: 28px;
   --text-size-xl: 1.75rem;
   --text-size-xxl: 2rem;
   --title-size-sm: 1.25rem;
@@ -29,8 +29,8 @@
   --close-button-xl: 1.75rem;
 
   /* COLORS */
-  --background-white: #fbfbfb;
-  --background-black: #121212;
+  --background-white: rgb(251, 251, 251);
+  --background-black: rgb(5, 5, 5);
   --background-black-light: #0f0f0f;
   --text-primary: #0a0a0a;
   --text-primary-light: #0a0a0abe;
@@ -237,9 +237,9 @@ button.link:hover {
 /* THEMES */
 
 .dark-theme {
-  --background-color: #000000;
+  --background-color: var(--background-black);
   --text-color: var(--text-secondary);
-  background: linear-gradient(to bottom, var(--background-color) 0%, #151515 100%);
+  background: var(--background-color);
   color: var(--text-color);
   overflow-x: clip;
   min-height: 100vh;
