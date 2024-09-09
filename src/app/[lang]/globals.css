@@ -9,24 +9,16 @@
 }
 
 :root {
-  --text-size-xs: 0.8rem;
+  --text-size-xs: 14px;
   --text-size-sm: 18px;
   --text-size-md: 22px;
   --text-size-lg: 28px;
-  --text-size-xl: 1.75rem;
-  --text-size-xxl: 2rem;
-  --title-size-sm: 1.25rem;
-  --title-size-md: 1.5rem;
-  --title-size-lg: 1.75rem;
-  --title-size-xl: 2rem;
+  --text-size-xl: 34px;
+  --text-size-xxl: 40px;
   --icon-size-sm: 1.55rem;
   --icon-size-md: 1.85rem;
   --icon-size-lg: 2.1rem;
   --icon-size-xl: 2.35rem;
-  --close-button-sm: 1rem;
-  --close-button-md: 1.25rem;
-  --close-button-lg: 1.5rem;
-  --close-button-xl: 1.75rem;
 
   /* COLORS */
   --background-white: rgb(251, 251, 251);
@@ -35,10 +27,10 @@
   --text-primary: #0a0a0a;
   --text-primary-light: #0a0a0abe;
   --text-secondary: #fafafa;
-  --brand-color-primary: #962BFA;
-  --brand-color-secondary: #2E4AFF;
-  --brand-color-secondary-light: #2e4aff5b;
-  --brand-color-tertiary: #FA2AB9;
+  --brand-color-primary: #962bfa;
+  --brand-color-secondary: #2e4aff;
+  --brand-color-secondary-light: #8695f8;
+  --brand-color-tertiary: #fa2ab9;
   --link-color: #0072dd;
   --clr-grey: #2c2c2c;
 }
@@ -49,6 +41,10 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   height: 100vh;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 button {

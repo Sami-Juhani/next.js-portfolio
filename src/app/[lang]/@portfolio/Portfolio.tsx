@@ -41,7 +41,7 @@ export function PortfolioPage({ dict }: { dict: any }) {
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: 0 }
     )
 
     targets.forEach((target) => observer.observe(target))
@@ -50,7 +50,7 @@ export function PortfolioPage({ dict }: { dict: any }) {
   }, [])
 
   return (
-    <section className={styles.__layout}>
+    <div className={styles.__layout}>
       <TypeWriter paragraph={dict.mainPage.typeWriter.paragraphs} userOptions={{ startDelay: 20, typingDelay: 60 }} />
       <div
         className={styles.__image}
@@ -139,6 +139,6 @@ export function PortfolioPage({ dict }: { dict: any }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

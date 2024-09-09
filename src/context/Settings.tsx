@@ -28,7 +28,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
   return (
     <Context.Provider value={{ language, setLanguage, darkMode, setDarkMode }}>
-      <div className={cc(darkMode ? "dark-theme" : "light-theme")}>{children}</div>
+      <main className={cc(darkMode ? "dark-theme" : "light-theme")}>{children}</main>
     </Context.Provider>
   )
 }

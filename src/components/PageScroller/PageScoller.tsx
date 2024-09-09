@@ -15,18 +15,18 @@ export function PageScroller({ pages, activePageIndex }: MediaScrollerProps) {
   scrollerRef.current?.style.setProperty("filter", "blur(0.2rem)")
 
   return (
-    <section className={styles.pageContainer}>
+    <div className={styles.scroller__outer}>
       <div
-        className={styles.pageScroller}
+        className={styles.scroller__inner}
         ref={scrollerRef}
         onTransitionEnd={() => scrollerRef.current?.style.setProperty("filter", "unset")}
       >
         {pages.map((item, index) => (
-          <div style={{ width: "100%" }} key={index}>
-            <div style={{ width: "100%", display: activePageIndex === index ? "block" : "none" }}>{item}</div>
-          </div>
+          <section key={index}>
+            <div style={{display: activePageIndex === index ? "block" : "none" }}>{item}</div>
+          </section>
         ))}
       </div>
-    </section>
+    </div>
   )
 }

@@ -73,9 +73,7 @@
   min-width: 100px;
   border-radius: 4px;
   padding: 0.5rem 1.5rem 0.5rem 0.4rem;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   animation: pop-in 250ms forwards;
   scale: 0;
 }
@@ -145,16 +143,16 @@
   font-size: var(--icon-size-xl) !important;
 }
 button > svg.sm {
-  font-size: var(--close-button-sm) !important;
+  font-size: var(--text-size-sm) !important;
 }
 button > svg.md {
-  font-size: var(--close-button-md) !important;
+  font-size: var(--text-size-md) !important;
 }
 button > svg.lg {
-  font-size: var(--close-button-lg) !important;
+  font-size: var(--text-size-lg) !important;
 }
 button > svg.xl {
-  font-size: var(--close-button-xl) !important;
+  font-size: var(--text-size-xl) !important;
 }
 /* COLOURS */
 .icon.success {

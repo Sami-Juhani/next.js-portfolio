@@ -8,7 +8,7 @@ import styles from "./InfiteSideScroller.module.css"
 
 export function InfiniteSideScroller() {
   return (
-    <section className={styles.slider__outer}>
+    <div className={styles.slider__outer}>
       <div className={styles.slider__inner}>
         <div className={`${styles.certItem}`}>
           <p>React Beginner - 2 / 2024</p>
@@ -51,7 +51,6 @@ export function InfiniteSideScroller() {
           <Image src={DataVisualizationCert} alt="Data visualization certificate" width={350} height={250} />
         </div>
       </div>
-      
-    </section>
+    </div>
   )
 }

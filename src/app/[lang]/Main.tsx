@@ -23,9 +23,9 @@ export function Main({ dict, lang, blogs, projects, portfolio }: MainLayoutProps
         activePageIndex={activePageIndex}
         setActivePageIndex={setActivePageIndex}
       />
-      <main className="main__layout">
+      <div className="main__layout">
         <PageScroller activePageIndex={activePageIndex} pages={[portfolio, blogs, projects]} />
-      </main>
+      </div>
     </>
   )
 }

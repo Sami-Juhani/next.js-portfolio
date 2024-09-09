@@ -15,10 +15,10 @@ export default async function ProjectsPage({ params: { lang } }: { params: { lan
   })
 
   return (
-    <section className={styles.__layout}>
+    <div className={styles.__layout}>
       {filteredProjects.map((project) => (
         <ProjectArticle key={project._id} project={project} dict={dict} />
       ))}
-    </section>
+    </div>
   )
 }

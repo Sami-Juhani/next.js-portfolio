@@ -80,19 +80,26 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLan
 
   return (
     <article className={styles.__articleLayout}>
-      <BackToBlogsButton>{dict.buttons.backToBlogs}</BackToBlogsButton>
       <div className={styles.articleHeader}>
+        <div className="row space-between items-center">
+          <p className="textSm">{date}</p>
+          <BackToBlogsButton>{dict.buttons.backToBlogs}</BackToBlogsButton>
+        </div>
         <Image
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
           src={localizedBlog.header.image.src}
-          width={localizedBlog.header.image.width}
-          height={localizedBlog.header.image.height}
           alt={localizedBlog.header.image.alt}
           priority={localizedBlog.header.image.priority}
+          width={500}
+          height={300}
         />
         <div className={styles.headerInfo}>
           <h2>{localizedBlog.header.title}</h2>
           <div className={styles.__metaData}>
-            <p className="margin-btm-large textSm">{date}</p>
             <BlogLikes dict={dict} blogId={localizedBlog._id} blogLikes={blog.likes} />
           </div>
         </div>
