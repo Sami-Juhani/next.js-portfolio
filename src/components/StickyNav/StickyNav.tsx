@@ -9,7 +9,7 @@ import { dafoe } from "@/lib/fonts"
 import CircularProgress from "@mui/material/CircularProgress"
 import { FI, GB } from "country-flag-icons/react/3x2"
 import { usePathname, useRouter } from "next/navigation"
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
+import { Dispatch, ReactNode, RefObject, SetStateAction, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Modal } from "../Modal"
 import { SignInAndOut } from "../SignInAndOut"
@@ -29,13 +29,16 @@ export type StickyNavProps = {
   dict: any
 }
 
+type DropDownType = "langSettings" | "userDropDown" | null
+
 export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: StickyNavProps) {
-  const [langSettingsOpen, setLangSettingsOpen] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const [openDropDown, setOpenDropDown] = useState<DropDownType>(null)
+  const [isSignInOpen, setIsSignInOpen] = useState(false)
   const [isSigningIn, setIsSigningIn] = useState<boolean>(false)
   const { darkMode, setDarkMode } = useSettings()
   const { data: session, status } = useNextAuth()
   const { Globe, DarkMode, LoginIcon, LogoutIcon } = useIcons().action
+  const { User } = useIcons().status
   const modalTarget = usePortal("modal-target")
 
   return (
@@ -68,51 +71,41 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
           <Globe
             style={{ position: "relative" }}
             onMouseDown={() => {
-              setLangSettingsOpen((prevOpen) => !prevOpen)
+              setOpenDropDown("langSettings")
             }}
           />
-          {
-            <LanguageDropdown
-              dict={dict}
-              langSettingsOpen={langSettingsOpen}
-              setLangSettingsOpen={setLangSettingsOpen}
-            />
-          }
+          {<LanguageDropdown dict={dict} isOpen={openDropDown === "langSettings"} setOpenDropDown={setOpenDropDown} />}
         </div>
-        <div className="row items-center gap-small">
-          <div className={styles.__settingsIcon}>
-            {status === "unauthenticated" && (
-              <LoginIcon
-                onClick={() => {
-                  if (status === "unauthenticated") {
-                    setIsSigningIn(true)
-                    setIsOpen(true)
-                  }
-                }}
-              />
-            )}
-            {status === "loading" && <CircularProgress color="inherit" size={30} />}
-            {status === "authenticated" && (
-              <LogoutIcon
-                onClick={() => {
-                  if (status === "authenticated") {
-                    setIsSigningIn(false)
-                    setIsOpen(true)
-                  }
-                }}
-              />
-            )}
-          </div>
-          {session?.user && <p className="textSm">{session?.user?.name?.split(" ")[0]}</p>}
+
+        <div className={styles.__settingsIcon}>
+          {status === "loading" ? (
+            <CircularProgress color="inherit" size={30} />
+          ) : (
+            <User
+              onMouseDown={() => {
+                setOpenDropDown("userDropDown")
+              }}
+            />
+          )}
+          <UserDropDown
+            dict={dict}
+            isOpen={openDropDown === "userDropDown"}
+            userName={session?.user?.name?.split(" ")[0]}
+            setOpenDropDown={setOpenDropDown}
+            setIsSignInOpen={setIsSignInOpen}
+            setIsUserSigningIn={setIsSigningIn}
+            status={status}
+          />
         </div>
       </div>
+
       {modalTarget != undefined &&
         createPortal(
-          isOpen && (
+          isSignInOpen && (
             <Modal
-              setIsOpen={setIsOpen}
+              setIsOpen={setIsSignInOpen}
               setActiveComponent={() => {}}
-              Component={<SignInAndOut isSigningIn={isSigningIn} setIsOpen={setIsOpen} dict={dict} />}
+              Component={<SignInAndOut isSigningIn={isSigningIn} setIsOpen={setIsSignInOpen} dict={dict} />}
             />
           ),
           modalTarget
@@ -121,25 +114,18 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
   )
 }
 
-function LanguageDropdown({
-  dict,
-  langSettingsOpen,
-  setLangSettingsOpen,
-}: {
-  dict: any
-  langSettingsOpen: boolean
-  setLangSettingsOpen: Dispatch<SetStateAction<boolean>>
-}) {
-  const { Checked } = useIcons().status
-  const { language, setLanguage } = useSettings()
-  const pathname = usePathname()
-  const router = useRouter()
-  const dropdownRef = useRef<HTMLDivElement>(null)
+type DropDownProps = {
+  isOpen: boolean
+  setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
+  children: ReactNode
+  dropDownRef: RefObject<HTMLDivElement>
+}
 
+function DropDown({ isOpen, setOpenDropDown, children, dropDownRef }: DropDownProps) {
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setLangSettingsOpen(false)
+      if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {
+        setOpenDropDown(null)
       }
     }
 
@@ -148,6 +134,28 @@ function LanguageDropdown({
     return () => document.removeEventListener("mousedown", handleClickOutside)
   })
 
+  return (
+    <div className={`${styles.__dropdown}  ${cc(isOpen && styles.open)}`} ref={dropDownRef}>
+      {children}
+    </div>
+  )
+}
+
+function LanguageDropdown({
+  dict,
+  isOpen,
+  setOpenDropDown,
+}: {
+  dict: any
+  isOpen: boolean
+  setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
+}) {
+  const langSettingsRef = useRef<HTMLDivElement>(null)
+  const { Checked } = useIcons().status
+  const { language, setLanguage } = useSettings()
+  const pathname = usePathname()
+  const router = useRouter()
+
   function onLanguageChange(lang: SupportedLanguages) {
     setLanguage(lang)
     const newPath = pathname.replace(language as string, lang as string)
@@ -155,21 +163,81 @@ function LanguageDropdown({
   }
 
   return (
-    <div className={`${styles.__languageDropdown}  ${cc(langSettingsOpen && styles.open)}`} ref={dropdownRef}>
+    <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown} dropDownRef={langSettingsRef}>
       <button onClick={() => onLanguageChange("en")}>
         <div className="row gap-medium items-center">
           <GB style={{ width: "20px" }} />
           <p className="row gap-medium">{dict.languages.english}</p>
         </div>
-        <Checked style={language === "en" ? { visibility: "visible" } : { visibility: "hidden" }} />
+        <Checked
+          style={
+            language === "en" ? { visibility: "visible", fill: "#00ff00" } : { visibility: "hidden", fill: "#00ff00" }
+          }
+        />
       </button>
       <button onClick={() => onLanguageChange("fi")}>
         <div className="row gap-medium items-center">
           <FI style={{ width: "20px" }} />
           <p className="row gap-medium">{dict.languages.finnish}</p>
         </div>
-        <Checked style={language === "fi" ? { visibility: "visible" } : { visibility: "hidden" }} />
+        <Checked
+          style={
+            language === "fi" ? { visibility: "visible", fill: "#00ff00" } : { visibility: "hidden", fill: "#00ff00" }
+          }
+        />
       </button>
-    </div>
+    </DropDown>
+  )
+}
+
+type UserDropDownProps = {
+  dict: any
+  isOpen: boolean
+  userName: string | undefined
+  setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
+  setIsUserSigningIn: Dispatch<SetStateAction<boolean>>
+  setIsSignInOpen: Dispatch<SetStateAction<boolean>>
+  status: "authenticated" | "unauthenticated" | "loading"
+}
+
+function UserDropDown({
+  dict,
+  isOpen,
+  userName,
+  setOpenDropDown,
+  setIsUserSigningIn,
+  setIsSignInOpen,
+  status,
+}: UserDropDownProps) {
+  const { WarningIcon } = useIcons().status
+  const userDropDownRef = useRef<HTMLDivElement>(null)
+
+  return (
+    <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown} dropDownRef={userDropDownRef}>
+      <p className={styles.userName}>
+        Welcome, <span>{userName !== undefined && userName}!</span>
+      </p>
+      <button
+        onClick={() => {
+          /* SIGN OUT */
+          if (status === "authenticated") {
+            setIsSignInOpen(true)
+            setIsUserSigningIn(false)
+          } else {
+            /* SIGN IN */
+            setIsSignInOpen(true)
+            setIsUserSigningIn(true)
+          }
+        }}
+      >
+        <div className="row gap-medium items-center">{status === "authenticated" ? "Sign out" : "Sign in"} </div>
+      </button>
+      {status === "authenticated" && (
+        <button onClick={() => {}}>
+          <p>Delete Account</p>
+          <WarningIcon style={{ fill: "#bb1212" }} />
+        </button>
+      )}
+    </DropDown>
   )
 }
