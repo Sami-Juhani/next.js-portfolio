@@ -104,16 +104,16 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLan
           </div>
         </div>
       </div>
-      {localizedBlog.sections.map((section, _i) => (
+      {localizedBlog.sections.map((section) => (
         <section key={section.title} className={styles.articleSection}>
           <h3>{section.title}</h3>
           {section.elements.map((element: BlogElementType, i: number) => (
-            <BlogElement key={i} element={element} />
+            <BlogElement key={crypto.randomUUID()} element={element} />
           ))}
         </section>
       ))}
-      {localizedBlog.signature.map((element, i) => (
-        <BlogElement key={i} element={element} />
+      {localizedBlog.signature.map((element) => (
+        <BlogElement key={crypto.randomUUID()} element={element} />
       ))}
       <div className="column">
         <p className={`${dafoe.className} textXl`}>Sami Paananen</p>
