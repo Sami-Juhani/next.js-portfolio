@@ -9,7 +9,7 @@ import { dafoe } from "@/lib/fonts"
 import CircularProgress from "@mui/material/CircularProgress"
 import { FI, GB } from "country-flag-icons/react/3x2"
 import { usePathname, useRouter } from "next/navigation"
-import { Dispatch, ReactNode, RefObject, SetStateAction, useEffect, useRef, useState } from "react"
+import { Dispatch, RefObject, SetStateAction, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { Modal } from "../Modal"
 import { SignInAndOut } from "../SignInAndOut"
@@ -35,11 +35,34 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
   const [openDropDown, setOpenDropDown] = useState<DropDownType>(null)
   const [isSignInOpen, setIsSignInOpen] = useState(false)
   const [isSigningIn, setIsSigningIn] = useState<boolean>(false)
+  const langDropDownRef = useRef<HTMLDivElement>(null)
+  const userDropDownRef = useRef<HTMLDivElement>(null)
   const { darkMode, setDarkMode } = useSettings()
   const { data: session, status } = useNextAuth()
-  const { Globe, DarkMode, LoginIcon, LogoutIcon } = useIcons().action
+  const { Globe, DarkMode } = useIcons().action
   const { User } = useIcons().status
   const modalTarget = usePortal("modal-target")
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      console.log(e.target)
+      if (
+        /* UseDropDown is Open & Clicked outside */
+        (openDropDown === "userDropDown" &&
+          userDropDownRef.current &&
+          !userDropDownRef.current.contains(e.target as Node)) ||
+        /* LanguageDropdown is Open & Clicked outside */
+        (openDropDown === "langSettings" &&
+          langDropDownRef.current &&
+          !langDropDownRef.current.contains(e.target as Node))
+      ) {
+        setOpenDropDown(null)
+      }
+    }
+    if (userDropDownRef.current) document.addEventListener("mousedown", handleClickOutside)
+
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  })
 
   return (
     <header className={cc(styles.__navLayout, darkMode && styles.dark)}>
@@ -69,12 +92,16 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
         </button>
         <div className={styles.__settingsIcon}>
           <Globe
-            style={{ position: "relative" }}
             onMouseDown={() => {
               setOpenDropDown("langSettings")
             }}
           />
-          {<LanguageDropdown dict={dict} isOpen={openDropDown === "langSettings"} setOpenDropDown={setOpenDropDown} />}
+          <LanguageDropdown
+            dict={dict}
+            isOpen={openDropDown === "langSettings"}
+            setOpenDropDown={setOpenDropDown}
+            langDropDownRef={langDropDownRef}
+          />
         </div>
 
         <div className={styles.__settingsIcon}>
@@ -95,6 +122,7 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
             setIsSignInOpen={setIsSignInOpen}
             setIsUserSigningIn={setIsSigningIn}
             status={status}
+            userDropDownRef={userDropDownRef}
           />
         </div>
       </div>
@@ -114,43 +142,14 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
   )
 }
 
-type DropDownProps = {
-  isOpen: boolean
-  setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
-  children: ReactNode
-  dropDownRef: RefObject<HTMLDivElement>
-}
-
-function DropDown({ isOpen, setOpenDropDown, children, dropDownRef }: DropDownProps) {
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {
-        setOpenDropDown(null)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  })
-
-  return (
-    <div className={`${styles.__dropdown}  ${cc(isOpen && styles.open)}`} ref={dropDownRef}>
-      {children}
-    </div>
-  )
-}
-
-function LanguageDropdown({
-  dict,
-  isOpen,
-  setOpenDropDown,
-}: {
+type LanguageDropDownProps = {
   dict: any
   isOpen: boolean
   setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
-}) {
-  const langSettingsRef = useRef<HTMLDivElement>(null)
+  langDropDownRef: RefObject<HTMLDivElement>
+}
+
+function LanguageDropdown({ dict, isOpen, setOpenDropDown, langDropDownRef }: LanguageDropDownProps) {
   const { Checked } = useIcons().status
   const { language, setLanguage } = useSettings()
   const pathname = usePathname()
@@ -163,7 +162,7 @@ function LanguageDropdown({
   }
 
   return (
-    <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown} dropDownRef={langSettingsRef}>
+    <div className={`${styles.__dropdown}  ${cc(isOpen && styles.open)}`} ref={langDropDownRef}>
       <button onClick={() => onLanguageChange("en")}>
         <div className="row gap-medium items-center">
           <GB style={{ width: "20px" }} />
@@ -186,7 +185,7 @@ function LanguageDropdown({
           }
         />
       </button>
-    </DropDown>
+    </div>
   )
 }
 
@@ -194,6 +193,7 @@ type UserDropDownProps = {
   dict: any
   isOpen: boolean
   userName: string | undefined
+  userDropDownRef: RefObject<HTMLDivElement>
   setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
   setIsUserSigningIn: Dispatch<SetStateAction<boolean>>
   setIsSignInOpen: Dispatch<SetStateAction<boolean>>
@@ -204,16 +204,16 @@ function UserDropDown({
   dict,
   isOpen,
   userName,
+  userDropDownRef,
   setOpenDropDown,
   setIsUserSigningIn,
   setIsSignInOpen,
   status,
 }: UserDropDownProps) {
   const { WarningIcon } = useIcons().status
-  const userDropDownRef = useRef<HTMLDivElement>(null)
 
   return (
-    <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown} dropDownRef={userDropDownRef}>
+    <div className={`${styles.__dropdown}  ${cc(isOpen && styles.open)}`} ref={userDropDownRef}>
       <p className={styles.userName}>
         Welcome, <span>{userName !== undefined && userName}!</span>
       </p>
@@ -238,6 +238,6 @@ function UserDropDown({
           <WarningIcon style={{ fill: "#bb1212" }} />
         </button>
       )}
-    </DropDown>
+    </div>
   )
 }
