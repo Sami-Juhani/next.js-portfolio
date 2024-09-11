@@ -89,5 +89,5 @@ model Comment {
   replies   Comment[] @relation("CommentReplies")
   parent    Comment?  @relation("CommentReplies", fields: [replyId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   blog      Blog?     @relation(fields: [blogId], references: [id])
-  author    User      @relation(fields: [authorId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
 }
