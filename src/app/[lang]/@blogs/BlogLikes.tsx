@@ -2,12 +2,10 @@
 
 import { useNextAuth } from "@/context/useNextAuth"
 import { useState } from "react"
-import { createPortal } from "react-dom"
-import { Modal } from "@/components/Modal"
-import { SignInAndOut } from "@/components/SignInAndOut"
-import { usePortal } from "@/hooks/usePortal"
-import { CustomButton } from "@/components/Buttons"
 import { useNotification } from "@/context/useNotification"
+import { useModal } from "@/context/useModal"
+import { SignInAndOut } from "@/components/SignInAndOut"
+import { CustomButton } from "@/components/Buttons"
 import useIcons from "@/hooks/useIcons"
 
 export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: string; blogLikes: number }) {
@@ -15,16 +13,15 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
   const { LikeIcon } = useIcons().action
   const [loading, setLoading] = useState(false)
   const { setNotification } = useNotification()
-  const [isSignInOpen, setSignInOpen] = useState(false)
   const [nroOfLikes, setNroOfLikes] = useState(blogLikes)
-  const modalTarget = usePortal("modal-target")
+  const { setPage, onClose } = useModal()
 
   async function onClick() {
     setNotification({ text: "", type: "", isOpen: false })
 
     if (status === "unauthenticated") {
       setNotification({ text: dict.notification.signInFailed, type: "warning", isOpen: true })
-      setSignInOpen(true)
+      setPage(<SignInAndOut isSigningIn={true} dict={dict} onClose={onClose} />)
       return
     }
 
@@ -77,17 +74,6 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
       <p className="textXs">
         {dict.blogPage.likes} {nroOfLikes}
       </p>
-      {modalTarget != undefined &&
-        createPortal(
-          isSignInOpen && (
-            <Modal
-              setIsOpen={setSignInOpen}
-              setActiveComponent={() => {}}
-              Component={<SignInAndOut isSigningIn={true} dict={dict} />}
-            />
-          ),
-          modalTarget
-        )}
     </>
   )
 }

@@ -8,6 +8,7 @@ type MainLayoutProps = { dict: any; lang: string; blogs: ReactNode; projects: Re
 
 export function Main({ dict, lang, blogs, projects, portfolio }: MainLayoutProps) {
   const [activePageIndex, setActivePageIndex] = useState(0)
+  
   const links = [
     { name: dict.navigation.links.home, index: 0 },
     { name: dict.navigation.links.blog, index: 1 },

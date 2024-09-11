@@ -1,19 +1,18 @@
 "use client"
 
-import { SupportedLanguages } from "@/context/Settings"
+import { Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState } from "react"
 import { useNextAuth } from "@/context/useNextAuth"
 import { useSettings } from "@/context/useSettings"
 import useIcons from "@/hooks/useIcons"
-import { usePortal } from "@/hooks/usePortal"
+import { useModal } from "@/context/useModal"
+import { usePathname, useRouter } from "next/navigation"
+import { SignInAndOut } from "../SignInAndOut"
+import { DeleteAccount } from "../DeleteAccount"
+import CircularProgress from "@mui/material/CircularProgress"
+import { SupportedLanguages } from "@/context/Settings"
+import { FI, GB } from "country-flag-icons/react/3x2"
 import { cc } from "@/lib/cc"
 import { dafoe } from "@/lib/fonts"
-import CircularProgress from "@mui/material/CircularProgress"
-import { FI, GB } from "country-flag-icons/react/3x2"
-import { usePathname, useRouter } from "next/navigation"
-import { Dispatch, ReactNode, SetStateAction, useEffect, useRef, useState } from "react"
-import { createPortal } from "react-dom"
-import { Modal } from "../Modal"
-import { SignInAndOut } from "../SignInAndOut"
 import styles from "./StickyNav.module.css"
 
 export type Link = {
@@ -33,15 +32,12 @@ type DropDownType = "langSettings" | "userDropDown" | null
 
 export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: StickyNavProps) {
   const [openDropDown, setOpenDropDown] = useState<DropDownType>(null)
-  const [isSignInOpen, setIsSignInOpen] = useState(false)
-  const [isSigningIn, setIsSigningIn] = useState<boolean>(false)
   const langDropDownRef = useRef<HTMLDivElement>(null)
   const userDropDownRef = useRef<HTMLDivElement>(null)
   const { darkMode, setDarkMode } = useSettings()
-  const { data: session, status } = useNextAuth()
+  const { data: session, status, update } = useNextAuth()
   const { Globe, DarkMode } = useIcons().action
   const { User } = useIcons().status
-  const modalTarget = usePortal("modal-target")
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -113,24 +109,10 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
             isOpen={openDropDown === "userDropDown"}
             userName={session?.user?.name?.split(" ")[0]}
             setOpenDropDown={setOpenDropDown}
-            setIsSignInOpen={setIsSignInOpen}
-            setIsUserSigningIn={setIsSigningIn}
             status={status}
           />
         </div>
       </div>
-
-      {modalTarget != undefined &&
-        createPortal(
-          isSignInOpen && (
-            <Modal
-              setIsOpen={setIsSignInOpen}
-              setActiveComponent={() => {}}
-              Component={<SignInAndOut isSigningIn={isSigningIn} setIsOpen={setIsSignInOpen} dict={dict} />}
-            />
-          ),
-          modalTarget
-        )}
     </header>
   )
 }
@@ -163,15 +145,13 @@ function DropDown({ isOpen, setOpenDropDown, children }: DropDownProps) {
   )
 }
 
-function LanguageDropdown({
-  dict,
-  isOpen,
-  setOpenDropDown,
-}: {
+type LanguageDropDownProps = {
   dict: any
   isOpen: boolean
   setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
-}) {
+}
+
+function LanguageDropdown({ dict, isOpen, setOpenDropDown }: LanguageDropDownProps) {
   const { Checked } = useIcons().status
   const { language, setLanguage } = useSettings()
   const pathname = usePathname()
@@ -216,47 +196,38 @@ type UserDropDownProps = {
   isOpen: boolean
   userName: string | undefined
   setOpenDropDown: Dispatch<SetStateAction<DropDownType>>
-  setIsUserSigningIn: Dispatch<SetStateAction<boolean>>
-  setIsSignInOpen: Dispatch<SetStateAction<boolean>>
   status: "authenticated" | "unauthenticated" | "loading"
 }
 
-function UserDropDown({
-  dict,
-  isOpen,
-  userName,
-  setOpenDropDown,
-  setIsUserSigningIn,
-  setIsSignInOpen,
-  status,
-}: UserDropDownProps) {
+function UserDropDown({ dict, isOpen, userName, setOpenDropDown, status }: UserDropDownProps) {
   const { WarningIcon } = useIcons().status
+  const { setPage, onClose } = useModal()
 
   return (
     <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown}>
       {userName !== undefined && (
         <p className={styles.userName}>
-          Welcome, <span>{userName}!</span>
+          {dict.userDropDown.welcome}, <span>{userName}!</span>
         </p>
       )}
       <button
         onClick={() => {
           /* SIGN OUT */
           if (status === "authenticated") {
-            setIsSignInOpen(true)
-            setIsUserSigningIn(false)
+            setPage(<SignInAndOut isSigningIn={false} onClose={onClose} dict={dict} />)
           } else {
             /* SIGN IN */
-            setIsSignInOpen(true)
-            setIsUserSigningIn(true)
+            setPage(<SignInAndOut isSigningIn={true} onClose={onClose} dict={dict} />)
           }
         }}
       >
-        <div className="row gap-medium items-center">{status === "authenticated" ? "Sign out" : "Sign in"} </div>
+        <div className="row gap-medium items-center">
+          {status === "authenticated" ? dict.userDropDown.signOut : dict.userDropDown.signIn}{" "}
+        </div>
       </button>
       {status === "authenticated" && (
-        <button onClick={() => {}}>
-          <p>Delete Account</p>
+        <button onClick={() => setPage(<DeleteAccount dict={dict} onClose={onClose} />)}>
+          <p>{dict.userDropDown.deleteAccount}</p>
           <WarningIcon style={{ fill: "#bb1212" }} />
         </button>
       )}

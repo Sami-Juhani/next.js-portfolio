@@ -1,13 +1,14 @@
-import Favicon from "/public/favicon.ico"
-import type { Metadata } from "next"
-import { getDictionary } from "@/dictionaries/dictionaries"
-import { SettingsProvider } from "@/context/Settings"
-import NextAuthProvider from "@/context/NextAuth"
 import { ReactNode } from "react"
-import { Main } from "./Main"
-import "./globals.css"
-import AwsRumInitializer from "@/components/AwsRumInitializer"
+import type { Metadata } from "next"
+import { SettingsProvider } from "@/context/Settings"
 import { NotificationProvider } from "@/context/Notification"
+import { ModalProvider } from "@/context/Modal"
+import NextAuthProvider from "@/context/NextAuth"
+import AwsRumInitializer from "@/components/AwsRumInitializer"
+import { Main } from "./Main"
+import { getDictionary } from "@/dictionaries/dictionaries"
+import Favicon from "/public/favicon.ico"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: "SJP - fullstack software development",
@@ -34,7 +35,9 @@ export default async function RootLayout({ params: { lang }, blogs, projects, po
         <NextAuthProvider>
           <SettingsProvider>
             <NotificationProvider>
-              <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
+              <ModalProvider>
+                <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
+              </ModalProvider>
             </NotificationProvider>
           </SettingsProvider>
         </NextAuthProvider>

@@ -1,15 +1,13 @@
 "use client"
 
-import { Project } from "@/actions/projects"
-import { Modal } from "@/components/Modal"
-import { useSettings } from "@/context/useSettings"
-import useIcons from "@/hooks/useIcons"
-import { usePortal } from "@/hooks/usePortal"
-import { cc } from "@/lib/cc"
 import Image from "next/image"
 import Link from "next/link"
-import { ReactNode, useEffect, useState } from "react"
-import { createPortal } from "react-dom"
+import { useEffect } from "react"
+import { useSettings } from "@/context/useSettings"
+import { useModal } from "@/context/useModal"
+import useIcons from "@/hooks/useIcons"
+import { Project } from "@/actions/projects"
+import { cc } from "@/lib/cc"
 import styles from "./projects.module.css"
 
 type ProjectArticleProps = {
@@ -19,14 +17,12 @@ type ProjectArticleProps = {
 
 export function ProjectArticle({ project, dict }: ProjectArticleProps) {
   const { darkMode } = useSettings()
-  const [isOpen, setIsOpen] = useState(false)
-  const [activeComponent, setActiveComponent] = useState<ReactNode | null>(null)
   const { GitHubIcon } = useIcons().utils
-  const modalTarget = usePortal("modal-target")
+  const { setPage, onClose } = useModal()
 
   useEffect(() => {
     function handler(e: KeyboardEvent) {
-      if (e.key === "Escape") setIsOpen(false)
+      if (e.key === "Escape") onClose()
     }
 
     document.addEventListener("keydown", handler)
@@ -34,11 +30,10 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
     return () => {
       document.removeEventListener("keydown", handler)
     }
-  }, [])
+  }, [onClose])
 
   function onImageClick() {
-    setIsOpen(true)
-    setActiveComponent(
+    setPage(
       <div className={styles.__modalImage}>
         <Image
           src={project.mainSection.image.src}
@@ -52,13 +47,11 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
   }
 
   function onIntroClick(mainSection: any) {
-    setIsOpen(true)
-    setActiveComponent(<ArticleIntro mainSection={mainSection} modalOpen={true} dict={dict} />)
+    setPage(<ArticleIntro mainSection={mainSection} modalOpen={true} dict={dict} />)
   }
 
   function onFeaturesClick(features: any) {
-    setIsOpen(true)
-    setActiveComponent(<ArticleFeatures features={features} modalOpen={true} dict={dict} />)
+    setPage(<ArticleFeatures features={features} modalOpen={true} dict={dict} />)
   }
 
   return (
@@ -120,17 +113,6 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
           />
         </div>
       </article>
-      {modalTarget != undefined &&
-        createPortal(
-          isOpen && activeComponent != null && (
-            <Modal
-              setIsOpen={setIsOpen}
-              setActiveComponent={setActiveComponent}
-              Component={activeComponent}
-            />
-          ),
-          modalTarget
-        )}
     </>
   )
 }

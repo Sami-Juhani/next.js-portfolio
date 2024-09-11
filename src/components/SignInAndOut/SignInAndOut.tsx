@@ -9,11 +9,11 @@ import { useNotification } from "@/context/useNotification"
 export function SignInAndOut({
   dict,
   isSigningIn,
-  setIsOpen,
+  onClose,
 }: {
   dict: any
   isSigningIn: boolean
-  setIsOpen?: Dispatch<SetStateAction<boolean>>
+  onClose: () => void
 }): ReactNode {
   const { setNotification } = useNotification()
 
@@ -52,9 +52,7 @@ export function SignInAndOut({
         </CustomButton>
         <CustomButton
           buttonType={"primary"}
-          onClick={async () => {
-            if (setIsOpen !== undefined) setIsOpen(false)
-          }}
+          onClick={onClose}
         >
           {dict.common.no}
         </CustomButton>
