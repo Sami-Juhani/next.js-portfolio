@@ -1,7 +1,8 @@
 {
   "common": {
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "warning": "Warning"
   },
   "navigation": {
     "links": {
@@ -19,7 +20,7 @@
       "generalInfo": "I'm a third-year information technology student at Metropolia. I'm passionate about coding, and when I set myself a goal, I'm determined to achieve it. I'm a quick learner who easily picks up new technologies, ensuring I stay adaptable in the changing field of software development. I've always enjoyed creating things from scratch, which is why I find coding so satisfying. I'm punctual, self-driven, and hardworking, but I also enjoy working as part of a team. In my free time, I like to engage in outdoor activities and exercise."
     },
     "typeWriter": {
-      "paragraphs": ["Welcome..." , "I'm a fullstack developer", "I'm UI/UX designer", "I'm a cloud enthusiast"]
+      "paragraphs": ["Welcome...", "I'm a fullstack developer", "I'm UI/UX designer", "I'm a cloud enthusiast"]
     },
     "general": {
       "title": "Who am I?",
@@ -59,6 +60,12 @@
     "myLearnings": "My Learnings",
     "features": "Features"
   },
+  "userDropDown": {
+    "welcome": "Welcome",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "deleteAccount": "Delete account"
+  },
   "signInAndOutPage": {
     "signIn": "Sign In",
     "notice": "Notice!",
@@ -66,6 +73,13 @@
     "noticeTextConfirmation": "By pressing 'Sign in with google' you agree to our terms and conditions, including how we handle your data.",
     "signInWithGoogle": "Sign in with Google",
     "signOut": "Sign Out?"
+  },
+  "deleteAccountPage": {
+    "permanently": "This will permanently delete your account, along with your comments and likes",
+    "procreedStart": "If you want to proceed, please write:",
+    "proceedEnd": "in the box below",
+    "deleteMe": "delete me",
+    "accountDeleted": "Account deleted succesfully!"
   },
   "buttons": {
     "backToBlogs": "Back to blogs",

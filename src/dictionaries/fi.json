@@ -1,7 +1,8 @@
 {
   "common": {
     "yes": "Kyllä",
-    "no": "Ei"
+    "no": "Ei",
+    "warning": "Varoitus"
   },
   "navigation": {
     "links": {
@@ -59,6 +60,12 @@
     "myLearnings": "Oma kehitys",
     "features": "Toiminnot"
   },
+  "userDropDown": {
+    "welcome": "Tervetuloa",
+    "signIn": "Kirjaudu sisään",
+    "signOut": "Kirjaudu ulos",
+    "deleteAccount": "Poista tili"
+  },
   "signInAndOutPage": {
     "signIn": "Kirjaudu sisään",
     "notice": "Huomatus!",
@@ -66,6 +73,14 @@
     "noticeTextConfirmation": "Painalla 'Kirjaudu sisään Google:lla' hyväksyt käyttöehtomme ja kuinka käsittelemme tietojasi.",
     "signInWithGoogle": "Kirjaudu sisään Google:lla",
     "signOut": "Kirjaudu ulos?"
+  },
+
+  "deleteAccountPage": {
+    "permanently": "Tämä poistaa tilisi, kommenttisi ja tykkäyksesi lopullisesti",
+    "procreedStart": "Jos haluat jatkaa, kirjoita:",
+    "proceedEnd": "alla olevaan kenttää",
+    "deleteMe": "poista minut",
+    "accountDeleted": "Tilin poistaminen onnistui!"
   },
   "buttons": {
     "backToBlogs": "Takaisin blogiin",
