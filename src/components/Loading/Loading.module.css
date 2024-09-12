@@ -1,0 +1,45 @@
+/* Loading.module.css */
+.__layout {
+  background-color: var(--background-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--brand-color-primary);
+  letter-spacing: 0.2em;
+  transform: translate(-50%, -50%);
+}
+
+.__layout > span {
+  position: relative;
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: 600;
+  animation: wave 1s infinite;
+  animation-delay: calc(0.1s * var(--char));
+}
+
+@media screen and (min-width: 768px) {
+  .__layout > span {
+    font-size: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .__layout > span {
+    animation: none;
+  }
+}
+
+@keyframes wave {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-70px);
+  }
+}
