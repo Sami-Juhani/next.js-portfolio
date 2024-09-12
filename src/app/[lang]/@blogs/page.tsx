@@ -126,22 +126,19 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLan
 
 function LoadingBlogPage() {
   return (
-    <article className={styles.articleContainer}>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Skeleton shorter />
-      </div>
+    <article className={styles.__articleLayout}>
       <div className={styles.articleHeader}>
-        <SkeletonImage width="350px" height="250px" />
-        <div className="row space-between width-full">
-          <Skeleton short inline />
-          <div className="column gap-small items-end">
-            <div className="margin-btm-large">
-              <Skeleton shortest />
-            </div>
-            <SkeletonImage width="20px" height="20px" borderRadius="50%" />
-            <Skeleton shortest />
-          </div>
+        <div className="row space-between items-center">
+          <Skeleton shorter marginTopNone />
+          <Skeleton shorter marginTopNone />
         </div>
+        <SkeletonImage width="100%" height="500px" />
+        <Skeleton />
+        <div className="margin-btm-large">
+          <Skeleton shortest />
+        </div>
+        <SkeletonImage width="20px" height="20px" borderRadius="50%" />
+        <Skeleton shortest />
       </div>
       <section className={styles.articleSection} style={{ gap: 0 }}>
         <Skeleton short />
