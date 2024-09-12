@@ -33,7 +33,6 @@
 .typeWriterText {
   display: inline-block;
   font-size: 2rem;
-  line-height: 1.5em;
   min-height: 20rem;
   text-align: center;
   z-index: 2;
