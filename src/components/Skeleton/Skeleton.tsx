@@ -1,13 +1,26 @@
 import { CSSProperties, Fragment, ReactNode } from "react"
 import styles from "./Skeleton.module.css"
 
-export function Skeleton({ short, shorter, shortest, inline }: { short?: boolean; inline?: boolean; shorter?: boolean, shortest?: boolean }) {
+export function Skeleton({
+  short,
+  shorter,
+  shortest,
+  inline,
+  marginTopNone,
+}: {
+  short?: boolean
+  inline?: boolean
+  shorter?: boolean
+  shortest?: boolean
+  marginTopNone?: boolean
+}) {
   return (
     <div
       className={styles.skeleton}
       style={{
-        width: short ? "15em" : shorter? "8em" : shortest ? "2em" : undefined,
+        width: short ? "15em" : shorter ? "8em" : shortest ? "2em" : undefined,
         display: inline ? "inline-block" : undefined,
+        marginTop: marginTopNone ? "-0.5rem" : undefined,
       }}
     />
   )
