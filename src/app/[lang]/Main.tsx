@@ -28,11 +28,8 @@ export function Main({ dict, lang, blogs, projects, portfolio }: MainLayoutProps
         setActivePageIndex={setActivePageIndex}
       />
       <div className="main__layout">
-        {status === "loading" ? (
-          <Loading />
-        ) : (
-          <PageScroller activePageIndex={activePageIndex} pages={[portfolio, blogs, projects]} />
-        )}
+        {status === "loading" && <Loading />}
+        <PageScroller activePageIndex={activePageIndex} pages={[portfolio, blogs, projects]} />
       </div>
     </>
   )

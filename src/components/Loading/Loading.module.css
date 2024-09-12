@@ -1,6 +1,5 @@
 /* Loading.module.css */
 .__layout {
-  background-color: var(--background-color);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10,6 +9,7 @@
   color: var(--brand-color-primary);
   letter-spacing: 0.2em;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 .__layout > span {
@@ -19,6 +19,7 @@
   font-weight: 600;
   animation: wave 1s infinite;
   animation-delay: calc(0.1s * var(--char));
+
 }
 
 @media screen and (min-width: 768px) {
