@@ -232,22 +232,23 @@ button.link:hover {
 
 /* THEMES */
 
+.dark-theme,
+.light-theme {
+  overflow-x: clip;
+  min-height: 100vh;
+  color: var(--text-color);
+}
+
 .dark-theme {
   --background-color: var(--background-black);
   --text-color: var(--text-secondary);
   background: var(--background-color);
-  color: var(--text-color);
-  overflow-x: clip;
-  min-height: 100vh;
 }
 
 .light-theme {
   --background-color: var(--background-white);
   --text-color: var(--text-primary);
   background-color: var(--background-color);
-  color: var(--text-color);
-  overflow-x: clip;
-  height: 100%;
 }
 
 /* ANIMATIONS */
