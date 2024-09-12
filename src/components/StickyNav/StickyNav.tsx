@@ -35,7 +35,7 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
   const langDropDownRef = useRef<HTMLDivElement>(null)
   const userDropDownRef = useRef<HTMLDivElement>(null)
   const { darkMode, setDarkMode } = useSettings()
-  const { data: session, status, update } = useNextAuth()
+  const { data: session, status } = useNextAuth()
   const { Globe, DarkMode } = useIcons().action
   const { User } = useIcons().status
 
