@@ -107,19 +107,19 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLan
       {localizedBlog.sections.map((section) => (
         <section key={section.title} className={styles.articleSection}>
           <h3>{section.title}</h3>
-          {section.elements.map((element: BlogElementType, i: number) => (
-            <BlogElement key={crypto.randomUUID()} element={element} />
+          {section.elements.map((element: BlogElementType, i) => (
+            <BlogElement key={i} element={element} />
           ))}
         </section>
       ))}
-      {localizedBlog.signature.map((element) => (
-        <BlogElement key={crypto.randomUUID()} element={element} />
+      {localizedBlog.signature.map((element: BlogElementType, i) => (
+        <BlogElement key={i} element={element} />
       ))}
       <div className="column">
         <p className={`${dafoe.className} textXl`}>Sami Paananen</p>
         <p className="bold"> Junior Fullstack Developer</p>
       </div>
-      <Comments lang={lang} dict={dict} blogId={localizedBlog._id} />
+      {/* <Comments lang={lang} dict={dict} blogId={localizedBlog._id} /> */}
     </article>
   )
 }

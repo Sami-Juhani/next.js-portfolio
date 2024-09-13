@@ -1,11 +1,11 @@
-import { addComment, addReply, deleteComment } from "@/actions/comments"
+import { addComment, addReply, deleteComment, getComment, getComments } from "@/actions/comments"
 import { SupportedLanguages } from "@/context/Settings"
-import { getComment, getComments } from "@/actions/comments"
 import { formatDate } from "@/lib/formatDate"
 import { CommentForm } from "./CommentForm"
 import { CommentAuthor } from "./CommentAuthor"
 import { ReplyDeleteComment } from "./ReplyDeleteComment"
 import styles from "./blog.module.css"
+import React from "react"
 
 export async function Comments({ lang, dict, blogId }: { lang: SupportedLanguages; dict: any; blogId: string }) {
   const comments = await getComments(blogId)
@@ -22,19 +22,19 @@ export async function Comments({ lang, dict, blogId }: { lang: SupportedLanguage
           return <Comment key={comment.id} blogId={blogId} dict={dict} lang={lang} comment={comment} />
         /* Comment with replies */ else
           return (
-            <>
-              <Comment key={comment.id} blogId={blogId} dict={dict} lang={lang} comment={comment} />
+            <React.Fragment key={comment.id}>
+              <Comment blogId={blogId} dict={dict} lang={lang} comment={comment} />
               {comment.replies.map((reply, index) => (
                 <Comment
                   style={{ marginLeft: "30px" }}
-                  key={index}
+                  key={reply.id}
                   blogId={blogId}
                   dict={dict}
                   lang={lang}
                   comment={reply}
                 />
               ))}
-            </>
+            </React>
           )
       })}
     </section>
