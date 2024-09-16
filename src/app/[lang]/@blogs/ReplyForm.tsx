@@ -28,8 +28,10 @@ export function ReplyForm({ dict, blogId, replyId, addReply, isOpen, setIsOpen }
   const { setNotification } = useNotification()
 
   useEffect(() => {
-    if (data?.completed) setIsOpen(false)
-  }, [data, setIsOpen])
+    if (data?.completed) {
+      setNotification({ text: dict.notification.replyAdded, type: "success", isOpen: true })
+      setIsOpen(false)}
+  }, [data, setIsOpen, dict.notification.replyAdded, setNotification])
 
   return (
     <div className={styles.replyForm__layout}>
@@ -38,13 +40,12 @@ export function ReplyForm({ dict, blogId, replyId, addReply, isOpen, setIsOpen }
           className={styles.newCommentForm}
           action={(e) => {
             action({ formData: e, blogId: blogId, replyId, userId: session?.user?.id! })
-            setNotification({ text: dict.notification.replyAdded, type: "success", isOpen: true })
           }}
         >
           <h1>Reply:</h1>
           <FormGroup errorMessage={data?.errors?.body}>
             <label htmlFor="body">Message</label>
-            <textarea id="body" name="body" rows={10} />
+            <textarea id="body" name="body" rows={6} />
           </FormGroup>
           <p>
             {dict.blogPage.author} <span className="bold">{session?.user?.name}</span>

@@ -119,7 +119,7 @@ async function Blog({ blogId, lang, dict }: { blogId: string; lang: SupportedLan
         <p className={`${dafoe.className} textXl`}>Sami Paananen</p>
         <p className="bold"> Junior Fullstack Developer</p>
       </div>
-      {/* <Comments lang={lang} dict={dict} blogId={localizedBlog._id} /> */}
+      <Comments lang={lang} dict={dict} blogId={localizedBlog._id} />
     </article>
   )
 }

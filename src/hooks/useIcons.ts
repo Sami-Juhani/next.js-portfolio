@@ -6,7 +6,6 @@ import WarningAmberIcon from "@mui/icons-material/WarningAmber"
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone"
 import CloseIcon from "@mui/icons-material/Close"
 import SettingsIcon from "@mui/icons-material/Settings"
-import CodeIcon from "@mui/icons-material/Code"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 import ThumbUpIcon from "@mui/icons-material/ThumbUp"
@@ -29,6 +28,9 @@ import { AiOutlinePython } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { IoMdLogIn } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
+import { CiLinkedin } from "react-icons/ci";
+import { AiOutlineMail } from "react-icons/ai";
+
 
 
 
@@ -72,12 +74,14 @@ export default function useIcons() {
   const AwsIcon = FaAws
   const ScrumIcon = DiScrum
   const PythonIcon = AiOutlinePython
+  const LinkedIn =  CiLinkedin
+  const Email = AiOutlineMail
+  
 
   return {
     arrows: { ArrowLeft, ArrowRight },
     status: { SuccessIcon, ErrorIcon, WarningIcon, NotificationIcon, Checked, User },
     action: { CloseIcon, SettingsIcon, GoBackIcon, GoNextIcon, LikeIcon, DarkMode, Globe, LoginIcon, LogoutIcon },
-    utils: { CodeIcon, GitHubIcon },
-    dev: { ReactIcon, NextIcon, JsIcon, TsIcon, JavaIcon, MongoIcon, SqlIcon, NodeJsIcon, GitIcon, AwsIcon, ScrumIcon, PythonIcon },
+    dev: { ReactIcon, NextIcon, JsIcon, TsIcon, JavaIcon, MongoIcon, SqlIcon, NodeJsIcon, GitIcon, AwsIcon, ScrumIcon, PythonIcon, LinkedIn, GitHubIcon, Email },
   }
 }

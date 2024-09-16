@@ -22,9 +22,10 @@ type RootLayOutProps = {
   projects: ReactNode
   blogs: ReactNode
   portfolio: ReactNode
+  contact: ReactNode
 }
 
-export default async function RootLayout({ params: { lang }, blogs, projects, portfolio }: Readonly<RootLayOutProps>) {
+export default async function RootLayout({ params: { lang }, blogs, projects, portfolio, contact }: Readonly<RootLayOutProps>) {
   const dict = await getDictionary(lang)
 
   return (
@@ -36,7 +37,7 @@ export default async function RootLayout({ params: { lang }, blogs, projects, po
           <SettingsProvider>
             <NotificationProvider>
               <ModalProvider>
-                <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} />
+                <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} contact={contact}/>
               </ModalProvider>
             </NotificationProvider>
           </SettingsProvider>

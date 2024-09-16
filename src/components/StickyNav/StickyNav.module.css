@@ -1,7 +1,6 @@
 .__navLayout {
   --_animationStartAfter: 250px;
   --_animationDistance: 200px;
-  --_settingsMargin: 2rem;
   margin: 0 auto;
   display: flex;
   padding: 0.5rem 0.7rem;
@@ -10,10 +9,10 @@
   color: inherit;
   font-weight: 500;
   width: var(--_headerWidth, auto);
-
   position: sticky;
   z-index: 999;
   top: -5rem;
+  gap: 0.5rem;
 
   @supports (animation-timeline: view()) {
     animation: stickyNav linear forwards;
@@ -94,9 +93,20 @@
 
 .__linksLayout {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.7rem;
   list-style: none;
-  font-size: var(--text-size-sm);
+  font-size: var(--text-size-xs);
+}
+
+@media screen and (min-width: 600px) {
+  .__linksLayout {
+    gap: 1.5rem;
+    font-size: var(--text-size-sm);
+  }
+
+  .navigation {
+    --_settingsMargin: 2rem;
+  }
 }
 
 .link {
@@ -123,15 +133,14 @@
 
 .__settingsLayout {
   display: var(--_logoDisplay, flex);
-  gap: 1rem;
+  gap: 0.5rem;
   margin-left: auto;
-  margin-right: 1.2rem;
   align-items: center;
 }
 
-@media screen and (min-width: 540px) {
+@media screen and (min-width: 600px) {
   .__settingsLayout {
-    margin-right: 0;
+    gap: 1rem;
   }
 }
 
@@ -141,7 +150,13 @@
   border-style: none;
   border: none;
   background: none;
-  font-size: 1rem;
+  font-size: 0.8rem;
+}
+
+@media screen and (min-width: 600px) {
+  .__settingsIcon {
+    font-size: 1rem;
+  }
 }
 
 .__settingsIcon > svg {

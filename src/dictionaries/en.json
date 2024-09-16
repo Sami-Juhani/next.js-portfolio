@@ -8,7 +8,8 @@
     "links": {
       "home": "me",
       "blog": "blog",
-      "projects": "projects"
+      "projects": "projects",
+      "contact": "contact"
     }
   },
   "languages": {
@@ -59,6 +60,17 @@
     "intro": "Introduction",
     "myLearnings": "My Learnings",
     "features": "Features"
+  },
+  "contactPage": {
+    "heading": "Let's work together",
+    "subHeading": "If you would like to hire me or work with me you can contact me directly vai email or by the contact form below",
+    "subHeading2": "Together we can build amazing things so give me an 'Hi' let's start our journey together",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "msg": "Message",
+    "messageSent": "Message Sent! I'll shortly be in touch... Thank you.",
+    "messageFailed": "Sending failed! Please try again later..."
   },
   "userDropDown": {
     "welcome": "Welcome",

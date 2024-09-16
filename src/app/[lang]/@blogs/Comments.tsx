@@ -1,11 +1,9 @@
-import { addComment, addReply, deleteComment, getComment, getComments } from "@/actions/comments"
-import { SupportedLanguages } from "@/context/Settings"
-import { formatDate } from "@/lib/formatDate"
-import { CommentForm } from "./CommentForm"
-import { CommentAuthor } from "./CommentAuthor"
-import { ReplyDeleteComment } from "./ReplyDeleteComment"
-import styles from "./blog.module.css"
 import React from "react"
+import { addComment, getComments } from "@/actions/comments"
+import { SupportedLanguages } from "@/context/Settings"
+import { CommentForm } from "./CommentForm"
+import { Comment } from "./Comment"
+import styles from "./blog.module.css"
 
 export async function Comments({ lang, dict, blogId }: { lang: SupportedLanguages; dict: any; blogId: string }) {
   const comments = await getComments(blogId)
@@ -24,7 +22,7 @@ export async function Comments({ lang, dict, blogId }: { lang: SupportedLanguage
           return (
             <React.Fragment key={comment.id}>
               <Comment blogId={blogId} dict={dict} lang={lang} comment={comment} />
-              {comment.replies.map((reply, index) => (
+              {comment.replies.map((reply, i) => (
                 <Comment
                   style={{ marginLeft: "30px" }}
                   key={reply.id}
@@ -32,50 +30,12 @@ export async function Comments({ lang, dict, blogId }: { lang: SupportedLanguage
                   dict={dict}
                   lang={lang}
                   comment={reply}
+                  isReply
                 />
               ))}
-            </React>
+            </React.Fragment>
           )
       })}
     </section>
-  )
-}
-
-type CommentProps = {
-  comment: Awaited<ReturnType<typeof getComment>>
-  lang: SupportedLanguages
-  dict: any
-  blogId: string
-  style?: {}
-}
-
-function Comment({ comment, lang, dict, blogId, style }: CommentProps) {
-  if (comment == null) return
-
-  const date = formatDate(comment.date, lang === "fi" ? "fi-FI" : "en-US", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  })
-
-  return (
-    <div className={styles.comment__layout} style={style}>
-      <div className={styles.comment__header}>
-        <h3>{comment.title ?? dict.blogPage.reply}</h3>
-        <CommentAuthor authorId={comment.authorId} authorName={comment.author.name!} date={date} />
-      </div>
-      <p>{comment.body}</p>
-      <ReplyDeleteComment
-        dict={dict}
-        authorId={comment.authorId}
-        blogId={blogId}
-        replyId={comment.replyId}
-        authorName={comment.author.name!}
-        commentId={comment.id}
-        addReply={addReply}
-        deleteComment={deleteComment}
-        title={comment.title ?? comment.parent?.id}
-      />
-    </div>
   )
 }

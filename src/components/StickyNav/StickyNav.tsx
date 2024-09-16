@@ -96,7 +96,7 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
 
         <div className={styles.__settingsIcon}>
           {status === "loading" ? (
-            <CircularProgress color="inherit" size={30} />
+            <CircularProgress color="inherit" size={"1.5em"} />
           ) : (
             <User
               onMouseDown={() => {

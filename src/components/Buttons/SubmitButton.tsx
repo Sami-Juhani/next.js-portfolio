@@ -2,7 +2,7 @@
 
 import { CustomButton } from "@/components/Buttons"
 import { useFormStatus } from "react-dom"
-import { ButtonTypes, ICustomButton } from "./CustomButton"
+import { ICustomButton } from "./CustomButton"
 
 interface ISubmitButton extends ICustomButton {
   submit: string
@@ -10,7 +10,7 @@ interface ISubmitButton extends ICustomButton {
   onClick?: () => void
 }
 
-export function SubmitButton({ submit, submitting, buttonType, onClick }: ISubmitButton) {
+export function SubmitButton({ submit, submitting, buttonType, onClick, ...props }: ISubmitButton) {
   const { pending } = useFormStatus()
 
   return (
@@ -19,6 +19,7 @@ export function SubmitButton({ submit, submitting, buttonType, onClick }: ISubmi
       buttonType={buttonType}
       disabled={pending}
       onClick={onClick}
+      {...props}
     >
       {!pending ? submit : submitting}
     </CustomButton>

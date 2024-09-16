@@ -17,7 +17,7 @@ type ProjectArticleProps = {
 
 export function ProjectArticle({ project, dict }: ProjectArticleProps) {
   const { darkMode } = useSettings()
-  const { GitHubIcon } = useIcons().utils
+  const { GitHubIcon } = useIcons().dev
   const { setPage, onClose } = useModal()
 
   useEffect(() => {

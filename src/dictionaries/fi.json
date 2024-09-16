@@ -8,7 +8,8 @@
     "links": {
       "home": "minä",
       "blog": "blogi",
-      "projects": "projektit"
+      "projects": "projektit",
+      "contact": "yhteystiedot"
     }
   },
   "languages": {
@@ -59,6 +60,17 @@
     "intro": "Johdanto",
     "myLearnings": "Oma kehitys",
     "features": "Toiminnot"
+  },
+  "contactPage": {
+    "heading": "Ota yhteyttä",
+    "subHeading": "Jos haluat palkata minut, voit ottaa yhteyttä suoraan sähköpostilla tai alla olevalla lomakkeella",
+    "subHeading2": "Yhdessä voimme saavuttaa isoja asioita, joten ota yhteyttä ja aloitetaan yhteinen matkamme kohti menestystä",
+    "name": "Nimi",
+    "phone": "Puhelin",
+    "email": "Sähköposti",
+    "msg": "Viesti",
+    "messageSent": "Viesti lähetty! Olen sinuun piakkoin yhteydessä. Kiitos.",
+    "messageFailed": "Viestin lähetys epäonnistui! Yritä myöhemmin uudelleen..."
   },
   "userDropDown": {
     "welcome": "Tervetuloa",
