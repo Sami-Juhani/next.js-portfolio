@@ -9,10 +9,11 @@ import { Main } from "./Main"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import Favicon from "/public/favicon.ico"
 import "./globals.css"
+import { ReCaptchaProvider } from "@/context/ReCaptcha"
 
 export const metadata: Metadata = {
   title: "SJP - fullstack software development",
-  description: "Portfolio",
+  description: "Focus on software development with blog and projects",
   icons: [{ rel: "icon", url: Favicon.src }],
 }
 
@@ -25,7 +26,13 @@ type RootLayOutProps = {
   contact: ReactNode
 }
 
-export default async function RootLayout({ params: { lang }, blogs, projects, portfolio, contact }: Readonly<RootLayOutProps>) {
+export default async function RootLayout({
+  params: { lang },
+  blogs,
+  projects,
+  portfolio,
+  contact,
+}: Readonly<RootLayOutProps>) {
   const dict = await getDictionary(lang)
 
   return (
@@ -33,15 +40,24 @@ export default async function RootLayout({ params: { lang }, blogs, projects, po
       <body>
         <div id="modal-target"></div>
         <div id="notification-target"></div>
-        <NextAuthProvider>
-          <SettingsProvider>
-            <NotificationProvider>
-              <ModalProvider>
-                <Main lang={lang} dict={dict} blogs={blogs} projects={projects} portfolio={portfolio} contact={contact}/>
-              </ModalProvider>
-            </NotificationProvider>
-          </SettingsProvider>
-        </NextAuthProvider>
+        <ReCaptchaProvider lang={lang}>
+          <NextAuthProvider>
+            <SettingsProvider>
+              <NotificationProvider>
+                <ModalProvider>
+                  <Main
+                    lang={lang}
+                    dict={dict}
+                    blogs={blogs}
+                    projects={projects}
+                    portfolio={portfolio}
+                    contact={contact}
+                  />
+                </ModalProvider>
+              </NotificationProvider>
+            </SettingsProvider>
+          </NextAuthProvider>
+        </ReCaptchaProvider>
         <AwsRumInitializer />
       </body>
     </html>
