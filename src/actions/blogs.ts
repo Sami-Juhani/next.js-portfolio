@@ -6,6 +6,7 @@ import prisma from "../lib/db"
 export type Blog = {
   header: {
     title: string
+    desc: string
     image: {
       src: string
       alt: string

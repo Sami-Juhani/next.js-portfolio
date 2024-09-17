@@ -14,6 +14,7 @@ import { BlogCard } from "./BlogCard"
 import { BlogElement, BlogElementType } from "./BlogElement"
 import { BlogLikes } from "./BlogLikes"
 import { Comments } from "./Comments"
+import { Metadata, ResolvingMetadata } from "next"
 
 export default async function BlogLayoutPage({
   params: { lang },
@@ -47,12 +48,12 @@ async function BlogListPage({ dict, lang }: { dict: any; lang: SupportedLanguage
 
   return (
     <>
-    <h1 className={`${dafoe.className} page-title`}>{dict.blogPage.blog}</h1>
-    <ul className={styles.__listLayout}>
-      {filteredBlogs.map((blog) => (
-        <BlogCard key={blog._id} blog={blog} readMore={dict.blogCard.more} lang={lang} />
-      ))}
-    </ul>
+      <h1 className={`${dafoe.className} page-title`}>{dict.blogPage.blog}</h1>
+      <ul className={styles.__listLayout}>
+        {filteredBlogs.map((blog) => (
+          <BlogCard key={blog._id} blog={blog} readMore={dict.blogCard.more} lang={lang} />
+        ))}
+      </ul>
     </>
   )
 }
@@ -190,4 +191,32 @@ function LoadingBlogPage() {
       </section>
     </article>
   )
+}
+
+export async function generateMetadata({
+  params: { lang },
+  searchParams,
+}: {
+  params: { lang: SupportedLanguages }
+  searchParams: { blogId: string }
+}, parent: ResolvingMetadata): Promise<Metadata | undefined> {
+  if (searchParams.blogId == undefined) return
+
+  const blog = await getBlog(searchParams.blogId)
+
+  if (blog == null) return
+
+  const blogBase = { _id: blog.id, date: blog.date, likes: blog.likes }
+  const localizedBlog = lang === "en" ? { ...blogBase, ...(blog.en as Blog) } : { ...blogBase, ...(blog.fi as Blog) }
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: localizedBlog.header.title,
+    description: localizedBlog.header.desc,
+    openGraph: {
+      images: [localizedBlog.header.image.src, ...previousImages],
+    },
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
+  }
 }

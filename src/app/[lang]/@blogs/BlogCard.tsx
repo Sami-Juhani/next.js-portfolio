@@ -42,7 +42,7 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
       </div>
       <div className={styles.cardRight}>
         <p className={styles.cardTitle}>{blog.header.title}</p>
-        <p className={styles.cardPreview}>{blog.sections[0].elements[0].value as string}</p>
+        <p className={styles.cardPreview}>{blog.header.desc}</p>
         <Link href={`/${lang}/?blogId=${blog._id}`}>{readMore}</Link>
       </div>
     </li>
