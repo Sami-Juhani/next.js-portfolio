@@ -44,6 +44,13 @@ export const metadata: Metadata = {
   },
   keywords: ["fullstack", "software development", "blog", "projects"],
   authors: [{ name: "SJP", url: "https://samipaan.com" }],
+  alternates: {
+    canonical: "./",
+    languages: {
+      "en-US": "/en",
+      "fi-FI": "/fi",
+    },
+  },
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
 }
 
