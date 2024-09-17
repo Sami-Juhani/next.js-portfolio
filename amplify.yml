@@ -9,6 +9,8 @@ frontend:
                 - echo "GOOGLE_SECRET=$GOOGLE_SECRET" >> .env
                 - echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env
                 - echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env
+                - echo "NEXT_PUBLIC_RECAPTCHA_SITE_KEY=$NEXT_PUBLIC_RECAPTCHA_SITE_KEY" >> .env
+                - echo "RECAPTCHA_SECRET_KEY=$RECAPTCHA_SECRET_KEY" >> .env
                 - 'npx prisma generate'
         build:
             commands:
