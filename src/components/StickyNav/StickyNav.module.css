@@ -128,7 +128,7 @@
 }
 
 .link.active {
-  color: var(--link-color);
+  color: var(--clr-link);
 }
 
 .__settingsLayout {
