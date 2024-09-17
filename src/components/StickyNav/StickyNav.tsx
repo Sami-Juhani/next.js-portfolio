@@ -62,7 +62,9 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
   return (
     <header className={cc(styles.__navLayout, darkMode && styles.dark)}>
       <div className={styles.__leftLayout}>
-        <p className={dafoe.className}>SjP</p>
+        <p className={dafoe.className} style={{ color: "var(--clr-primary)" }}>
+          SjP
+        </p>
       </div>
       <nav className={styles.navigation}>
         <ul className={styles.__linksLayout}>
@@ -82,26 +84,27 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
         </ul>
       </nav>
       <div className={styles.__settingsLayout}>
-        <button className={styles.__settingsIcon}>
+        <button className={styles.__settingsIcon} aria-label="Toggle dark mode">
           <DarkMode onClick={() => setDarkMode((darkMode) => !darkMode)} />
         </button>
-        <div className={styles.__settingsIcon}>
+        <div className={styles.__settingsIcon} aria-label="Toggle language dropdown">
           <Globe
             onMouseDown={() => {
               setOpenDropDown("langSettings")
             }}
+            aria-label="Toggle language dropdown"
           />
-          <LanguageDropdown dict={dict} isOpen={openDropDown === "langSettings"} setOpenDropDown={setOpenDropDown} />
+          <LanguageDropdown dict={dict} isOpen={openDropDown === "langSettings"} setOpenDropDown={setOpenDropDown} aria-label="Language dropdown menu" />
         </div>
-
         <div className={styles.__settingsIcon}>
           {status === "loading" ? (
-            <CircularProgress color="inherit" size={"1.5em"} />
+            <CircularProgress color="inherit" size={"1.5em"} aria-label="Loading spinner" />
           ) : (
             <User
               onMouseDown={() => {
                 setOpenDropDown("userDropDown")
               }}
+              aria-label="Toggle user dropdown"
             />
           )}
           <UserDropDown
@@ -110,6 +113,7 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
             userName={session?.user?.name?.split(" ")[0]}
             setOpenDropDown={setOpenDropDown}
             status={status}
+            aria-label="User dropdown"
           />
         </div>
       </div>
@@ -167,7 +171,7 @@ function LanguageDropdown({ dict, isOpen, setOpenDropDown }: LanguageDropDownPro
     <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown}>
       <button onClick={() => onLanguageChange("en")}>
         <div className="row gap-medium items-center">
-          <GB style={{ width: "20px" }} />
+          <GB style={{ width: "20px" }} aria-label="English language"/>
           <p className="row gap-medium">{dict.languages.english}</p>
         </div>
         <Checked
@@ -178,7 +182,7 @@ function LanguageDropdown({ dict, isOpen, setOpenDropDown }: LanguageDropDownPro
       </button>
       <button onClick={() => onLanguageChange("fi")}>
         <div className="row gap-medium items-center">
-          <FI style={{ width: "20px" }} />
+          <FI style={{ width: "20px" }} aria-label="Finnish language" />
           <p className="row gap-medium">{dict.languages.finnish}</p>
         </div>
         <Checked
@@ -228,7 +232,7 @@ function UserDropDown({ dict, isOpen, userName, setOpenDropDown, status }: UserD
       {status === "authenticated" && (
         <button onClick={() => setPage(<DeleteAccount dict={dict} onClose={onClose} />)}>
           <p>{dict.userDropDown.deleteAccount}</p>
-          <WarningIcon style={{ fill: "#bb1212" }} />
+          <WarningIcon style={{ fill: "#bb1212" }} aria-label="Warning icon" />
         </button>
       )}
     </DropDown>

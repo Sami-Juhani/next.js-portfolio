@@ -24,7 +24,7 @@
 }
 
 .__navLayout.dark {
-  background-color: #000000;
+  background-color: rgba(71, 235, 235, 0.1);
 }
 
 @keyframes stickyNav {
@@ -128,7 +128,7 @@
 }
 
 .link.active {
-  color: var(--link-color);
+  color: var(--clr-link);
 }
 
 .__settingsLayout {
@@ -176,7 +176,7 @@
   transform-origin: center;
   width: 120%;
   height: 5px;
-  background-color: var(--brand-color-primary);
+  background-color: var(--clr-primary);
   transition: transform 0.3s ease;
 }
 
@@ -223,6 +223,6 @@
 
 .userName {
   padding: 0.5rem 1rem;
-  color: var(--brand-color-secondary-light);
+  color: var(--clr-primary);
   border-bottom: 1px solid var(--clr-grey);
 }

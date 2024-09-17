@@ -10,6 +10,7 @@ import { getDictionary } from "@/dictionaries/dictionaries"
 import Favicon from "/public/favicon.ico"
 import "./globals.css"
 import { ReCaptchaProvider } from "@/context/ReCaptcha"
+import { inter } from "@/lib/fonts"
 
 export const metadata: Metadata = {
   title: "SJP - fullstack software development",
@@ -37,14 +38,14 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <body>
-        <div id="modal-target"></div>
-        <div id="notification-target"></div>
+      <body className={inter.className}>
         <ReCaptchaProvider lang={lang}>
           <NextAuthProvider>
             <SettingsProvider>
               <NotificationProvider>
                 <ModalProvider>
+                  <div id="modal-target"></div>
+                  <div id="notification-target"></div>
                   <Main
                     lang={lang}
                     dict={dict}

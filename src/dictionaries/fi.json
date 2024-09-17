@@ -41,6 +41,7 @@
     }
   },
   "blogPage": {
+    "blog": "Blogi",
     "likes": "tykkäykset",
     "comments": "Kommentit",
     "reply": "Vastaus:",
@@ -56,6 +57,7 @@
     "more": "Lisää..."
   },
   "projectPage": {
+    "projects": "Projektit",
     "tech": "Teknologia",
     "intro": "Johdanto",
     "myLearnings": "Oma kehitys",

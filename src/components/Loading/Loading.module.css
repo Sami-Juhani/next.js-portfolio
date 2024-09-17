@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--brand-color-primary);
+  color: var(--clr-primary);
   letter-spacing: 0.2em;
   transform: translate(-50%, -50%);
   z-index: 3;

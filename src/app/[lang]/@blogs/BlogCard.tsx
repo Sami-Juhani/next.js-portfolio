@@ -19,7 +19,7 @@ export function BlogCard({ blog, readMore, lang }: { blog: any; readMore: string
     <li
       className={styles.card}
       style={{
-        backgroundColor: darkMode ? "#eeeeee" : "#ffffff",
+        backgroundColor: darkMode ? "var(--clr-box-dark)" : "var(--clr-box-light)",
       }}
     >
       <div className={styles.cardLeft}>

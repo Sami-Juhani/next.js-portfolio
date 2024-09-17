@@ -58,7 +58,7 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
     <>
       <article className={styles.article}>
         <div className={styles.__projectTitle}>
-          <h3>{project.title}</h3>
+          <h2>{project.title}</h2>
           <div className={styles.__gitHubLayout}>
             <GitHubIcon />
             <Link href={project.gitHub} target="_blank">
@@ -73,7 +73,7 @@ export function ProjectArticle({ project, dict }: ProjectArticleProps) {
         >
           <div className={styles.details}>
             <div>
-              <h4 className={styles.articleTitle}>{dict.projectPage.tech}</h4>
+              <h3 className={styles.articleTitle}>{dict.projectPage.tech}</h3>
               <ul className={styles.techStack}>
                 {project.techStack.map((tech: string, index: number) => (
                   <li key={index}>{tech}</li>

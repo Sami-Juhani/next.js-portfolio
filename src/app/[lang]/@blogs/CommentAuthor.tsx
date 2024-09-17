@@ -18,7 +18,7 @@ export function CommentAuthor({ authorId, authorName, date }: CommentAuthorProps
 
   return (
     <div className={styles.author__date}>
-      <span style={authorId === session?.user?.id ? { fontWeight: "600", color: "var(--link-color)" } : {}}>
+      <span style={authorId === session?.user?.id ? { fontWeight: "600", color: "var(--clr-link)" } : {}}>
         {authorName}
       </span>
       <p>{date}</p>

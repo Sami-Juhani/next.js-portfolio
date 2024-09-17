@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect } from "react"
-import { useSettings } from "@/context/useSettings"
-import { DownloadButton } from "@/components/Buttons"
 import { ArrowRight } from "@mui/icons-material"
 import { TypeWriter } from "@/components/TypeWriter"
 import useIcons from "@/hooks/useIcons"
@@ -11,9 +9,9 @@ import SelfImage from "/public/images/me/me_bnw.png"
 import DevImage from "/public/images/me/sjp_dev.png"
 import styles from "./portfolio.module.css"
 import { InfiniteSideScroller } from "@/components/InifiniteSideScroller/InfiniteSideScroller"
+import Link from "next/link"
 
 export function PortfolioPage({ dict }: { dict: any }) {
-  const { darkMode } = useSettings()
   const {
     ReactIcon,
     AwsIcon,
@@ -54,14 +52,13 @@ export function PortfolioPage({ dict }: { dict: any }) {
       <TypeWriter paragraph={dict.mainPage.typeWriter.paragraphs} userOptions={{ startDelay: 20, typingDelay: 60 }} />
       <div
         className={styles.__image}
-        style={darkMode ? { backgroundColor: "var(--background-black-light)" } : { backgroundColor: "#ffffff" }}
       >
         <Image className={styles.devImage} src={DevImage} alt="Brand logo with text SJP" priority />
         <Image className={styles.authorImage} src={SelfImage} alt="Author" priority />
       </div>
       <div className={styles.__personalLayout}>
         <div className={`${styles.general}`}>
-          <h2>{dict.mainPage.general.title}</h2>
+          <h1>{dict.mainPage.general.title}</h1>
           {dict.mainPage.general.body.map((str: string, i: number) => (
             <p key={i}>{str}</p>
           ))}
@@ -70,65 +67,66 @@ export function PortfolioPage({ dict }: { dict: any }) {
           <div className={styles.__portfolio}>
             <h2>Portfolio</h2>
             <ArrowRight />
-            <DownloadButton
+            <Link
               href={"https://samipaan-bucket.s3.eu-north-1.amazonaws.com/nextjs-portfolio/assets/CV_Sami_Paananen.pdf"}
+              target="_blank"
             >
               {dict.mainPage.portfolio.downloadButton}
-            </DownloadButton>
+            </Link>
           </div>
           <h3>{dict.mainPage.portfolio.skills}</h3>
-          <ul className={styles.personalSection}>
-            <div className={styles.__skills}>
-              <div className={styles.skillItem}>
-                <ReactIcon />
-                <li className="skill">React</li>
-              </div>
-              <div className={styles.skillItem}>
-                <JsIcon />
-                <li className="skill">JavaScript</li>
-              </div>
-              <div className={styles.skillItem}>
-                <TsIcon />
-                <li className="skill">TypeScript</li>
-              </div>
-              <div className={styles.skillItem}>
-                <NextIcon />
-                <li className="skill">Next.js</li>
-              </div>
-              <div className={styles.skillItem}>
-                <NodeJsIcon />
-                <li className="skill">Node.js</li>
-              </div>
-              <div className={styles.skillItem}>
-                <PythonIcon />
-                <li className="skill">Python3</li>
-              </div>
-              <div className={styles.skillItem}>
-                <JavaIcon />
-                <li className="skill">Java</li>
-              </div>
-              <div className={styles.skillItem}>
-                <SqlIcon />
-                <li className="skill">SQL</li>
-              </div>
-              <div className={styles.skillItem}>
-                <MongoIcon />
-                <li className="skill">NoSQL</li>
-              </div>
-              <div className={styles.skillItem}>
-                <AwsIcon />
-                <li className="skill">AWS</li>
-              </div>
-              <div className={styles.skillItem}>
-                <GitIcon />
-                <li className="skill">Git</li>
-              </div>
-              <div className={styles.skillItem}>
-                <ScrumIcon />
-                <li className="skill">Scrum</li>
-              </div>
-            </div>
-          </ul>
+          <div className={styles.personalSection}>
+            <ul className={styles.__skills}>
+              <li className={styles.skillItem}>
+                <ReactIcon aria-label="React Icon"/>
+                <span>React</span>
+              </li>
+              <li className={styles.skillItem}>
+                <JsIcon aria-label="JavaScript Icon"/>
+                <span>JavaScript</span>
+              </li>
+              <li className={styles.skillItem}>
+                <TsIcon aria-label="TypeScript Icon"/>
+                <span>TypeScript</span>
+              </li>
+              <li className={styles.skillItem}>
+                <NextIcon aria-label="Nextjs Icon" />
+                <span>Next.js</span>
+              </li>
+              <li className={styles.skillItem}>
+                <NodeJsIcon aria-label="Nodejs Icon" />
+                <span>Node.js</span>
+              </li>
+              <li className={styles.skillItem}>
+                <PythonIcon aria-label="Python Icon" />
+                <span>Python3</span>
+              </li>
+              <li className={styles.skillItem}>
+                <JavaIcon aria-label="Java Icon" />
+                <span>Java</span>
+              </li>
+              <li className={styles.skillItem}>
+                <SqlIcon aria-label="SQL Icon"/>
+                <span>SQL</span>
+              </li>
+              <li className={styles.skillItem}>
+                <MongoIcon aria-label="Mongo Icon" />
+                <span>NoSQL</span>
+              </li>
+              <li className={styles.skillItem}>
+                <AwsIcon aria-label="AWS Icon"/>
+                <span>AWS</span>
+              </li>
+              <li className={styles.skillItem}>
+                <GitIcon aria-label="Git Icon"/>
+                <span>Git</span>
+              </li>
+              <li className={styles.skillItem}>
+                <ScrumIcon aria-label="Scrum Icon" />
+                <span>Scrum</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className={styles.__certificates}>
           <h3>{dict.mainPage.portfolio.certificates}</h3>

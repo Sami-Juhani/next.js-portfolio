@@ -41,6 +41,7 @@
     }
   },
   "blogPage": {
+    "blog": "Blog",
     "likes": "likes",
     "comments": "Comments",
     "reply": "Reply:",
@@ -56,6 +57,7 @@
     "more": "More..."
   },
   "projectPage": {
+    "projects": "Projects",
     "tech": "Tech",
     "intro": "Introduction",
     "myLearnings": "My Learnings",

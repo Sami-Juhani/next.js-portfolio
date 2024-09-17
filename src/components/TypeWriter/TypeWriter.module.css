@@ -40,7 +40,7 @@
 }
 
 .typeWriterText::first-letter {
-  color: var(--brand-color-primary);
+  color: var(--clr-primary);
   font-size: 2em;
   font-weight: bold;
 }

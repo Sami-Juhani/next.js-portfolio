@@ -104,13 +104,13 @@ export function Contact({ dict }: ContactProps) {
         </SubmitButton>
       </form>
       <div className={styles.__icons}>
-        <Link type="email" href="mailto:sami.paananen@gmail.com">
+        <Link type="email" href="mailto:sami.paananen@gmail.com" aria-label="Send email to author">
           <Email />
         </Link>
-        <Link href="https://github.com/Sami-Juhani" target="_blank">
+        <Link href="https://github.com/Sami-Juhani" target="_blank" aria-label="Go to author's github page">
           <GitHubIcon />
         </Link>
-        <Link href="https://linkedin.com/in/samipaan" target="_blank">
+        <Link href="https://linkedin.com/in/samipaan" target="_blank" aria-label="Go to author's linkedin page">
           <LinkedIn />
         </Link>
       </div>

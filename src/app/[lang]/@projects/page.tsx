@@ -2,6 +2,7 @@ import { Project, getProjects } from "@/actions/projects"
 import { getDictionary } from "@/dictionaries/dictionaries"
 import { ProjectArticle } from "./ProjectArticle"
 import styles from "./projects.module.css"
+import { dafoe } from "@/lib/fonts"
 
 export default async function ProjectsPage({ params: { lang } }: { params: { lang: string } }) {
   const projects = await getProjects()
@@ -16,6 +17,7 @@ export default async function ProjectsPage({ params: { lang } }: { params: { lan
 
   return (
     <div className={styles.__layout}>
+      <h1 className={`${dafoe.className} page-title`}>{dict.projectPage.projects}</h1>
       {filteredProjects.map((project) => (
         <ProjectArticle key={project._id} project={project} dict={dict} />
       ))}

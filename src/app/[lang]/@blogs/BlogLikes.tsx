@@ -71,7 +71,7 @@ export function BlogLikes({ dict, blogId, blogLikes }: { dict: any; blogId: stri
           onClick={onClick}
         />
       </CustomButton>
-      <p className="textXs">
+      <p style={{fontSize: "var(--text-size-xs)"}}>
         {dict.blogPage.likes} {nroOfLikes}
       </p>
     </>

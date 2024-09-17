@@ -1,47 +1,44 @@
 .button {
   width: fit-content;
   padding: 0.3rem 0.6rem;
-  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 500;
+  color: var(--clr-text-dark);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
 button.button:not(.transparent):disabled {
-  background: #5e5e5e;
-  border: 1px solid #5e5e5e;
+  background: var(--clr-light-grey);
+  border: 1px solid var(--clr-grey);
 }
 
 .button.primary {
-  background: #c6e3ff;
+  background: hsl(from var(--clr-primary) h s l / 0.8);
   border-radius: 4px;
-  border: 1px solid #5aacf9;
+  border: 1px solid var(--clr-primary);;
 }
 
 .button.primary:hover, .button.primary:focus {
-  background: #7dbefc;
-  box-shadow: 0 0 0 3px rgba(200, 200, 200, 0.7);
+  box-shadow: 0 0 0 3px hsl(from var(--clr-primary) h s l / 0.7);
 }
 
 .button.primary:active {
-  background: #5aacf9;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .button.secondary {
-  background: #f0f0f0;
+  background: hsl(from var(--clr-primary) h s l / .5);
   border-radius: 4px;
-  border: 1px solid #cccccc;
+  border: 1px solid hsl(from var(--clr-primary) h s l / .7);
 }
 
 .button.secondary:hover, .button.secondary:focus {
-  background: #e0e0e0;
-  box-shadow: 0 0 0 3px rgba(200, 200, 200, 0.7);
+  background: hsl(from var(--clr-primary) h s l / .8);
+  box-shadow: 0 0 0 3px hsl(from var(--clr-primary) h s l / 0.8);
 }
 
 .button.secondary:active {
-  background: #cccccc;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
