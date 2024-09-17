@@ -1,7 +1,6 @@
 .__layout {
   position: relative;
   display: flex;
-  gap: 3rem;
   flex-direction: column;
   align-items: center;
 }
@@ -37,6 +36,10 @@
   gap: 0.75rem;
   padding-inline: 1rem;
   border-left: 10px solid var(--clr-primary);
+}
+
+.article + .article {
+  margin-top: 3rem;
 }
 
 @media screen and (min-width: 700px) {

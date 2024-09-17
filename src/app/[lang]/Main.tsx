@@ -6,17 +6,31 @@ import { StickyNav } from "@/components/StickyNav"
 import { useNextAuth } from "@/context/useNextAuth"
 import { Loading } from "@/components/Loading"
 
-type MainLayoutProps = { dict: any; lang: string; blogs: ReactNode; projects: ReactNode; portfolio: ReactNode; contact: ReactNode }
+type MainLayoutProps = {
+  dict: any
+  lang: string
+  blogs: ReactNode
+  projects: ReactNode
+  portfolio: ReactNode
+  contact: ReactNode
+}
 
 export function Main({ dict, lang, blogs, projects, portfolio, contact }: MainLayoutProps) {
   const [activePageIndex, setActivePageIndex] = useState(0)
   const { status } = useNextAuth()
 
   const links = [
-    { name: dict.navigation.links.home, index: 0 },
-    { name: dict.navigation.links.blog, index: 1 },
-    { name: dict.navigation.links.projects, index: 2 },
-    { name: dict.navigation.links.contact, index: 3 },
+    { name: dict.navigation.links.home, index: 0, id: "#portfolio" },
+    { name: dict.navigation.links.blog, index: 1, id: "#blogs" },
+    { name: dict.navigation.links.projects, index: 2, id: "#projects" },
+    { name: dict.navigation.links.contact, index: 3, id: "#contact" },
+  ]
+
+  const pages = [
+    { page: portfolio, id: "portfolio" },
+    { page: blogs, id: "blogs" },
+    { page: projects, id: "projects" },
+    { page: contact, id: "contact" },
   ]
 
   return (
@@ -30,7 +44,7 @@ export function Main({ dict, lang, blogs, projects, portfolio, contact }: MainLa
       />
       <div className="main__layout">
         {status === "loading" && <Loading />}
-        <PageScroller activePageIndex={activePageIndex} pages={[portfolio, blogs, projects, contact]} />
+        <PageScroller activePageIndex={activePageIndex} pages={pages} />
       </div>
     </>
   )

@@ -33,7 +33,7 @@ export function SignInAndOut({
 
   return isSigningIn ? (
     <div className={styles.signIn__layout}>
-      <h1>{dict.signInAndOutPage.signIn}</h1>
+      <h2>{dict.signInAndOutPage.signIn}</h2>
       <div className={styles.notice}>
         <h3>{dict.signInAndOutPage.notice}</h3>
         <p>{dict.signInAndOutPage.noticeText}</p>
@@ -45,7 +45,7 @@ export function SignInAndOut({
     </div>
   ) : (
     <div className={styles.signIn__layout}>
-      <h1>{dict.signInAndOutPage.signOut}</h1>
+      <h2>{dict.signInAndOutPage.signOut}</h2>
       <div className={styles.buttons}>
         <CustomButton buttonType={"primary"} onClick={async () => signOut()}>
           {dict.common.yes}

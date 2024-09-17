@@ -49,16 +49,15 @@ export function PortfolioPage({ dict }: { dict: any }) {
 
   return (
     <div className={styles.__layout}>
+      <h1 className="visually-hidden">SJP - Fullstack software development</h1>
       <TypeWriter paragraph={dict.mainPage.typeWriter.paragraphs} userOptions={{ startDelay: 20, typingDelay: 60 }} />
-      <div
-        className={styles.__image}
-      >
+      <div className={styles.__image}>
         <Image className={styles.devImage} src={DevImage} alt="Brand logo with text SJP" priority />
         <Image className={styles.authorImage} src={SelfImage} alt="Author" priority />
       </div>
       <div className={styles.__personalLayout}>
         <div className={`${styles.general}`}>
-          <h1>{dict.mainPage.general.title}</h1>
+          <h2>{dict.mainPage.general.title}</h2>
           {dict.mainPage.general.body.map((str: string, i: number) => (
             <p key={i}>{str}</p>
           ))}
@@ -78,15 +77,15 @@ export function PortfolioPage({ dict }: { dict: any }) {
           <div className={styles.personalSection}>
             <ul className={styles.__skills}>
               <li className={styles.skillItem}>
-                <ReactIcon aria-label="React Icon"/>
+                <ReactIcon aria-label="React Icon" />
                 <span>React</span>
               </li>
               <li className={styles.skillItem}>
-                <JsIcon aria-label="JavaScript Icon"/>
+                <JsIcon aria-label="JavaScript Icon" />
                 <span>JavaScript</span>
               </li>
               <li className={styles.skillItem}>
-                <TsIcon aria-label="TypeScript Icon"/>
+                <TsIcon aria-label="TypeScript Icon" />
                 <span>TypeScript</span>
               </li>
               <li className={styles.skillItem}>
@@ -106,7 +105,7 @@ export function PortfolioPage({ dict }: { dict: any }) {
                 <span>Java</span>
               </li>
               <li className={styles.skillItem}>
-                <SqlIcon aria-label="SQL Icon"/>
+                <SqlIcon aria-label="SQL Icon" />
                 <span>SQL</span>
               </li>
               <li className={styles.skillItem}>
@@ -114,11 +113,11 @@ export function PortfolioPage({ dict }: { dict: any }) {
                 <span>NoSQL</span>
               </li>
               <li className={styles.skillItem}>
-                <AwsIcon aria-label="AWS Icon"/>
+                <AwsIcon aria-label="AWS Icon" />
                 <span>AWS</span>
               </li>
               <li className={styles.skillItem}>
-                <GitIcon aria-label="Git Icon"/>
+                <GitIcon aria-label="Git Icon" />
                 <span>Git</span>
               </li>
               <li className={styles.skillItem}>
@@ -131,9 +130,7 @@ export function PortfolioPage({ dict }: { dict: any }) {
         <div className={styles.__certificates}>
           <h3>{dict.mainPage.portfolio.certificates}</h3>
           <div className={`${styles.certificates}`}>
-            <InfiniteSideScroller  />
-            
-            
+            <InfiniteSideScroller />
           </div>
         </div>
       </div>

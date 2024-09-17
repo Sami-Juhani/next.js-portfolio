@@ -14,10 +14,12 @@ import { FI, GB } from "country-flag-icons/react/3x2"
 import { cc } from "@/lib/cc"
 import { dafoe } from "@/lib/fonts"
 import styles from "./StickyNav.module.css"
+import Link from "next/link"
 
 export type Link = {
   name: string
   index: number
+  id: string
 }
 
 export type StickyNavProps = {
@@ -66,19 +68,22 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
           SjP
         </p>
       </div>
+     
       <nav className={styles.navigation}>
         <ul className={styles.__linksLayout}>
           {links.length > 0 &&
             links.map((link) => (
               <li key={link.index}>
-                <button
+                <Link
+                  href={link.id}
                   className={`${styles.link} ${cc(activePageIndex === link.index && styles.active)}`}
-                  onClick={() => {
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault()
                     if (activePageIndex !== link.index) window.scrollTo({ top: 0 }), setActivePageIndex(link.index)
                   }}
                 >
                   {link.name}
-                </button>
+                </Link>
               </li>
             ))}
         </ul>
@@ -94,7 +99,12 @@ export function StickyNav({ links, activePageIndex, setActivePageIndex, dict }: 
             }}
             aria-label="Toggle language dropdown"
           />
-          <LanguageDropdown dict={dict} isOpen={openDropDown === "langSettings"} setOpenDropDown={setOpenDropDown} aria-label="Language dropdown menu" />
+          <LanguageDropdown
+            dict={dict}
+            isOpen={openDropDown === "langSettings"}
+            setOpenDropDown={setOpenDropDown}
+            aria-label="Language dropdown menu"
+          />
         </div>
         <div className={styles.__settingsIcon}>
           {status === "loading" ? (
@@ -171,7 +181,7 @@ function LanguageDropdown({ dict, isOpen, setOpenDropDown }: LanguageDropDownPro
     <DropDown isOpen={isOpen} setOpenDropDown={setOpenDropDown}>
       <button onClick={() => onLanguageChange("en")}>
         <div className="row gap-medium items-center">
-          <GB style={{ width: "20px" }} aria-label="English language"/>
+          <GB style={{ width: "20px" }} aria-label="English language" />
           <p className="row gap-medium">{dict.languages.english}</p>
         </div>
         <Checked

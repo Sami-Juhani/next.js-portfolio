@@ -6,7 +6,7 @@
     padding: 1rem;
 }
 
-.signIn__layout h1 {
+.signIn__layout h2 {
     width: 100%;
     border-bottom: 1px solid var(--clr-grey);
 }

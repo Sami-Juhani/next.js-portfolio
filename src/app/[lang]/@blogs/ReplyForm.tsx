@@ -42,7 +42,7 @@ export function ReplyForm({ dict, blogId, replyId, addReply, isOpen, setIsOpen }
             action({ formData: e, blogId: blogId, replyId, userId: session?.user?.id! })
           }}
         >
-          <h1>Reply:</h1>
+          <h2>Reply:</h2>
           <FormGroup errorMessage={data?.errors?.body}>
             <label htmlFor="body">Message</label>
             <textarea id="body" name="body" rows={6} />

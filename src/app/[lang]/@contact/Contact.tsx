@@ -69,8 +69,8 @@ export function Contact({ dict }: ContactProps) {
 
   return (
     <div className={styles.__layout}>
-      <div className="column">
-        <h1 className={`${specialElite.className} ${styles.heading}`}>{dict.contactPage.heading}</h1>
+      <div className="column items-center">
+        <h2 className={`${specialElite.className} ${styles.heading}`}>{dict.contactPage.heading}</h2>
         <div className={styles.subHeading}>
           <p>{dict.contactPage.subHeading}</p>
           <p>{dict.contactPage.subHeading2}</p>

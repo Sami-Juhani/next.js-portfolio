@@ -46,7 +46,7 @@ export function CommentForm({ dict, blogId, addComment }: CommentFormProps) {
             action({ formData: e, blogId: blogId, userId: session?.user?.id! })
           }}
         >
-          <h1>{dict.blogPage.newComment}:</h1>
+          <h2>{dict.blogPage.newComment}:</h2>
           <FormGroup errorMessage={data?.errors?.title}>
             <label htmlFor="title">{dict.blogPage.title}</label>
             <input id="title" name="title" type="text" />

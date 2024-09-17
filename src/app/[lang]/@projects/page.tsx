@@ -16,8 +16,8 @@ export default async function ProjectsPage({ params: { lang } }: { params: { lan
   })
 
   return (
-    <div className={styles.__layout}>
-      <h1 className={`${dafoe.className} page-title`}>{dict.projectPage.projects}</h1>
+    <div id="projects" className={styles.__layout}>
+      <h2 className={`${dafoe.className} page-title`}>{dict.projectPage.projects}</h2>
       {filteredProjects.map((project) => (
         <ProjectArticle key={project._id} project={project} dict={dict} />
       ))}

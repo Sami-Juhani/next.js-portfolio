@@ -4,7 +4,7 @@ import { ReactNode, useRef } from "react"
 import styles from "./PageScroller.module.css"
 
 type MediaScrollerProps = {
-  pages: ReactNode[]
+  pages: { page: ReactNode; id: string }[]
   activePageIndex: number
 }
 
@@ -22,8 +22,8 @@ export function PageScroller({ pages, activePageIndex }: MediaScrollerProps) {
         onTransitionEnd={() => scrollerRef.current?.style.setProperty("filter", "unset")}
       >
         {pages.map((item, index) => (
-          <section key={index}>
-            <div style={{display: activePageIndex === index ? "block" : "none" }}>{item}</div>
+          <section key={item.id} id={item.id}>
+            <div style={{ display: activePageIndex === index ? "block" : "none" }}>{item.page}</div>
           </section>
         ))}
       </div>

@@ -48,7 +48,7 @@ async function BlogListPage({ dict, lang }: { dict: any; lang: SupportedLanguage
 
   return (
     <>
-      <h1 className={`${dafoe.className} page-title`}>{dict.blogPage.blog}</h1>
+      <h2 className={`${dafoe.className} page-title`}>{dict.blogPage.blog}</h2>
       <ul className={styles.__listLayout}>
         {filteredBlogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} readMore={dict.blogCard.more} lang={lang} />

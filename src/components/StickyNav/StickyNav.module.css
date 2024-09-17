@@ -128,7 +128,7 @@
 }
 
 .link.active {
-  color: var(--clr-link);
+  color: var(--link-color);
 }
 
 .__settingsLayout {
@@ -176,7 +176,7 @@
   transform-origin: center;
   width: 120%;
   height: 5px;
-  background-color: var(--clr-primary);
+  background-color: var(--brand-color-primary);
   transition: transform 0.3s ease;
 }
 
@@ -223,6 +223,6 @@
 
 .userName {
   padding: 0.5rem 1rem;
-  color: var(--clr-primary);
+  color: var(--brand-color-secondary-light);
   border-bottom: 1px solid var(--clr-grey);
 }
