@@ -212,7 +212,7 @@ export async function generateMetadata({
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: localizedBlog.header.title,
+    title: `Blog | ${localizedBlog.header.title}`,
     description: localizedBlog.header.desc,
     openGraph: {
       images: [localizedBlog.header.image.src, ...previousImages],

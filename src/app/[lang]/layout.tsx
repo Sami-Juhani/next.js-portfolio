@@ -12,7 +12,7 @@ import { inter } from "@/lib/fonts"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "SJP - fullstack software development",
+  title: {default: "SJP | Fullstack Software Development", template: "SJP | %s "},
   description: "Focus on software development with blog and projects",
   icons: [
     { rel: "icon", url: "/images/favicon/favicon.ico" },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SJP - Fullstack Software Development",
     description: "Focus on software development with blog and projects",
-    url: "https://samipaan.com",
+    url: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"),
     type: "website",
     images: [
       {
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     images: ["/images/me/sjp_dev.png"],
   },
   keywords: ["fullstack", "software development", "blog", "projects"],
-  authors: [{ name: "SJP", url: "https://samipaan.com" }],
+  authors: [{ name: "SJP", url: new URL(process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000") }],
   alternates: {
-    canonical: "./",
+    canonical: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
     languages: {
       "en-US": "/en",
       "fi-FI": "/fi",
